@@ -1,0 +1,1910 @@
+@import "variables";
+@import "mixins";
+
+// MEDIA QUERIES
+
+//large screens
+@media (max-width: 1199.98px) {
+
+  .navbar {
+
+    #logo {
+      width: 130px;
+      height: auto;
+      margin-left: 1rem;
+    }
+
+    #nav-icons {
+      margin-top: 1rem;
+      font-size: 1.2rem;
+    }
+
+    #search-nav {
+      font-size: 0.75rem;
+    }
+  }
+
+  #wishlist, #cart {
+    .prod-title {
+      font-size: 1rem;
+    }
+
+    .remove {
+      font-size: 0.8rem;
+    }
+  }
+
+  #why {
+    .why-title {
+      font-size: 1.2rem;
+    }
+
+    h5 {
+      display: inline;
+      font-size: 1rem;
+    }
+
+    i {
+      font-size: 1.1rem;
+    }
+
+    p {
+      margin: 0.5rem 0;
+      font-size: 0.75rem;
+    }
+
+    span {
+      font-size: 0.58rem;
+    }
+  }
+
+  #tiles {
+
+    .card-footer {
+      font-size: 0.85rem;
+    }
+
+    .image-tile {
+      height: 8.5rem;
+    }
+  }
+
+  .featured {
+    .section-title {
+      font-size: 1.3rem;
+      margin-bottom: 1.5rem;
+    }
+
+    .card-body {
+      height: 96px;
+    }
+
+    .card-title {
+      font-size: 0.63rem;
+      margin-bottom: 0;
+      height: 37.86px;
+    }
+
+    .card-text {
+      font-size: 0.7rem;
+    }
+
+    .card-img-top {
+      height: 9rem;
+    }
+
+    span {
+      font-size: 0.6rem;
+    }
+
+    .action {
+      font-size: 1.2rem;
+    }
+  }
+
+  #footer {
+    .footer1 {
+      .info-heading, #reach {
+        font-size: 1rem ;
+      }
+
+      .reg {
+        width: 8rem;
+        font-size: 0.9rem;
+      }
+    }
+  }
+
+  .product-view {
+
+    .modal-title {
+      font-size: 1.15rem;
+    }
+
+    #prod-main-img {
+      height: 28.5rem;
+    }
+
+    //.small-img-col {
+    //  flex-basis: 3rem;
+    //}
+
+    //.prod-small-img {
+    //  width: 2.5rem;
+    //  height: 2.5rem;
+    //}
+
+    #prod-price {
+      font-size: 1.3rem;
+      font-weight: 500;
+
+      span {
+        font-size: 0.85rem;
+      }
+    }
+
+    .count {
+
+      .form-control {
+        width: 5rem;
+        font-size: 0.6rem;
+      }
+
+      .count-sub {
+        font-size: 1.1rem;
+        font-weight: 500;
+      }
+
+      span {
+        font-size: 0.6rem;
+      }
+    }
+
+    .prod-start {
+      width: 7rem;
+      font-size: 0.9rem;
+    }
+
+    .checkout {
+      font-size: 0.8rem;
+    }
+
+    #share {
+      .fab {
+        padding: 0.4rem;
+        font-size: 1.2rem;
+        width: 2rem;
+      }
+    }
+
+    .scroll {
+      font-size: 0.7rem;
+    }
+
+    .description {
+      font-size: 1.1rem;
+    }
+
+    li {
+      font-size: 0.9rem;
+    }
+
+
+  }
+
+  #checkout-body {
+
+    #checkout-main {
+      flex-basis: 70vw;
+      margin-top: 2rem;
+
+      .card-header {
+        font-size: 1.1rem;
+      }
+
+      input[value] {
+        font-size: 0.85rem;
+      }
+
+      .optional {
+        font-size: 0.65rem;
+      }
+
+      .final-text, .final-price {
+        font-size: 1rem;
+      }
+
+      span {
+        text-transform: lowercase;
+        font-weight: normal;
+      }
+
+
+      #placeOrder {
+        font-size: 1.1rem;
+        width: 20rem;
+        font-weight: 600;
+      }
+    }
+
+    #checkout-sidebar {
+      flex-basis: 30vw;
+      margin-top: 2rem;
+
+      #help-button {
+        width: 14rem;
+      }
+
+      .img-fluid {
+        width: 3.5rem;
+        height: 3.5rem;
+      }
+
+      .cart-details {
+        font-size: 0.7rem;
+      }
+
+      hr {
+        color: rgba(0, 0, 0, 0.5);
+      }
+
+      .btn-sm {
+        font-size: 0.65rem;
+      }
+
+    }
+  }
+
+  .tp {
+    .row {
+
+      .card-img-top {
+        height: 9rem;
+      }
+
+      .card-title {
+        font-size: 0.65rem;
+      }
+
+      .card-text {
+        font-size: 0.6rem;
+
+        span {
+          font-size: 0.5rem;
+        }
+      }
+
+      .action {
+        font-size: 1.15rem;
+      }
+    }
+
+  }
+
+  .category-main {
+    #category-filters {
+      flex-basis: 25vw;
+
+      .h-50 {
+        font-size: 0.64rem;
+      }
+
+      .price-heading {
+        .btn {
+          font-size: 0.75rem;
+        }
+      }
+
+      label{
+        font-size: 0.8rem;
+      }
+    }
+
+    #category-display {
+      flex-basis: 75vw;
+
+      .categoryTitle {
+        font-size: 1.2rem;
+      }
+
+      .mainContent {
+
+        .col-lg-2 {
+          flex-basis: 25%;
+        }
+
+        .card-img-top {
+          height: 10rem;
+        }
+
+        .card-title {
+          font-size: 0.63rem;
+          margin-bottom: 0;
+          height: 37.86px;
+        }
+
+        span {
+          font-size: 0.6rem;
+        }
+
+        .action {
+          font-size: 1.2rem;
+        }
+
+        .card-body {
+          height: 96px;
+        }
+
+      }
+    }
+  }
+
+  #order {
+    width: 95%;
+
+    td{
+      font-size: 0.9rem;
+    }
+
+    .orderItems{
+      font-size: 0.8rem;
+    }
+
+    .statusBtn{
+      width: 6rem;
+    }
+  }
+
+  .register{
+    .card {
+      width: 85%;
+    }
+  }
+
+  #admin {
+    .mainPanel {
+
+      .navbar {
+        .addBtn {
+          font-size: 0.7rem;
+        }
+
+        .notiCount {
+          margin-right: 0.5rem;
+        }
+
+        .notification {
+          font-size: 1.5rem;
+        }
+
+        .dropdown {
+          text-transform: initial;
+        }
+
+      }
+
+      #chartsRow {
+        .chart-container {
+          height: 170px;
+          width: 319px;
+        }
+
+      }
+
+      #stats {
+
+        .card-title {
+          font-size: 1rem;
+        }
+
+        .statNum {
+          font-size: 1.2rem;
+        }
+
+        i {
+          font-size: 2rem;
+        }
+
+        .percentage {
+          font-size: 1rem;
+        }
+
+        span {
+          font-size: 0.6rem;
+        }
+
+      }
+
+    }
+  }
+
+  #viewProducts{
+    .detailedName{
+      font-size: 0.75rem;
+    }
+
+    .detailedCol{
+      font-size: 0.75rem;
+      min-width: 30px !important;
+      max-width: 30px !important;
+    }
+
+    .detailedDelete{
+      min-width: 48px !important;
+      max-width: 48px !important;
+    }
+
+    .det{
+      margin-left: 1rem;
+    }
+
+    .detailedCell{
+      font-size: 0.8rem !important;
+    }
+  }
+
+}
+
+
+// medium
+@media (max-width: 991.98px) {
+
+  #extraNav{
+    #cred{
+      margin-right: 12rem;
+    }
+  }
+
+  .navbar {
+
+    font-size: 1rem;
+    top: -5px;
+
+    .container-fluid {
+      padding-top: 10px;
+    }
+
+    #logo {
+      width: 125px;
+      height: auto;
+      margin-left: 2rem;
+    }
+
+    .navbar-nav {
+      text-transform: initial;
+      margin-left: 0;
+      margin-top: 0;
+    }
+
+    .nav-link{
+      font-size: 1rem
+    }
+
+    .nav-link:hover {
+      border-bottom: none;
+    }
+
+    .active {
+      border-bottom: none;
+    }
+
+    #nav-icons {
+      margin-left: 0;
+      margin-right: 0;
+      margin-top: 1rem;
+      font-size: 1.2rem;
+    }
+
+    #search-nav {
+      font-size: 0.80rem;
+    }
+
+  }
+
+  #wishlist {
+    .modal-title {
+      font-size: 1.2rem;
+    }
+
+    .prod-title {
+      font-size: 0.9rem;
+    }
+
+    .img-thumbnail {
+      height: 7rem;
+      width: 7rem;
+    }
+
+    .price {
+      font-size: 1rem;
+      font-weight: 500;
+    }
+
+    span {
+      font-size: 0.8rem;
+    }
+
+    .remove {
+      font-size: 0.8rem;
+    }
+
+    .favs-footer {
+      font-size: 0.9rem;
+    }
+  }
+
+  #cart {
+    .modal-title {
+      font-size: 1.2rem;
+    }
+
+    .prod-title {
+      font-size: 0.9rem;
+    }
+
+    .img-thumbnail {
+      height: 7rem;
+      width: 7rem;
+    }
+
+    .price {
+      font-size: 1rem;
+      font-weight: 500;
+    }
+
+    span {
+      font-size: 0.6rem;
+    }
+
+    .qty {
+      width: 5rem;
+      font-size: 0.7rem;
+    }
+
+    .remove {
+      font-size: 0.7rem;
+    }
+
+    .total {
+      font-size: 1.2rem;
+    }
+
+    #checkout {
+      font-size: 0.9rem;
+    }
+  }
+
+  #tiles {
+
+    .image-tile {
+      height: 10rem;
+    }
+
+    .card-footer {
+      font-size: 0.9rem;
+    }
+  }
+
+  #why {
+
+    p {
+      margin-top: 0.5rem;
+      font-size: 0.9rem;
+    }
+
+    span {
+      font-size: 0.6rem;
+    }
+  }
+
+  .featured {
+
+    .special-row{
+      width: 88%;
+    }
+
+    .card {
+      margin-bottom: 2rem;
+    }
+
+    .card-title {
+      font-size: 0.7rem;
+    }
+
+    .card-text {
+      font-size: 0.7rem;
+    }
+
+    .card-img-top {
+      height: 12rem;
+    }
+
+    span {
+      font-size: 0.6rem;
+    }
+
+  }
+
+  .product-view {
+
+    #prod-main-img {
+      height: 23rem;
+    }
+
+    #prod-price {
+      margin-top: 1.5rem;
+    }
+
+    .pvBtns{
+      margin: 0.7rem 0;
+    }
+
+    .description {
+      margin-left: 0;
+      font-size: 1rem;
+    }
+
+    ul{
+      padding-left: 0;
+    }
+
+    li {
+      font-size: 0.9rem;
+    }
+
+  }
+
+  #footer {
+    .footer2 {
+      font-size: 0.65rem;
+      position: static;
+    }
+  }
+
+  #checkout-body {
+
+    #checkout-main {
+      flex-basis: 65vw;
+      margin-top: 2rem;
+
+      .card-header {
+        font-size: 1rem;
+      }
+
+      .form-text{
+        font-size: 0.75rem;
+      }
+
+      label {
+        font-size: 0.9rem;
+      }
+
+      span {
+        font-size: 0.8rem;
+      }
+
+      .paymentSpan{
+        font-size: 0.75rem;
+      }
+
+      .final-text{
+        font-size: 0.9rem;
+      }
+
+      #placeOrder {
+        font-size: 1rem;
+        width: 12rem;
+      }
+    }
+
+    #checkout-sidebar {
+      flex-basis: 35vw;
+      margin-top: 2rem;
+
+      #divForHelp {
+        top: 5rem;
+      }
+
+      #help-button {
+        width: 10rem;
+        font-size: 0.9rem;
+      }
+
+      .card {
+        top: 8.5rem;
+      }
+
+      .img-fluid {
+        width: 3rem;
+        height: 3rem;
+      }
+
+      .card-header {
+        font-size: 0.9rem;
+      }
+
+      .cart-details {
+        font-size: 0.7rem;
+      }
+
+
+      .btn-sm {
+        font-size: 0.7rem;
+      }
+
+    }
+  }
+
+  .tp {
+    .card-header {
+      font-size: 1rem;
+    }
+
+    .card-body {
+      padding-top: 0;
+    }
+
+    .row {
+      .col-4 {
+        margin-top: 1rem;
+      }
+
+      .card-img-top {
+        height: 11rem;
+      }
+    }
+
+  }
+
+  .category-main {
+
+    #category-filters {
+      flex-basis: 30vw;
+
+      .card {
+        top: 5rem;
+      }
+
+
+      .price-heading {
+        font-size: 0.7rem;
+
+        span {
+          font-size: 0.4rem;
+        }
+
+        .btn {
+          font-size: 0.65rem;
+        }
+      }
+
+      .rangeM {
+        font-size: 0.65rem;
+      }
+
+      .form-check {
+        font-size: 0.7rem;
+        margin: 0.7rem 0;
+      }
+
+      .h-50 {
+        font-size: 0.58rem;
+      }
+    }
+
+    #category-display {
+      flex-basis: 70vw;
+
+      .card-header {
+        .categoryTitle {
+          font-size: 1rem;
+        }
+      }
+
+      .sortBy {
+        font-size: 0.85rem;
+
+        a {
+          font-size: 0.85rem;
+        }
+      }
+
+      .mainContent {
+
+        .col-lg-2 {
+          flex-basis: 33%;
+          margin-top: 1.5rem;
+        }
+
+        .card-img-top {
+          height: 10rem;
+        }
+
+        .card-title {
+          font-size: 0.6rem;
+        }
+
+        .card-text {
+          font-size: 0.7rem;
+        }
+
+        .action {
+          font-size: 1.15rem;
+        }
+
+
+      }
+    }
+  }
+
+  .findByFilter {
+    .input-group {
+      margin: 1rem 0;
+
+      input {
+        font-size: 0.5rem;
+      }
+    }
+  }
+
+  .register{
+    #login_card{
+      width: 70%;
+    }
+  }
+
+  #order {
+    width: 99%;
+
+    .card-body {
+      margin-right: 0.7rem;
+      overflow-x: auto;
+    }
+
+    .itemsTh {
+      min-width: 25rem;
+    }
+
+    .status {
+      min-width: 8rem;
+    }
+
+    td {
+      font-size: 0.8rem;
+    }
+
+    .btn {
+      width: 7rem;
+      font-size: 0.7rem;
+    }
+
+  }
+
+  #admin {
+    .sidebar {
+
+      li {
+        font-size: 1rem;
+      }
+
+      i {
+        margin-right: 0.5rem;
+      }
+
+      .collapseMenu {
+        li {
+          font-weight: normal;
+          font-size: 0.85rem;
+        }
+      }
+
+    }
+
+    .mainPanel {
+
+      .navbar {
+
+        .navbar-nav {
+          display: flex;
+          flex-direction: row;
+          justify-content: space-between;
+          margin: 1rem 0;
+        }
+
+        .addBtn {
+          margin: 0;
+          font-size: 1rem;
+        }
+
+        .notiCount {
+          margin-right: 0.5rem;
+        }
+
+        .dropdown-menu {
+          font-size: 0.9rem;
+        }
+      }
+
+      #chartsRow {
+        display: flex;
+        flex-wrap: wrap;
+
+        .chart-container {
+          margin: auto;
+          margin-top: 1.2rem;
+          padding: 1rem;
+          height: 250px;
+          width: 470px;
+        }
+
+      }
+
+      #stats {
+        margin: 2rem;
+
+        .row {
+          display: flex;
+          flex-wrap: wrap;
+        }
+
+        .card {
+          margin-top: 1rem;
+          flex-basis: 12rem;
+        }
+
+
+        .statNum {
+          font-size: 2rem;
+        }
+
+        i {
+          font-size: 2.5rem;
+        }
+
+        .percentage {
+          font-size: 1.2rem;
+          font-weight: 500;
+        }
+
+        span {
+          font-size: 0.7rem;
+          color: black;
+          font-weight: normal;
+        }
+
+        .profit {
+          color: $green;
+        }
+
+        .loss {
+          color: $red;
+        }
+
+      }
+
+      .order {
+        width: 98%;
+        margin: 1rem 0.5rem 0.5rem 0.3rem;
+
+        .card-body {
+          margin-right: 0.7rem;
+        }
+
+        th {
+          min-width: 6rem;
+        }
+
+        .itemsTh {
+          min-width: 20rem;
+        }
+
+        .status {
+          min-width: 10rem;
+        }
+
+        td {
+          font-size: 0.9rem;
+        }
+
+        .btn {
+          width: 7rem;
+          font-size: 0.7rem;
+        }
+
+        .ordersHeadingBig{
+          min-width: 25rem;
+        }
+
+        .performer{
+          .performerName{
+            min-width: 25rem;
+          }
+        }
+
+      }
+
+    }
+  }
+
+  #viewProducts{
+    margin: 1rem 0.5rem 1rem 0.3rem;
+
+    .ordersHeadingBig{
+      min-width: 25rem;
+    }
+
+    .product-name-heading{
+      min-width: 18rem;
+      font-size: 0.9rem;
+    }
+
+    .product-others, .tableHeader{
+      font-size: 0.9rem;
+    }
+
+    .tableHeaderBig{
+      font-size: 0.9rem;
+      min-width: 18rem;
+    }
+
+    tr{
+      font-size: 0.87rem;
+    }
+
+    .detailedName{
+      font-size: 0.73rem;
+    }
+
+    .detailedCol{
+      font-size: 0.73rem;
+      min-width: 25px !important;
+      max-width: 25px !important;
+    }
+
+    .detailedCell{
+      font-size: 0.75rem !important;
+    }
+
+    #inventoryIndexT{
+      .invName{
+        min-width: 19rem !important;
+      }
+
+      .invOthers{
+        min-width: 7rem !important;
+      }
+    }
+  }
+
+  #add-product{
+    li{
+      margin: 2rem 0;
+    }
+
+    .orderProductEdit{
+      width: 100%;
+      font-size: 0.8rem;
+    }
+
+    .orderQuantityEdit{
+      width: 100%;
+      font-size: 0.8rem;
+    }
+  }
+
+  .adminLogin{
+    width: 90%;
+  }
+
+  .pricelistModal{
+    min-width: 98%;
+  }
+}
+
+
+// small
+@media (max-width: 767.98px) {
+
+  html{
+    overflow-x: hidden;
+  }
+
+  body{
+    overflow-x: hidden;
+    position: relative;
+
+    .to-top.active{
+      bottom: 95px;
+    }
+  }
+
+  #extraNav{
+    #cred{
+      margin-right: 1rem;
+      font-weight: 500;
+    }
+  }
+
+  .navbar {
+    .navbar-toggler{
+      display: none;
+    }
+
+    #search-nav {
+      font-size: 0.70rem;
+    }
+  }
+
+  #wishlist {
+
+    .modal-title {
+      font-size: 1.2rem;
+    }
+
+    .prod-title {
+      font-size: 1rem;
+    }
+
+    .img-thumbnail {
+      height: 5rem;
+      width: 5rem;
+    }
+
+    .price {
+      font-size: 1rem;
+      font-weight: 500;
+    }
+
+    span {
+      font-size: 0.7rem;
+    }
+
+    .remove {
+      font-size: 0.8rem;
+    }
+
+    .favs-footer {
+      font-size: 1rem;
+    }
+  }
+
+  #cart {
+
+    .modal-title {
+      font-size: 1.2rem;
+    }
+
+    .prod-title {
+      font-size: 1rem;
+    }
+
+    .img-thumbnail {
+      height: 5rem;
+      width: 5rem;
+    }
+
+    .price {
+      font-size: 1rem;
+      font-weight: 500;
+    }
+
+    span {
+      font-size: 0.5rem;
+    }
+
+    .form-select {
+      font-size: 1rem;
+    }
+
+    .remove {
+      font-size: 0.8rem;
+    }
+
+    .total {
+      font-size: 1.2rem;
+    }
+
+    #checkout {
+      font-size: 1rem;
+    }
+  }
+
+  #tiles {
+    margin-top: 1rem;
+    padding-top: 1rem;
+
+    .col-lg-2{
+      width: 49%;
+    }
+
+    .image-tile {
+      height: 9.5rem;
+    }
+
+    .card-footer {
+      font-size: 0.88rem;
+    }
+  }
+
+  #why {
+    margin-top: 1rem;
+
+    .why-title {
+      font-size: 1.2rem;
+    }
+
+    h5 {
+      font-size: 1rem;
+    }
+
+    i {
+      font-size: 1rem;
+    }
+
+    p {
+      margin: 0.2rem 0;
+      font-size: 0.9rem;
+    }
+
+    span {
+      font-size: 0.7rem;
+    }
+
+  }
+
+  .featured {
+
+    .special-row{
+      width: 107%;
+    }
+
+    .section-title {
+      margin-bottom: 1rem;
+      font-size: 1.2rem;
+    }
+
+    .section-title:after {
+      height: 2px;
+      width: 20px;
+    }
+
+    .see-all {
+      font-size: 0.7rem;
+      text-transform: initial;
+    }
+
+    @include smallFeaturedCards;
+
+    .col-lg-2{
+      width: 49%;
+    }
+
+  }
+
+  .product-view {
+
+    .modal-title {
+      font-size: 1rem;
+    }
+
+    .container-fluid{
+      padding: 0.5rem;
+    }
+
+    .modal-body{
+      padding: 0.5rem;
+    }
+
+    #prod-main-img {
+      height: 25rem;
+    }
+
+    .small-img-col {
+      flex-basis: 3.5rem;
+    }
+
+    .prod-small-img {
+      width: 3rem;
+      height: 3rem;
+    }
+
+    #prod-price {
+      margin-top: 1rem;
+      font-size: 1.7rem;
+      font-weight: 650;
+
+      span {
+        font-size: 0.9rem !important;
+      }
+    }
+
+    .prod-start {
+      width: 7rem;
+      font-size: 1rem;
+      font-weight: 500;
+    }
+
+    #share {
+      margin-top: 1rem;
+
+      .fab {
+        padding: 0.8rem;
+        font-size: 1.7rem;
+        width: 3.3rem;
+      }
+    }
+
+    .description {
+      font-size: 1.1rem;
+    }
+
+    ul{
+      padding-left: 0.85rem;
+    }
+
+    li {
+      font-size: 0.85rem;
+    }
+
+  }
+
+  #footer {
+
+    .footer1 {
+
+      .info-heading {
+        font-size: 1.2rem;
+        margin-left: 0;
+        text-align: center;
+      }
+
+      .info-list {
+        font-size: 1rem;
+      }
+
+      li {
+        display: inline-block;
+        width: 49%;
+        font-size: 0.8rem;
+      }
+
+      p {
+        margin-bottom: 0.73rem;
+      }
+
+      #reach {
+        font-size: 1.2rem;
+        margin-bottom: 0.5rem;
+      }
+
+      .phone {
+        font-size: 0.8rem;
+      }
+
+
+      .fab {
+        padding: 0.8rem;
+        font-size: 1.7rem;
+        width: 3.3rem;
+        text-align: center;
+        text-decoration: none;
+        border-radius: 50%;
+
+      }
+
+      .reg {
+        width: 6rem;
+        margin-top: 0.3rem;
+        font-size: 0.8rem;
+      }
+
+    }
+
+    .footer2 {
+      font-size: 0.6rem;
+      margin-bottom: 4rem;
+    }
+
+  }
+
+  #checkout-body {
+    display: flex;
+    flex-wrap: wrap-reverse;
+
+    #checkout-main {
+      flex-basis: 100vw;
+      padding: 0;
+
+      .card {
+        margin-bottom: 1.5rem;
+      }
+
+      .card-header {
+        font-size: 1.2rem;
+      }
+
+      label {
+        font-size: 0.9rem;
+      }
+
+      input[placeholder], textarea[placeholder], select, option, .form-check-label {
+        font-size: 0.8rem;
+      }
+
+
+      .optional {
+        font-size: 0.7rem;
+      }
+
+
+      #add-num {
+        font-size: 0.75rem;
+      }
+
+      .final-text {
+        font-weight: 600;
+        font-size: 0.9rem;
+      }
+
+      .final-price {
+        font-weight: 600;
+        font-size: 1rem;
+      }
+
+      span {
+        text-transform: lowercase;
+        font-weight: normal;
+      }
+
+
+      #placeOrder {
+        margin-top: 1rem;
+        //width: 30rem;
+        font-weight: 600;
+      }
+    }
+
+    #checkout-sidebar {
+      flex-basis: 100vw;
+      margin-top: 1rem;
+      padding: 0;
+
+
+      #divForHelp {
+        position: static;
+      }
+
+      #help-button {
+        width: 8rem;
+        font-weight: 500;
+      }
+
+      .card {
+        position: static;
+
+      }
+
+
+      .img-fluid {
+        width: 5rem;
+        height: 4rem;
+      }
+
+      .cart-details {
+        font-size: 0.8rem;
+      }
+
+      .checkoutItemName {
+        overflow: hidden;
+        display: -webkit-box;
+        -webkit-box-orient: vertical;
+        -webkit-line-clamp: 2;
+      }
+
+      hr {
+        color: rgba(0, 0, 0, 0.5);
+      }
+
+      .btn-sm {
+        font-size: 0.9rem;
+      }
+
+    }
+  }
+
+  .tp {
+
+    .row {
+      margin-top: 1rem;
+      padding: 0;
+      @include smallFeaturedCards;
+    }
+
+  }
+
+  .category-main {
+    display: flex;
+    overflow-x: hidden;
+
+    .container-fluid{
+      margin-right: 0 !important;
+    }
+
+    #category-filters {
+
+      margin-left: -17rem;
+      padding: 0 0.5rem;
+      -webkit-transition: margin .5s ease-out;
+      -moz-transition: margin .5s ease-out;
+      -o-transition: margin .5s ease-out;
+      transition: margin 0.5s ease-out;
+
+      .filterCard {
+        position: static;
+        width: 16rem;
+      }
+
+
+      .price-heading {
+        font-size: 1rem;
+
+        span {
+          font-size: 0.7rem;
+        }
+
+        .btn {
+          font-size: 0.8rem;
+          text-transform: uppercase;
+        }
+      }
+
+      .rangeM {
+        font-size: 0.85rem;
+      }
+
+      .h-50 {
+        font-size: 0.85rem;
+      }
+
+      .form-check {
+        font-size: 0.9rem !important;
+      }
+
+    }
+
+    #category-display {
+      min-width: 100vw;
+      padding: 0 0.25rem;
+
+      .fa-plus {
+        transition: transform 1s ease-out;
+      }
+
+      .card-header{
+        margin-bottom: 1rem;
+
+        #filterButton{
+          display: inline-block;
+          font-size: 0.8rem;
+          margin-right: 2rem;
+        }
+
+        .categoryTitle{
+          display: inline-block;
+          font-size: 1.2rem;
+        }
+      }
+
+
+
+      .mainContent {
+
+
+        @include smallFeaturedCards;
+
+        .col-lg-2 {
+          flex-basis: 50%;
+          margin: 0;
+          padding: 0 0.4rem;
+        }
+      }
+    }
+  }
+
+  .category-main.toggled {
+    #category-filters {
+      margin-left: 0;
+    }
+
+    .fa-plus {
+      transform: rotate(405deg);
+    }
+  }
+
+  .findByFilter {
+    .input-group {
+      margin: 1rem 0;
+
+      input {
+        font-size: 0.8rem;
+      }
+
+      i {
+        font-size: 0.8rem;
+      }
+    }
+  }
+
+  .register {
+    .card {
+      width: 95%;
+    }
+
+    #login_card{
+      width: 95%;
+    }
+  }
+
+  #order{
+    .orderItemSpan{
+      font-size: 0.8rem;
+    }
+  }
+
+  #bottom-panel{
+    display: block;
+    position: fixed;
+    z-index: 100;
+    bottom: 0;
+    width: 100%;
+    background: white;
+    padding-bottom: 1.2rem;
+
+
+    #wrapper{
+      display: flex;
+    }
+
+    .b-item{
+      flex-basis: 25%;
+      height: 3rem;
+      padding: 0.5rem;
+      text-align: center;
+      font-size: 0.8rem;
+    }
+
+    .notification {
+      position: relative;
+      @include pointer;
+    }
+
+    .tip {
+      position: absolute;
+      left: 15px;
+      top: -9px;
+      height: 18px;
+      width: 18px;
+      background: $red;
+      font-style: normal;
+      font-size: 10px;
+      font-weight: 600;
+      color: #ffffff;
+      line-height: 18px;
+      text-align: center;
+      border-radius: 50%;
+      font-family: 'Montserrat', sans-serif;
+    }
+
+
+  }
+
+  .viewCat{
+    margin: 1.2rem 0;
+  }
+
+  #admin {
+    .mainPanel {
+      .navbar{
+        .navbar-brand{
+          font-size: 1.3rem;
+        }
+      }
+
+      #chartsRow {
+        .chart-container {
+          padding: 0;
+          height: 178px;
+          width: 344px;
+        }
+
+      }
+
+      #stats {
+        .card {
+          margin-right: 0;
+          flex-basis: 13rem;
+        }
+      }
+
+      .order {
+        width: 95%;
+      }
+    }
+  }
+
+  #faq{
+    font-size: 0.9rem;
+
+    .accordion-button{
+      font-size: 1rem;
+    }
+
+    .accordion-body{
+      padding: 0.7rem;
+    }
+
+    ol, ul, li{
+      padding: 0;
+      margin: 0 0.3rem;
+    }
+
+    .faqMobileImage{
+      height: 50%;
+      width: 50%;
+    }
+
+    .faqLgImage{
+      height: 100%;
+    }
+  }
+
+  #add-product{
+    .card-header{
+      font-size: 1.25rem;
+    }
+
+    .save{
+      font-size: 0.85rem;
+      margin-top: 1rem;
+    }
+  }
+
+  .adminLogin{
+    width: 99%;
+  }
+
+  #viewProducts{
+    .detailedName{
+      min-width: 180px !important;
+      max-width: 180px !important;
+    }
+
+    .detailedCol{
+      min-width: 43px !important;
+      max-width: 43px !important;
+    }
+  }
+
+  .quick{
+    .quick-product-view {
+      padding: 0.5rem;
+      background: white;
+
+      .logoContainer{
+        display: grid;
+        place-items: center;
+        margin: 1rem;
+      }
+
+      .qlogo{
+        width: 40%;
+      }
+
+      .product-name {
+        text-transform: capitalize;
+        font-size: 1.4rem;
+        font-weight: 600;
+        margin-left: 0.2rem;
+        margin-bottom: 1rem;
+      }
+
+
+    }
+
+    .quick-register {
+      padding: 0.5rem;
+      background: white;
+
+      @include required;
+
+      input[placeholder], textarea[placeholder], select, option, .form-check-label {
+        font-size: 0.9rem;
+      }
+
+      .controls{
+        width: 90%;
+        font-size: 1rem !important;
+        top: 10px !important;
+        left: 10px !important;
+        padding: 0.5rem;
+      }
+
+      #placeOrder {
+        margin-top: 1rem;
+        width: 100%;
+        font-weight: 600;
+        background: #eb8f34 !important;
+        color: white !important;
+      }
+    }
+
+    .expressImgContainer{
+      display: block;
+    }
+
+    .expressImg{
+      width: 100%;
+      height: 100%;
+      margin: 1.5rem 0.1rem;
+    }
+
+    .discount{
+      //font-size: 0.9rem;
+      color: #28a745;
+    }
+
+    .pn{
+      text-transform: uppercase;
+      font-weight: 500;
+      font-size: 1.3rem;
+    }
+
+    .extra{
+      font-size: 2rem;
+      font-weight: 500;
+      text-decoration: line-through;
+      text-decoration-color: #eb4034;
+    }
+
+    .kpp{
+      font-size: 1.5rem;
+      font-weight: 500;
+      color: #eb4034;
+    }
+
+    .pp{
+      font-size: 2rem;
+      font-weight: 500;
+      color: #eb4034;
+    }
+
+    .rem{
+      font-size: 0.9rem;
+      text-transform: uppercase;
+    }
+
+    .ytitle{
+      font-size: 1.3rem;
+      text-align: center;
+      font-weight: 500;
+      text-transform: uppercase;
+    }
+
+    .yImg{
+      width: 100%;
+      height: 100%;
+      margin-bottom: 0.5rem;
+    }
+
+    .mainImgContainer{
+      display: block;
+    }
+
+    ul{
+      padding-left: 1rem !important;
+    }
+
+
+  }
+
+}

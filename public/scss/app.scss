@@ -1,0 +1,2095 @@
+@import "variables";
+@import "mixins";
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+
+html {
+  scroll-behavior: smooth;
+}
+
+
+body {
+  background: $grey;
+  font-family: 'Montserrat', sans-serif;
+
+  //Pre Loader
+  .loader {
+    position: fixed;
+    top: 0;
+    left: 0;
+    background: white;
+    height: 100%;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+    transition: opacity 0.5s ease-out;
+  }
+  .loader-finish {
+    opacity: 0;
+    pointer-events: none;
+  }
+
+
+  //  Back to top
+  .to-top {
+    background: #171717;
+    position: fixed;
+    bottom: 16px;
+    right: 32px;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 32px;
+    color: white;
+    text-decoration: none;
+    opacity: 0;
+    pointer-events: none;
+    transition: all .4s;
+  }
+  .to-top.active {
+    bottom: 37px;
+    pointer-events: auto;
+    opacity: 1;
+  }
+
+  .card-header{
+    background: white;
+  }
+
+  //buttons in forms
+  .formBtn{
+    border: none;
+    outline: none;
+    background: transparent;
+  }
+
+  //input field errors
+  .inputError{
+    font-size: 0.9rem;
+    color: $red;
+    margin-left: 0.5rem;
+  }
+
+  //price line-through
+  .line-through{
+    text-decoration: line-through $red;
+  }
+
+  .actionSelected{
+    color: $red;
+  }
+
+  #paymentError{
+    color: $red;
+    margin: 1rem 0 0 0;
+  }
+}
+
+
+.index {
+  background: white;
+}
+
+
+#extraNav {
+  background: $grey;
+  display: flex;
+  justify-content: flex-end;
+  font-size: 0.9rem;
+  font-weight: 600;
+  padding: 0.3rem 0;
+
+  #cred{
+    margin-right: 17rem;
+  }
+
+  .clickable {
+    @include pointer;
+  }
+
+}
+
+
+.navbar {
+  position: sticky;
+  top: 0;
+  right: 0;
+  left: 0;
+  z-index: 100;
+
+  .sideButton{
+    display: none;
+  }
+
+  #logo {
+    width: 155px;
+    height: auto;
+    margin-left: 2rem;
+  }
+
+  .navbar-nav {
+    //margin-left: 17rem;
+    //margin-top: 1rem;
+  }
+
+  .navbar-collapse {
+    text-transform: uppercase;
+    font-weight: 500;
+  }
+
+  .nav-link{
+    font-size: 1.15rem;
+    color: black !important;
+  }
+
+
+  .active {
+    transition: border 0.3s ease-in-out 1s;
+    border-bottom: 2.5px solid $red;
+  }
+
+  .dropdown-menu {
+    text-transform: none;
+  }
+
+  #nav-icons {
+    margin-top: 1rem;
+    font-size: 1.2rem;
+  }
+
+  #search-nav {
+    font-size: 0.8rem;
+    margin-bottom: 1.6rem;
+    height: 38px;
+  }
+
+  .input-group-text{
+    padding: 0;
+  }
+
+  .formBtn{
+    margin: 0.2rem 0.3rem;
+    color: black;
+  }
+
+  .notification {
+    position: relative;
+    @include pointer;
+    height: 38px;
+  }
+
+
+  .tip {
+    position: absolute;
+    left: 15px;
+    top: -9px;
+    height: 18px;
+    width: 18px;
+    background: $red;
+    font-style: normal;
+    font-size: 10px;
+    font-weight: 600;
+    color: #ffffff;
+    line-height: 18px;
+    text-align: center;
+    border-radius: 50%;
+  }
+}
+
+
+#wishlist {
+  .modal-title {
+    font-weight: 500;
+  }
+
+  .prod-title {
+    font-weight: 500;
+    font-size: 1.15rem;
+    text-transform: capitalize;
+  }
+
+  .modal-body {
+    padding-bottom: 0;
+  }
+
+  .img-thumbnail {
+    height: 10rem;
+    width: 10rem;
+    @include resizeImage;
+  }
+
+  .form-select {
+    @include pointer;
+  }
+
+  .remove {
+    @include pointer;
+  }
+
+  .price {
+    font-weight: 500;
+  }
+
+  span {
+    font-size: 0.75rem;
+    font-weight: normal;
+  }
+
+  .priceSpan{
+    font-size: 0.85rem;
+    margin-left: 0.5rem;
+    text-decoration: line-through $red;
+  }
+
+  .modal-footer {
+    border-top: 0;
+    padding-top: 0;
+  }
+
+
+
+}
+
+
+#cart {
+  .modal-title {
+    font-weight: 500;
+  }
+
+  .prod-title {
+    font-weight: 500;
+    font-size: 1.15rem;
+    text-transform: capitalize;
+  }
+
+  .modal-body {
+    padding-bottom: 0;
+  }
+
+  .img-thumbnail {
+    height: 10rem;
+    width: 10rem;
+    @include resizeImage;
+  }
+
+  .qty {
+    width: 7.3rem;
+    font-size: 0.8rem;
+  }
+
+  .remove {
+    @include pointer;
+  }
+
+  .itemPrice, .subtotal {
+    display: inline;
+    font-weight: 500;
+    font-size: 1.2rem;
+  }
+
+  span {
+    font-size: 0.75rem;
+    font-weight: normal;
+  }
+
+  .priceSpan{
+    font-size: 0.85rem;
+    margin-left: 0.5rem;
+    text-decoration: line-through $red;
+  }
+
+  .modal-footer {
+    border-top: 0;
+    padding-top: 0;
+  }
+
+  .total {
+    font-weight: 500;
+    font-size: 1.7rem;
+  }
+}
+
+
+#why {
+  margin-top: 3rem;
+  background: $grey;
+
+  .why-title {
+    color: #111111;
+    font-size: 1.5rem;
+    font-weight: 600;
+    text-transform: uppercase;
+  }
+
+  h5 {
+    font-weight: 500;
+    display: inline;
+    text-transform: uppercase;
+  }
+
+  i {
+    font-size: 1rem;
+  }
+
+  p {
+    margin: 0.5rem 0;
+    text-align: center;
+    font-size: 0.9rem;
+  }
+
+  span {
+    display: block;
+    font-size: 0.7rem;
+  }
+
+
+}
+
+
+#tiles {
+  padding-top: 2.5rem;
+
+  .card {
+    text-transform: uppercase;
+    @include pointer;
+  }
+
+  .image-tile {
+    height: 11rem;
+    @include resizeImage
+  }
+
+  .card-footer {
+    font-size: 0.9rem;
+    font-weight: 500;
+  }
+
+}
+
+
+.featured {
+  margin-top: 3rem;
+
+  .section-title {
+    margin-bottom: 2rem;
+    color: #111111;
+    font-weight: 500;
+    text-transform: uppercase;
+    position: relative;
+    display: inline-block;
+  }
+
+  .section-title:after {
+    position: absolute;
+    left: 0;
+    bottom: -4px;
+    height: 2px;
+    width: 40px;
+    background: $red;
+    content: "";
+  }
+
+  .see-all {
+    display: inline-block;
+    float: right;
+    background: $red;
+    color: white;
+  }
+
+  .card {
+    @include shadow;
+  }
+
+  @include featuredCards;
+}
+
+
+.product-view {
+  padding: 0;
+
+  .modal-header{
+    padding: 0.7rem;
+  }
+
+  .modal-title {
+    font-weight: 600;
+    text-transform: capitalize;
+  }
+
+  #prod-main-img {
+    width: 100%;
+    height: 37.5rem;
+    @include resizeImage;
+  }
+
+  .small-img-row {
+    display: flex;
+  }
+
+  .small-img-col {
+    flex-basis: 3.5rem;
+  }
+
+  .prod-small-img {
+    margin-top: 0.8rem;
+    width: 3rem;
+    height: 3rem;
+    @include resizeImage;
+    @include pointer;
+  }
+
+  #prod-price {
+    text-align: center;
+    font-size: 1.5rem;
+    font-weight: 500;
+
+    span {
+      font-size: 0.9rem;
+      font-weight: normal;
+    }
+  }
+
+  .pvBtns{
+    text-align: center;
+    margin: 1rem 0;
+  }
+
+  .prod-start {
+    width: 10rem;
+  }
+
+  #share {
+    .fab {
+      padding: 0.5rem;
+      font-size: 1.5rem;
+      width: 2.5rem;
+      text-align: center;
+      text-decoration: none;
+      border-radius: 50%;
+
+      &:hover {
+        opacity: 0.7;
+        cursor: pointer;
+      }
+    }
+
+    .c2cLink{
+      margin-bottom: 0.5rem;
+    }
+
+    .fa-facebook-f {
+      background: #3B5998;
+      color: white;
+    }
+
+    .fa-instagram {
+      background: radial-gradient(circle at 30% 107%, #fdf497 0%, #fdf497 5%, #fd5949 45%, #d6249f 60%, #285AEB 90%);
+      color: white;
+    }
+
+    .fa-whatsapp {
+      background: #25D366;
+      color: white;
+    }
+
+    .fa-twitter {
+      background: #00acee;
+      color: white;
+    }
+  }
+
+  .scroll {
+    font-size: 0.85rem;
+  }
+
+  .description {
+    text-transform: uppercase;
+    font-size: 1.2rem;
+    font-weight: 600;
+    margin-left: 1rem;
+  }
+
+  .iPV{
+    *{
+      font-family: 'Montserrat', sans-serif !important;
+      font-size: 1rem !important;
+      color: black !important;
+      background-color: white !important;
+    }
+  }
+
+
+}
+
+
+#footer {
+
+  .footer1 {
+    background: #3e3e3e;
+
+    .info-heading {
+      color: white;
+      text-transform: uppercase;
+      font-weight: 500;
+      font-size: 1.2rem;
+      margin-left: 2rem;
+    }
+
+    .info-list {
+      text-align: left;
+    }
+
+    li {
+      list-style-type: none;
+      font-size: 0.9rem;
+
+      a {
+        text-decoration: none;
+        color: white;
+      }
+    }
+
+    #reach {
+      color: white;
+      text-transform: uppercase;
+      font-weight: 500;
+      font-size: 1.2rem;
+    }
+
+    .text-center {
+      a {
+        text-decoration: none;
+        color: inherit;
+      }
+    }
+
+    .fab {
+      padding: 0.7rem;
+      font-size: 2rem;
+      width: 3.6rem;
+      text-align: center;
+      text-decoration: none;
+      border-radius: 50%;
+
+      &:hover {
+        opacity: 0.7;
+        cursor: pointer;
+      }
+    }
+
+    .fa-facebook-f {
+      background: #3B5998;
+      color: white;
+    }
+
+    .fa-instagram {
+      background: radial-gradient(circle at 30% 107%, #fdf497 0%, #fdf497 5%, #fd5949 45%, #d6249f 60%, #285AEB 90%);
+      color: white;
+    }
+
+    .fa-whatsapp {
+      background: #25D366;
+      color: white;
+    }
+
+    .reg {
+      font-weight: 500;
+      width: 10rem;
+      margin-top: 1rem;
+    }
+  }
+
+  .footer2 {
+    background: $black;
+    color: white;
+    font-size: 0.8rem;
+  }
+}
+
+
+#checkout-body {
+  background: $grey;
+  display: flex;
+
+  #checkout-main {
+    flex-basis: 70vw;
+    margin-top: 2rem;
+
+    .card {
+      margin-bottom: 2rem;
+      @include shadow;
+      @include pointerRemove;
+    }
+
+    .card-header {
+      text-transform: uppercase;
+      font-size: 1.2rem;
+      font-weight: 600;
+    }
+
+
+    @include required;
+
+    .final-text, .final-price {
+      font-size: 1.1rem;
+    }
+
+
+    .optional {
+      font-size: 0.7rem;
+    }
+
+
+    #add-num {
+      text-align: right;
+      @include pointer;
+    }
+
+    .controls{
+      width: 90%;
+      font-size: 1rem !important;
+      top: 10px !important;
+      left: 10px !important;
+      padding: 0.5rem;
+    }
+
+    .final-text {
+      text-transform: uppercase;
+      font-weight: 600;
+    }
+
+    .final-price {
+      font-weight: 600;
+      font-size: 1.2rem;
+    }
+
+    span {
+      text-transform: lowercase;
+      font-weight: normal;
+    }
+
+    .paymentSpan{
+      font-size: 0.9rem;
+      text-transform: initial;
+    }
+
+    #placeOrder {
+      margin-top: 1rem;
+      width: 30rem;
+      font-weight: 600;
+    }
+  }
+
+  #checkout-sidebar {
+    flex-basis: 30vw;
+    margin-top: 2rem;
+
+    #divForHelp {
+      position: sticky;
+      top: 6rem;
+      z-index: 2;
+    }
+
+    #help-button {
+      width: 16rem;
+      font-weight: 500;
+    }
+
+    .card {
+      @include pointerRemove;
+      position: sticky;
+      top: 10rem;
+      z-index: 3;
+      margin-bottom: 2rem;
+    }
+
+    .card-header {
+      font-weight: 600;
+      text-align: center;
+    }
+
+    .img-fluid {
+      width: 4rem;
+      height: 4rem;
+      @include resizeImage;
+    }
+
+    .cart-details {
+      font-size: 0.8rem;
+    }
+
+    .checkoutItemName {
+      text-transform: capitalize;
+      overflow: hidden;
+      display: -webkit-box;
+      -webkit-box-orient: vertical;
+      -webkit-line-clamp: 2;
+    }
+
+    hr {
+      color: rgba(0, 0, 0, 0.5);
+    }
+
+    .btn-sm {
+      font-size: 0.75rem;
+    }
+
+  }
+}
+
+
+.tp {
+  margin-top: 1.2rem;
+
+  .card-header {
+    text-transform: uppercase;
+    font-size: 1.15rem;
+    font-weight: 600;
+  }
+
+  .row {
+    @include featuredCards;
+
+    .card {
+      @include shadow;
+    }
+
+    .card-img-top {
+      height: 11rem;
+    }
+
+    padding: 0 1rem 1rem 1rem;
+  }
+
+}
+
+
+.category-main {
+  display: flex;
+  margin: 2rem 0;
+
+  #category-filters {
+    flex-basis: 20vw;
+
+    .card {
+      position: sticky;
+      top: 6.2rem;
+      z-index: 3;
+    }
+
+
+    .price-heading {
+      font-weight: 500;
+      font-size: 0.9rem;
+
+      span {
+        font-weight: normal;
+        font-size: 0.7rem;
+      }
+
+      .btn {
+        font-size: 0.8rem;
+      }
+    }
+
+    .rangeM {
+      font-size: 0.7rem;
+    }
+
+    .form-check-input{
+      @include pointer;
+    }
+
+    .form-check {
+      font-size: 0.95rem;
+      margin-bottom: 0.5rem;
+    }
+
+    label{
+      text-transform: capitalize;
+    }
+  }
+
+  #category-display {
+    flex-basis: 80vw;
+
+    .card-header {
+
+      #filterButton{
+        display: none;
+      }
+
+      .categoryTitle {
+        text-transform: uppercase;
+        font-size: 1.3rem;
+        font-weight: 600;
+      }
+
+      .queryDisplay{
+        text-transform: initial;
+        font-size: 1.15rem;
+        font-weight: 500;
+      }
+    }
+
+    .sortBy {
+      font-size: 0.9rem;
+
+      a {
+        text-decoration: none;
+        color: black;
+        font-size: 0.88rem;
+      }
+    }
+
+    .card-body {
+      padding-top: 0;
+    }
+
+    .mainContent {
+      @include featuredCards;
+      display: flex;
+
+      .col-lg-2 {
+        flex-basis: 20%;
+        margin: 1rem 0;
+      }
+
+      .card {
+        @include shadow;
+      }
+
+      .card-img-top {
+        height: 14rem;
+      }
+
+      .card-title {
+        font-size: 0.7rem;
+      }
+
+      .no-results{
+        padding: 5rem 0;
+        //text-transform: uppercase;
+        text-align: center;
+      }
+
+    }
+
+  }
+}
+
+
+.findByFilter {
+  .input-group {
+    margin: 1rem 0;
+
+    input {
+      font-size: 0.7rem;
+    }
+
+    i {
+      font-size: 0.6rem;
+    }
+  }
+}
+
+
+.register {
+  display: grid;
+  place-items: center;
+
+  .card {
+    margin: 2rem;
+    width: 75%;
+  }
+
+  #login_card{
+    width: 60%;
+  }
+
+  .card-header {
+    text-transform: uppercase;
+    font-weight: 600;
+    font-size: 1.3rem;
+    text-align: center;
+  }
+
+  @include required;
+
+  label {
+    //font-size: 0.93rem;
+  }
+
+  input[placeholder], textarea[placeholder], select, option, .form-check-label {
+    font-size: 0.9rem;
+  }
+
+  p {
+    font-size: 0.9rem;
+    margin-bottom: 0;
+  }
+
+  a {
+    font-weight: 600;
+    text-decoration: none;
+  }
+
+  .controls{
+    width: 90%;
+    font-size: 1rem !important;
+    top: 10px !important;
+    left: 10px !important;
+    padding: 0.5rem;
+  }
+
+  .loginError{
+    color: $red;
+    text-align: center;
+  }
+
+  .form-control{
+    width: 99%;
+  }
+
+  .passInput, .confirmPassInput{
+    display: inline;
+  }
+
+  .passIcon, .confirmPassIcon{
+    margin-left: -32px;
+    cursor: pointer;
+  }
+}
+
+
+#order {
+  width: 90%;
+
+  thead {
+    text-transform: uppercase;
+  }
+
+  th{
+    width: 12%;
+    text-align: center;
+  }
+
+  .itemsTh {
+    width: 52%;
+    text-align: center;
+  }
+
+  td{
+    text-align: center;
+  }
+
+  .orderItems{
+    text-transform: capitalize;
+    text-align: start;
+    font-size: 0.9rem;
+  }
+
+  .orderID{
+    font-weight: 500;
+  }
+
+  .statusBtn {
+    width: 8rem;
+    font-size: 0.8rem;
+    text-transform: capitalize;
+    @include pointerRemove()
+  }
+
+  .orderItemSpan{
+    text-transform: lowercase;
+    margin-left: 0.5rem;
+    font-size: 0.85rem;
+  }
+
+}
+
+
+#bottom-panel{
+  display: none;
+}
+
+
+.overlay {
+    height: 100%;
+    width: 100%;
+    display: none;
+    position: fixed;
+    z-index: 1000;
+    top: 0;
+    left: 0;
+    background-color: rgb(0, 0, 0);
+    background-color: rgba(0, 0, 0, 0.9);
+
+
+  .overlay-content {
+    position: relative;
+    top: 46%;
+    width: 80%;
+    text-align: center;
+    margin-top: 30px;
+    margin: auto;
+  }
+
+  #search-nav {
+    font-size: 0.8rem;
+    margin-bottom: 1.6rem;
+    height: 38px;
+  }
+
+  .input-group-text{
+    padding: 0;
+  }
+
+  .formBtn{
+    margin: 0.2rem 0.3rem;
+    color: black;
+  }
+
+  .notification {
+    position: relative;
+    @include pointer;
+    height: 38px;
+  }
+
+  .closebtn {
+    position: absolute;
+    top: 20px;
+    right: 45px;
+    font-size: 30px;
+    cursor: pointer;
+    color: white;
+  }
+
+  .closebtn:hover {
+    color: #ccc;
+  }
+
+  input[type=text] {
+    padding: 15px;
+    font-size: 17px;
+    border: none;
+    float: left;
+    width: 80%;
+    background: white;
+  }
+
+  input[type=text]:hover {
+    background: #f1f1f1;
+  }
+
+  button {
+    float: left;
+    width: 20%;
+    padding: 15px;
+    background: #ddd;
+    font-size: 17px;
+    border: none;
+    cursor: pointer;
+  }
+
+  button:hover {
+    background: #bbb;
+  }
+}
+
+
+#faq {
+  min-width: 90vw;
+
+  .accordion{
+    background: white;
+  }
+
+  .accordion-button{
+    text-transform: uppercase;
+    font-size: 1.2rem;
+    font-weight: 500;
+  }
+
+  p, li {
+    text-align: justify;
+  }
+
+  .faqMobileImage{
+    display: block;
+    margin: 1rem 0;
+    @include resizeImage;
+    width: 20%;
+    height: 20%;
+  }
+
+  .faqLgImage{
+    display: block;
+    margin: 1rem 0;
+    @include resizeImage;
+    width: 100%;
+    height: 11rem;
+  }
+
+  ul{
+    li{
+      list-style-type: disc;
+    }
+  }
+
+}
+
+
+#admin {
+  display: flex;
+  overflow-x: hidden;
+
+  .sidebar {
+    background: white;
+    min-height: 100vh;
+    margin-left: -15rem;
+    -webkit-transition: margin .5s ease-out;
+    -moz-transition: margin .5s ease-out;
+    -o-transition: margin .5s ease-out;
+    transition: margin 0.5s ease-out;
+
+    h4{
+      text-align: center;
+      margin-top: 1.7rem;
+      font-weight: 600;
+    }
+
+    .sidebarItem {
+      width: 15rem;
+    }
+
+    .img-fluid {
+      width: 55%;
+      height: 3rem;
+    }
+
+    ul {
+      margin-top: 3rem;
+    }
+
+    li {
+      font-weight: 500;
+      @include pointer;
+    }
+
+    i {
+      margin-right: 0.5rem;
+    }
+
+    .change{
+      margin-top: 3rem;
+      font-weight: 600;
+      font-size: 1.3rem;
+      text-align: center;
+    }
+
+
+    .collapseMenu {
+      font-size: 0.8rem;
+      font-weight: normal;
+    }
+
+    .reportsLinks{
+      text-decoration: none;
+      color: black;
+    }
+
+  }
+
+  .mainPanel {
+    min-width: 100vw;
+
+    .navbar{
+      .fa-plus {
+        //font-size: 1.5rem;
+        border-radius: 50%;
+        transition: transform 1s ease-out;
+      }
+
+      .navbar-brand {
+        margin-left: 2rem;
+        text-transform: uppercase;
+        font-size: 1.5rem;
+        font-weight: 600;
+      }
+
+      .addBtn {
+        margin-right: 1.2rem;
+        font-size: 0.9rem;
+      }
+
+      .notiCount {
+        margin-right: 0.5rem;
+      }
+
+      .notification {
+        font-size: 1.5rem;
+      }
+
+      .dropdown {
+        text-transform: initial;
+      }
+
+      .dropdown-menu{
+        font-size: 0.8rem;
+      }
+    }
+
+    .order {
+      margin: 2rem 1rem;
+      width: 97%;
+
+      .card-header {
+        text-transform: uppercase;
+        font-weight: 500;
+        font-size: 1.2rem;
+      }
+
+      td{
+        text-align: center;
+      }
+
+      .far{
+        font-size: 1.5rem;
+        font-weight: 500;
+      }
+
+      .fa-clipboard{
+        font-size: 1.5rem;
+      }
+
+      .orderItems{
+        text-transform: capitalize;
+        text-align: start;
+        font-size: 0.8rem;
+      }
+
+      .orderRows{
+        font-size: 0.85rem;
+      }
+
+      .statusBtn {
+        width: 6.5rem;
+        font-size: 0.7rem;
+        text-transform: capitalize;
+        @include pointerRemove()
+      }
+
+      .orderItemSpan{
+        text-transform: lowercase;
+        margin-left: 0.5rem;
+        font-size: 0.85rem;
+      }
+
+      .ordersHeadingBig{
+        width: 40%;
+        text-align: center;
+        text-transform: capitalize;
+      }
+
+      .ordersHeading{
+        width: 8.1%;
+        text-align: center;
+      }
+
+      .ordersEmail{
+        text-align: center;
+        width: 12.4%;
+      }
+
+      .performer{
+        .performerName{
+          width: 39%;
+          text-align: center;
+        }
+
+        .performerID{
+          width: 10%;
+          text-align: center;
+        }
+
+        .performerHeading{
+          width: 8.5%;
+          text-align: center;
+        }
+
+        .performerProduct{
+          font-size: 0.83rem;
+          text-align: left;
+          text-transform: capitalize;
+        }
+      }
+
+      .fa-trash-alt{
+        color: $red;
+      }
+    }
+
+    #stats{
+      margin: 2rem;
+
+      .card{
+        margin-right: 1rem;
+      }
+
+      .card-title{
+        font-weight: 500;
+      }
+
+      .firstRow{
+        display: flex;
+        justify-content: space-between;
+      }
+
+      .statsHeader{
+        text-transform: uppercase;
+        font-weight: 500;
+        font-size: 1.2rem;
+      }
+
+      .statNum{
+        font-size: 2rem;
+      }
+
+      i{
+        font-size: 2.5rem;
+      }
+
+      .percentage{
+        display: flex;
+        justify-content: flex-end;
+        font-size: 1.2rem;
+        font-weight: 500;
+      }
+
+      span{
+        margin-top: 0.5rem;
+        margin-left: 0.2rem;
+        font-size: 0.7rem;
+        color: black;
+        font-weight: normal;
+      }
+
+      .profit{
+          color: $green;
+      }
+
+      .loss{
+          color: $red;
+      }
+
+    }
+
+  }
+}
+
+
+#admin.toggled {
+  .sidebar {
+    margin-left: 0;
+  }
+
+  .fa-plus {
+    transform: rotate(405deg);
+  }
+}
+
+
+#add-product {
+  @include pointerRemove;
+
+  .card-header {
+    text-transform: uppercase;
+    font-size: 1.5rem;
+    font-weight: 500;
+  }
+
+  @include required;
+
+  label{
+    font-weight: 500;
+  }
+
+  .form-text{
+    font-size: 0.9rem;
+  }
+
+  select{
+    @include pointer;
+    text-transform: capitalize;
+  }
+
+  .optional {
+    font-size: 0.7rem;
+    font-weight: normal;
+    text-transform: capitalize;
+  }
+
+  .ulButton {
+    display: block;
+    border: none;
+    padding: 0 0.5rem;
+    margin-left: 1rem;
+  }
+
+  .ulList {
+    min-height: 22rem;
+    height: auto;
+    margin: 0.4rem;
+    padding: 1rem;
+
+    &:hover{
+      cursor: auto;
+    }
+  }
+
+  .subHeading {
+    text-transform: uppercase;
+    font-weight: 500;
+    font-size: 1.4rem;
+  }
+
+  .subHeadingCategory {
+    font-weight: 500;
+  }
+
+  .imgRow, .editImgRow {
+    display: flex;
+  }
+
+  .card {
+    padding: 0;
+    flex-basis: 12.125rem;
+    margin: 1rem;
+  }
+
+  .imgCol {
+    height: 14rem;
+    background: $grey;
+    @include resizeImage;
+  }
+
+  .catImage {
+    height: 176px;
+    background: $grey;
+    @include resizeImage;
+  }
+
+  .catImageCard{
+    width: 217.15px;
+  }
+
+  .far, .fa-plus {
+    font-size: 1.35rem;
+    @include pointer;
+  }
+
+  #visibility {
+    text-transform: uppercase;
+    font-weight: 500;
+    font-size: 1.5rem;
+  }
+
+  @include switch;
+
+  .save {
+    font-weight: 500;
+  }
+
+  .subBrandBtn, .optionBtn{
+    margin: 1rem;
+    font-size: 0.8rem;
+  }
+
+  .subBrandsList, .orderListEdit, .optionsList{
+    padding-left: 0;
+    list-style: none;
+  }
+
+  .subBrandItem, .optionItem{
+    width: 45%;
+    margin-bottom: 1rem;
+  }
+
+  .orderProductEdit{
+    width: 60%;
+    margin-bottom: 1rem;
+  }
+
+  .orderQuantityEdit{
+    width: 8%;
+    margin-bottom: 1rem;
+    margin-right: 0.5rem;
+    text-align: center;
+  }
+
+  .otEdit {
+    font-size: 1.5rem;
+    font-weight: 500;
+    text-align: center;
+    margin-top: 1rem;
+  }
+
+  .finals{
+    font-size: 1.5rem;
+    font-weight: 500;
+    margin-top: 1rem;
+  }
+
+  .subBrandDelete, .orderProductDelete, .optionDelete{
+    font-size: 1.5rem;
+    color: $red;
+    margin-top: 0.4rem;
+    @include pointer;
+  }
+
+  .rectangle{
+    height: 19px;
+    width: 25px;
+  }
+
+  option{
+    text-transform: capitalize;
+    //font-weight: 800;
+  }
+
+  .subBrandOption{
+    font-size: 0.9rem;
+    font-weight: normal;
+  }
+
+  .noSubBrand{
+    font-weight: 500;
+  }
+
+  .richTitle{
+    margin-top: 0.3rem;
+  }
+
+  .tool-list{
+    display: flex;
+    flex-flow: row nowrap;
+    list-style: none;
+    padding: 0;
+    overflow: hidden;
+    font-size: 1.15rem;
+  }
+
+  #newDebtorTable{
+    .newDebtorColSmallest{
+      min-width: 2rem;
+      max-width: 2rem;
+    }
+
+    .newDebtorColSmall{
+      min-width: 5rem;
+      max-width: 5rem;
+    }
+
+    .newDebtorColBig{
+      min-width: 20rem;
+    }
+
+    .fa-trash-alt {
+      color: #DC3545;
+    }
+  }
+
+  .dropdown-item{
+    font-size: 0.875rem;
+    @include pointer
+  }
+
+  #newInvTable{
+    .fa-trash-alt {
+      color: #DC3545;
+    }
+  }
+}
+
+
+#viewProducts{
+  margin: 2rem 2.5rem 2rem 1rem;
+
+  .card-header{
+    font-size: 1.5rem;
+    font-weight: 500;
+  }
+
+  .tableHeaderBig{
+    width: 20%;
+    text-align: center;
+    text-transform: capitalize;
+  }
+
+  .tableHeader{
+    width: 10%;
+    text-align: center;
+  }
+
+  td{
+    text-align: center;
+  }
+
+  .productStatus {
+    font-weight: 500;
+    width: 3rem;
+    font-size: 0.65rem;
+    text-transform: capitalize;
+    @include pointerRemove()
+  }
+
+  .view_table_name{
+    text-transform: capitalize;
+    text-align: start;
+  }
+
+  .subBrandsCollapse, .subBrandCategory{
+    text-transform: capitalize;
+    font-size: 0.9rem;
+    text-align: start;
+  }
+
+  @include switch;
+
+  .far{
+    font-size: 1.5rem;
+    font-weight: 500;
+  }
+
+  .fa-clipboard{
+    font-size: 1.5rem;
+  }
+
+  .fa-trash-alt{
+    color: $red;
+  }
+
+  .deleteForm{
+    display: inline;
+  }
+
+  .hasSub{
+    @include pointer;
+  }
+
+  .product-name-heading{
+    width: 30%;
+    text-align: center;
+    text-transform: capitalize;
+  }
+
+  .product-name{
+    font-size: 0.8rem;
+    text-align: start;
+    text-transform: capitalize;
+  }
+
+  .product-others{
+    width: 8.75%;
+    text-align: center;
+  }
+
+  .product-row{
+    height: 3.5rem;
+  }
+
+  .pricelist-row{
+    @include pointer
+  }
+
+  .products-view-switch{
+    &:hover{
+      cursor: no-drop;
+    }
+  }
+
+  .orderItems{
+    text-transform: capitalize;
+    text-align: start;
+    font-size: 0.8rem;
+  }
+
+  .orderRows{
+    font-size: 0.85rem;
+  }
+
+  .statusBtn {
+    width: 6.5rem;
+    font-size: 0.7rem;
+    text-transform: capitalize;
+    @include pointerRemove()
+  }
+
+  .dateSorta{
+    font-size: 0.5px;
+    display: block;
+  }
+
+  .orderItemSpan{
+    text-transform: lowercase;
+    margin-left: 0.5rem;
+    font-size: 0.85rem;
+  }
+
+  .ordersHeadingBig{
+    width: 40%  ;
+    text-align: center;
+    text-transform: capitalize;
+  }
+
+  .ordersHeading{
+    width: 8.1%;
+    text-align: center;
+  }
+
+  .ordersEmail{
+    text-align: center;
+    width: 12.4%;
+  }
+
+  .detailedName{
+    font-weight: 500;
+    text-align: center;
+    font-size: 0.83rem;
+  }
+
+  .detailedCol{
+    font-weight: 500;
+    font-size: 0.83rem;
+    min-width: 50px !important;
+    max-width: 50px !important;
+  }
+
+  .detailedDelete{
+    min-width: 60px !important;
+    max-width: 60px !important;
+  }
+
+  .det{
+    margin-left: 1.5rem;
+  }
+
+  .detailedCell{
+    font-weight: 500;
+  }
+
+  .customerName{
+    min-width: 7rem;
+  }
+
+  .newOrderP{
+    @include pointer;
+  }
+
+  .accTotal{
+    font-size: 1.5rem;
+    font-weight: 500;
+    margin: 1rem;
+  }
+
+  #creditIndexT{
+    .creditSmall{
+      text-align: center;
+      min-width: 4rem !important;
+    }
+
+    .creditMid{
+      text-align: center;
+      min-width: 12rem !important;
+    }
+
+    .creditML{
+      text-align: center;
+      min-width: 15rem !important;
+    }
+
+    .creditLarge{
+      text-align: center;
+      min-width: 25rem !important;
+    }
+
+    .debtorInfo{
+      text-align: left;
+
+      .debtorName{
+        text-transform: capitalize;
+        display: block;
+      }
+
+      .debtorPhone{
+        margin: 0.5rem 0;
+        display: block;
+      }
+    }
+
+    .productHistory{
+      text-align: left;
+
+      .currentTotal{
+        font-weight: 500;
+        font-size: 1rem;
+      }
+
+      ul{
+        margin-bottom: 0;
+      }
+
+      .full{
+        color: #0d6efd;
+        text-decoration: underline;
+        @include pointer
+      }
+    }
+
+    td{
+      font-size: 0.9rem;
+    }
+  }
+
+  #inventoryIndexT{
+    .invName{
+      text-align: center;
+      min-width: 23rem !important;
+    }
+
+    .invOthers{
+      text-align: center;
+      min-width: 8rem !important;
+    }
+
+    .invAction{
+      text-align: center;
+      min-width: 10rem !important;
+    }
+
+    .fa-eye{
+      font-size: 1.5rem;
+      color: black;
+      margin-right: 1.5rem;
+    }
+  }
+
+}
+
+
+.fullHistoryTable{
+  font-size: 0.9rem;
+
+  .dateSorta{
+    font-size: 0.5px;
+    display: block;
+  }
+
+  .modalColSmall{
+    min-width: 2.5rem;
+  }
+
+  .modalColBig{
+    min-width: 15rem;
+  }
+
+  .creditRow{
+    color: red;
+  }
+
+  .debitRow{
+    color: green;
+  }
+
+  .historyItem{
+    text-align: left !important;
+  }
+
+}
+
+
+#map {
+  height: 500px;
+  width: 100%;
+}
+
+
+.adminLogin{
+  position: fixed;
+  top:  50%;
+  left: 50%;
+  transform: translate(-50%,-50%);
+  width: 70%;
+
+}
+
+
+#errorPage{
+  height: 50vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+
+.report-section{
+    .rheading{
+      text-transform: uppercase;
+      font-weight: 500;
+      margin: 1rem;
+      font-size: 1.4rem;
+    }
+
+  .chartsRow {
+    margin: 0 0.5rem 1rem 0.5rem;
+
+    .chart-container {
+      background: white;
+      position: relative;
+      margin: auto;
+      height: 320px;
+      width: 600px;
+    }
+
+  }
+}
+
+
+.quick{
+  .quick-product-view {
+    padding: 0.5rem;
+    background: white;
+
+    .logoContainer{
+      display: grid;
+      place-items: center;
+      margin: 1rem;
+    }
+
+    .qlogo{
+      width: 13%;
+    }
+
+    .product-name {
+      text-transform: capitalize;
+      font-size: 1.4rem;
+      font-weight: 600;
+      margin-left: 0.2rem;
+      margin-bottom: 1rem;
+    }
+
+
+  }
+
+  .quick-register {
+    padding: 3rem;
+    background: white;
+
+    @include required;
+
+    input[placeholder], textarea[placeholder], select, option, .form-check-label {
+      font-size: 0.9rem;
+    }
+
+    .controls{
+      width: 90%;
+      font-size: 1rem !important;
+      top: 10px !important;
+      left: 10px !important;
+      padding: 0.5rem;
+    }
+
+    #placeOrder {
+      margin-top: 1rem;
+      width: 30%;
+      font-weight: 600;
+      background: #eb8f34 !important;
+      color: white !important;
+    }
+  }
+
+  .expressImgContainer{
+    display: grid;
+    place-items: center;
+  }
+
+  .expressImg{
+      width: 50%;
+      height: 100%;
+      margin: 1.5rem 0.1rem;
+    }
+
+  .discount{
+      //font-size: 0.9rem;
+      color: #28a745;
+    }
+
+  .pn{
+      text-transform: uppercase;
+      font-weight: 500;
+      font-size: 1.3rem;
+    }
+
+  .extra{
+      font-size: 2rem;
+      font-weight: 500;
+      text-decoration: line-through;
+      text-decoration-color: #eb4034;
+    }
+
+  .kpp{
+    font-size: 1.5rem;
+    font-weight: 500;
+    color: #eb4034;
+  }
+
+  .pp{
+      font-size: 2rem;
+      font-weight: 500;
+      color: #eb4034;
+    }
+
+  .rem{
+      font-size: 0.9rem;
+      text-transform: uppercase;
+    }
+
+  .ytitle{
+      font-size: 1.3rem;
+      text-align: center;
+      font-weight: 500;
+      text-transform: uppercase;
+    }
+
+  .yImg{
+      width: 100%;
+      height: 100%;
+      margin-bottom: 0.5rem;
+    }
+
+  .mainImgContainer{
+    display: grid;
+    place-items: center;
+  }
+
+  .why-us{
+    margin-top: 2rem;
+    display: grid;
+    place-items: center;
+  }
+}
+
+
+@import "media-queries";
+

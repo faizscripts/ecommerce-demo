@@ -1,0 +1,183 @@
+@mixin resizeImage{
+  object-fit: cover;
+  object-position: center center;
+}
+
+@mixin pointer{
+  &:hover{
+    cursor: pointer;
+  }
+}
+
+@mixin pointerRemove{
+  &:hover{
+    cursor: default;
+  }
+}
+
+@mixin shadow{
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.15);
+  transition: box-shadow 0.3s ease-in-out;
+
+  &:hover{
+    box-shadow: 0 0 12px rgba(0, 0, 0, 0.9);
+  }
+}
+
+
+@mixin featuredCards {
+
+  .card-body {
+    padding: 0.5rem;
+    height: 120px;
+  }
+
+  .card-title {
+    height: 42.86px;
+    text-transform: capitalize;
+    font-size: 0.75rem;
+    overflow: hidden;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 3;
+
+    @include pointer;
+  }
+
+
+  .card-text {
+    font-size: 0.75rem;
+    font-weight: 500;
+  }
+
+  .featured-card-price{
+    span {
+      margin-left: 0.2rem;
+      font-size: 0.6rem;
+      font-weight: normal;
+    }
+  }
+
+  .card-img-top {
+    height: 12rem;
+    @include resizeImage;
+    @include pointer;
+  }
+
+  .action {
+    display: flex;
+    justify-content: space-around;
+    font-size: 1.5rem;
+  }
+
+  .bi{
+    @include pointer;
+  }
+}
+
+
+@mixin smallFeaturedCards {
+  .card {
+    margin-bottom: 1rem;
+  }
+
+  .card-img-top{
+    height: 12rem;
+  }
+
+  .card-title {
+    font-size: 0.6rem;
+    margin-bottom: 0.2rem;
+  }
+
+  .card-body {
+    height: 106px;
+  }
+
+  .card-text {
+    font-size: 0.7rem;
+  }
+
+  span {
+    font-size: 0.55rem;
+  }
+
+  .action {
+    margin-top: 0.2rem;
+    font-size: 1.3rem;
+  }
+}
+
+
+@mixin required {
+  label[required]:after, th[required]:after {
+    content: ' *';
+    color: $red;
+  }
+}
+
+
+@mixin switch {
+  .switch {
+    position: relative;
+    display: inline-block;
+    width: 40px;
+    height: 20px;
+    margin-left: 0.5rem;
+
+
+    /* The slider */
+    .slider {
+      position: absolute;
+      cursor: pointer;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background-color: #ec5555;
+      -webkit-transition: .4s;
+      transition: .4s;
+    }
+
+    .slider:before {
+      position: absolute;
+      content: "";
+      height: 13px;
+      width: 13px;
+      left: 4px;
+      bottom: 4px;
+      background-color: white;
+      -webkit-transition: .4s;
+      transition: .4s;
+    }
+
+    input:checked + .slider {
+      background-color: $green;
+    }
+
+    input:focus + .slider {
+      box-shadow: 0 0 1px #2196F3;
+    }
+
+    input:checked + .slider:before {
+      -webkit-transform: translateX(19px);
+      -ms-transform: translateX(19px);
+      transform: translateX(19px);
+    }
+
+    /* Rounded sliders */
+    .slider.round {
+      border-radius: 34px;
+    }
+
+    .slider.round:before {
+      border-radius: 50%;
+    }
+  }
+
+  .switch input {
+    opacity: 0;
+    width: 0;
+    height: 0;
+  }
+}

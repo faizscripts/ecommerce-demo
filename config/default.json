@@ -1,0 +1,12 @@
+{
+  "JWTKEY": "JWTKEY",
+  "EMAILPASS": "",
+  "SHORTCODE": "",
+  "PASSKEY":"",
+  "CONSUMER_KEY": "",
+  "CONSUMER_SECRET": "",
+  "CLIENT_ID": "",
+  "CLIENT_SECRET": "",
+  "REDIRECT_URI": "",
+  "REFRESH_TOKEN": ""
+}
