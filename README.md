@@ -1,6 +1,6 @@
 ## About
-This is a fully functional e-commerce website which is fast, has good SEO and is fully responsive across all screens. It uses Google Maps api to
-calculate delivery fee and give accurate directions for efficient deliveries. The payment system is powered by daraja api which enables m-pesa, Kenya's most popular payment system. Lastly, It's integrated with Google Analytics and facebook pixel to boost sales.
+This is a fully functional e-commerce website created using HTML, CSS, JS and Node. It is fast, has good SEO and is fully responsive across all screens. It uses Google Maps api to
+calculate delivery fee and give accurate directions for efficient deliveries. The payment system is powered by daraja api which enables m-pesa, Kenya's most popular payment system. Lastly, It's integrated with Google Analytics and Facebook Pixel to boost sales.
 
 At the moment, I have two variants running at real time, [Alpha Supplements](http://alpha-supplement.com/) which sells gym accessories and [Amazon Cellular](http://139.162.233.144/) which sells electronics. My clients are pleased with the website and have reported a smooth operation of their online businesses.
 
