@@ -63,14 +63,17 @@ module.exports = ({title, content}) => {
         <h4>POS</h4>
         <div class="sidebarItem ">
             <ul class="list-group list-group-flush">
+                <li class="list-group-item list-group-item-action" onclick="location.href='/pos/pricelist/'">
+                     Price List
+                </li>
+                <li class="list-group-item list-group-item-action" onclick="location.href='/pos/detailed/'">
+                     Detailed Price List
+                </li>
                 <li class="list-group-item list-group-item-action" onclick="location.href='/pos/credit/'">
                      Credits & Debits
                 </li>
                 <li class="list-group-item list-group-item-action" onclick="location.href='/pos/inventory/'">
                      Inventory
-                </li>
-                <li class="list-group-item list-group-item-action" onclick="location.href='/pos/pricelist/'">
-                     Price List
                 </li>
             </ul>
             <div class="change">

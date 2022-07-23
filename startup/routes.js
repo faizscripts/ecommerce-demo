@@ -12,7 +12,6 @@ const adminSpecial= require('../routes/admin/special');
 const adminOrders= require('../routes/admin/orders');
 const adminCustomers= require('../routes/admin/customers');
 const adminReports= require('../routes/admin/reports');
-const adminDetailed = require('../routes/admin/detailed');
 const homepage = require('../routes/index');
 const register = require('../routes/register');
 const login = require('../routes/login');
@@ -23,6 +22,7 @@ const orders = require('../routes/orders');
 const search = require('../routes/search');
 const faqs = require('../routes/faqs');
 const quick = require('../routes/quick');
+const detailedPricelist= require('../routes/pos/detailed');
 const posPricelist= require('../routes/pos/pricelist');
 const credit= require('../routes/pos/credit');
 const inventory = require('../routes/pos/inventory');
@@ -48,6 +48,7 @@ module.exports = function (app) {
     // uncomment the line below to restrict access to the admin panel to admins only
     // app.use(adminLoginMiddleware)
     app.use('/pos/login', posLogin);
+    app.use('/pos/detailed', detailedPricelist);
     app.use('/pos/pricelist', posPricelist);
     app.use('/pos/credit', credit);
     app.use('/pos/inventory', inventory);
@@ -60,7 +61,6 @@ module.exports = function (app) {
     app.use('/admin/orders', adminOrders);
     app.use('/admin/customers', adminCustomers);
     app.use('/admin/reports', adminReports);
-    app.use('/admin/detailed', adminDetailed);
 
 
     app.use(error);

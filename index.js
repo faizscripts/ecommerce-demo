@@ -14,7 +14,7 @@ require('./startup/db')();
 require('./startup/validation')();
 require('./startup/routes')(app);
 
-const port = 3003
+const port = 3000
 
 app.listen(port, 'localhost', () => {
     winston.info(`Listening at port ${port}.....`);

@@ -89,12 +89,10 @@ module.exports = ({title, content}) => {
                     <div class="card card-body">
                         <ul class="mt-0 px-0">
                             <li class="list-group-item list-group-item-action" onclick="location.href='/admin/reports/'">Internal Analytics</li>
-                            <a href="https://analytics.google.com/analytics/web/?authuser=1#/p285064233/reports/reportinghub" target="_blank" class="reportsLinks"><li class="list-group-item list-group-item-action">Google Analytics</li></a>
-                            <a href="https://business.facebook.com/adsmanager/manage/campaigns?act=4424044040982797&business_id=1230357357478149&global_scope_id=1230357357478149&nav_entry_point=am_local_scope_selector" class="reportsLinks" target="_blank"><li class="list-group-item list-group-item-action">Ad Manager</li></a>
-                            <a href="https://docs.google.com/spreadsheets/d/19u1WY7CfLrvTKM_drv6T1FhMQX0DzAvi/edit#gid=582228138" target="_blank" class="reportsLinks"><li class="list-group-item list-group-item-action">Expense Sheet</li></a>                        
-                            <a href="https://docs.google.com/spreadsheets/d/1goUT6Q3vLP7JrY76lm18GSIGvz1l_Yzi/edit#gid=582228138" target="_blank" class="reportsLinks"><li class="list-group-item list-group-item-action">Jiji Expense Sheet</li></a>
-                            <a href="https://cloud.linode.com/linodes/28161313" target="_blank" class="reportsLinks"><li class="list-group-item list-group-item-action">Site Server</li></a>
-                            <a href="https://console.cloud.google.com/billing/018DEF-BF8131-B63F53?project=my-project-1495784628507" target="_blank" class="reportsLinks"><li class="list-group-item list-group-item-action">Google Maps</li></a>
+                            <a href="#" target="_blank" class="reportsLinks"><li class="list-group-item list-group-item-action">Google Analytics</li></a>
+                            <a href="#" class="reportsLinks" target="_blank"><li class="list-group-item list-group-item-action">Ad Manager</li></a>
+                            <a href="#" target="_blank" class="reportsLinks"><li class="list-group-item list-group-item-action">Expense Sheet</li></a>                     
+                            <a href="#" target="_blank" class="reportsLinks"><li class="list-group-item list-group-item-action">Google Maps</li></a>
                         </ul>
                     </div>
                 </div>
@@ -116,15 +114,12 @@ module.exports = ({title, content}) => {
                 <div class="collapse collapseMenu" id="socialsMenu">
                     <div class="card card-body">
                         <ul class="mt-0 px-0">
-                            <a href="https://www.facebook.com/Amazon-Cellular-Outfitters-100448395706615" target="_blank" class="reportsLinks"><li class="list-group-item list-group-item-action">Facebook</li></a>                        
-                            <a href="https://www.instagram.com/amazon_cellular/" target="_blank" class="reportsLinks"><li class="list-group-item list-group-item-action">Instagram</li></a>
-                            <a href="https://jiji.co.ke/sellerpage-2269531" target="_blank" class="reportsLinks"><li class="list-group-item list-group-item-action">Jiji</li></a>
+                            <a href="#" target="_blank" class="reportsLinks"><li class="list-group-item list-group-item-action">Facebook</li></a>                        
+                            <a href="#" target="_blank" class="reportsLinks"><li class="list-group-item list-group-item-action">Instagram</li></a>
+                            <a href="#" target="_blank" class="reportsLinks"><li class="list-group-item list-group-item-action">Twitter</li></a>
                         </ul>
                     </div>
                 </div>
-                <li class="list-group-item list-group-item-action" onclick="location.href='/admin/detailed/'">
-                     Detailed Price List
-                </li>
             </ul>
             <div class="change">
                 <button class="btn btn-primary" onclick="location.href='/pos/pricelist/'">POS</button>
