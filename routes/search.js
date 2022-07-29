@@ -10,6 +10,7 @@ const searchTemplate = require('../views/search');
 const externalTemplate = require('../views/external');
 const {Product} = require('../models/admin/products');
 const express = require('express');
+const {Category} = require("../models/admin/categories");
 const router = express.Router();
 
 async function ssPagination1(req, res, products) {
@@ -107,6 +108,8 @@ router.get('/', async(req, res) => {
 
     let [wishlist, cart] = await getModals(req, Wishlist, Cart)
 
+    const categories = await Category.find().sort('dateCreated')
+
     const pixelUrl = 'https://graph.facebook.com/v12.0/1557304177945106/events?access_token=EAAFsem5CeJEBABvXPEoZB9D1awPyUK8lxxoIOes4dJ3YJMs8creChlVna7pZCTBr6Ar6c05zjHGk74nTvQVVgpKCTNgN5EOl53a9sXWxYhNHqvqkzmZBs5lb0k3FhWNjXoVZA51q0mlcXF9WhMOCwZAyDZCGaNZBNh6NdqGjixLhRv6ZCX6ZCsj9gpNBablzSfw4ZD'
 
     const time = Math.floor(Date.now() / 1000)
@@ -136,7 +139,7 @@ router.get('/', async(req, res) => {
 
     // axios.post(pixelUrl, pixelData).catch(reason => console.log(reason))
 
-    res.send(searchTemplate({req, products, wishlist, cart, page, iterator, endingLink, numberOfPages}))
+    res.send(searchTemplate({req, products, wishlist, cart, page, iterator, endingLink, numberOfPages, categories}))
 })
 
 router.get('/lth/', (req, res) => {
@@ -180,7 +183,9 @@ router.get('/ext/:id', async (req, res) => {
 
     let [wishlist, cart] = await getModals(req, Wishlist, Cart)
 
-    res.send(externalTemplate({req, product, wishlist, cart}))
+    const categories = await Category.find().sort('dateCreated')
+
+    res.send(externalTemplate({req, product, wishlist, cart, categories}))
 })
 
 module.exports = router;

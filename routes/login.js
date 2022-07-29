@@ -14,29 +14,34 @@ const _ = require('lodash');
 const express = require('express');
 const router = express.Router();
 const {Customer} = require('../models/customers');
+const {Category} = require("../models/admin/categories");
 
 router.get('/', async (req, res) => {
     let [wishlist, cart] = await getModals(req, Wishlist, Cart)
+
+    const categories = await Category.find().sort('dateCreated')
 
     if (req.headers.referer){
         req.session.signUpIn = req.headers.referer.split(req.headers.host).pop()
 
     }
 
-    res.send(loginTemplate({req, wishlist, cart}))
+    res.send(loginTemplate({req, wishlist, cart, categories}))
 })
 
 router.post('/', async (req, res) => {
     let [wishlist, cart] = await getModals(req, Wishlist, Cart)
 
+    const categories = await Category.find().sort('dateCreated')
+
     const {error} = validate(req.body);
-    if (error) return res.status(400).send(loginTemplate({req, input: req.body, error: error.details[0], wishlist, cart}))
+    if (error) return res.status(400).send(loginTemplate({req, input: req.body, error: error.details[0], wishlist, cart, categories}))
 
     let customer = await Customer.findOne({email: req.body.email});
-    if (!customer) return res.status(400).send(loginTemplate({req, incorrect: true, wishlist, cart}));
+    if (!customer) return res.status(400).send(loginTemplate({req, incorrect: true, wishlist, cart, categories}));
 
     const validPassword = await bcrypt.compare(req.body.password, customer.password);
-    if (!validPassword) return res.status(400).send(loginTemplate({req, incorrect: true, wishlist, cart}));
+    if (!validPassword) return res.status(400).send(loginTemplate({req, incorrect: true, wishlist, cart, categories}));
 
     const token = customer.generateLoginToken();
 
@@ -107,14 +112,18 @@ router.get('/logout', (req, res) => {
 router.get('/forgot', async (req, res) => {
     let [wishlist, cart] = await getModals(req, Wishlist, Cart)
 
-    res.send(forgotTemplate({req, wishlist, cart}))
+    const categories = await Category.find().sort('dateCreated')
+
+    res.send(forgotTemplate({req, wishlist, cart, categories}))
 })
 
 router.post('/forgot', async (req, res) => {
     let [wishlist, cart] = await getModals(req, Wishlist, Cart)
 
+    const categories = await Category.find().sort('dateCreated')
+
     let customer = await Customer.findOne({email: req.body.email})
-    if (!customer) return res.status(400).send(forgotTemplate({req, wishlist, cart, incorrect: true}))
+    if (!customer) return res.status(400).send(forgotTemplate({req, wishlist, cart, incorrect: true, categories}))
 
     const token = jwt.sign({customer: customer.email}, config.get('JWTKEY')+customer.password, { expiresIn: '15m' });
 
@@ -132,14 +141,16 @@ router.get('/reset/:id/:token', async (req, res) => {
     if (!valid) return res.status(400).send('Invalid ID passed');
 
     let [wishlist, cart] = await getModals(req, Wishlist, Cart)
+
+    const categories = await Category.find().sort('dateCreated')
     
     const customer = await Customer.findById(id)
-    if (!customer) return res.status(400).send(forgotTemplate({req, wishlist, cart, idError: true}))
+    if (!customer) return res.status(400).send(forgotTemplate({req, wishlist, cart, idError: true, categories}))
 
     try {
         const payload = jwt.verify(token, config.get('JWTKEY')+customer.password);
 
-        res.send(resetTemplate({req, wishlist, cart, customer, token}))
+        res.send(resetTemplate({req, wishlist, cart, customer, token, categories}))
 
     } catch (error) {
         throw new Error(error)
@@ -154,14 +165,16 @@ router.post('/reset/:id/:token', async (req, res) => {
 
     let [wishlist, cart] = await getModals(req, Wishlist, Cart)
 
+    const categories = await Category.find().sort('dateCreated')
+
     const customer = await Customer.findById(id)
-    if (!customer) return res.status(400).send(forgotTemplate({req, wishlist, cart, idError: true}))
+    if (!customer) return res.status(400).send(forgotTemplate({req, wishlist, cart, idError: true, categories}))
 
     try {
         const payload = jwt.verify(req.params.token, config.get('JWTKEY')+customer.password);
 
         const {error} = checkPassword(req.body);
-        if (error) return res.status(400).send(resetTemplate({req, customer, error: error.details[0], token: req.params.token, wishlist, cart}))
+        if (error) return res.status(400).send(resetTemplate({req, customer, error: error.details[0], token: req.params.token, wishlist, cart, categories}))
 
         const salt = await bcrypt.genSalt(10);
 

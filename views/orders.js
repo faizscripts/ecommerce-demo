@@ -2,7 +2,7 @@ const {displayDate, printWishlistModal, printCartModal, printProducts, printPaym
 const layout = require('./layout');
 const title = 'Orders'
 
-module.exports = function ({req, orders, wishlist, cart}) {
+module.exports = function ({req, orders, wishlist, cart, categories}) {
     function printOption(order) {
         if (order.option){
             return `Option:&nbsp;${order.option}`
@@ -32,6 +32,7 @@ module.exports = function ({req, orders, wishlist, cart}) {
     return layout({
         title: title,
         req: req,
+        categories,
         content: `
 
 

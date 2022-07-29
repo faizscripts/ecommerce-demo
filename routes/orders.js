@@ -12,6 +12,7 @@ const {Customer} = require('../models/customers')
 const ordersTemplate = require('../views/orders');
 const confirmTemplate = require('../views/confirm');
 const express = require('express');
+const {Category} = require("../models/admin/categories");
 const router = express.Router();
 
 sessionstorage.setItem('paymentResults', null)
@@ -133,7 +134,9 @@ router.get('/', async (req, res) => {
 
     let [wishlist, cart] = await getModals(req, Wishlist, Cart)
 
-    res.send(ordersTemplate({req, orders, wishlist, cart}))
+    const categories = await Category.find().sort('dateCreated')
+
+    res.send(ordersTemplate({req, orders, wishlist, cart, categories}))
 })
 
 router.post('/', async (req, res) => {
@@ -155,7 +158,9 @@ router.post('/', async (req, res) => {
 
         let [wishlist, cart] = await getModals(req, Wishlist, Cart)
 
-        res.send(ordersTemplate({req, orders, wishlist, cart}))
+        const categories = await Category.find().sort('dateCreated')
+
+        res.send(ordersTemplate({req, orders, wishlist, cart, categories}))
     } else if (req.session.mpesa === 'true') {
         res.redirect('/orders/mpesa')
     }

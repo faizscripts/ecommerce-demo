@@ -13,26 +13,25 @@ const {Product} = require('../models/admin/products');
 const homepageTemplate = require('../views/index');
 const express = require('express');
 const {error} = require("winston");
+const {Special} = require("../models/admin/special");
 const router = express.Router();
 
-async function shuffleSpecial() {
-    const featured_products = await Product.aggregate([
-        {$match: {specialID: mongoose.Types.ObjectId('6088050e65de8726600704b6')}},
-        {$match: {status: true, populateStatus: true}},
-        {$sample: {size: 6}}
-    ]);
+async function shuffleSpecial(specials) {
 
-    const new_arrivals = await Product.aggregate([
-        {$match: {specialID: mongoose.Types.ObjectId('6088051765de8726600704b7')}},
-        {$match: {status: true, populateStatus: true}},
-        {$sample: {size: 6}}
-    ]);
+    let shuffled = []
 
-    const sale = await Product.aggregate([
-        {$match: {specialID: mongoose.Types.ObjectId('60891d6820824d1308bc6946')}},
-        {$match: {status: true, populateStatus: true}},
-        {$sample: {size: 6}}
-    ]);
+    for (let i=0; i< specials.length; i++){
+        let shuffle = await Product.aggregate([
+            {$match: {specialID: mongoose.Types.ObjectId(specials[i]._id)}},
+            {$match: {status: true, populateStatus: true}},
+            {$sample: {size: 6}}
+        ]);
+        shuffled.push(shuffle)
+    }
+
+    // console.log(shuffled);
+
+    let [featured_products, new_arrivals, sale] = shuffled
 
     return [featured_products, new_arrivals, sale]
 }
@@ -120,6 +119,8 @@ async function seeAll(req, res, products, page, iterator, endingLink, numberOfPa
 
     let [wishlist, cart] = await getModals(req, Wishlist, Cart)
 
+    const categories = await Category.find().sort('dateCreated')
+
     const start = Date.now();
     const rand2 = Math.floor(Math.random() * 10000000000)
     const rand = start.toString() + rand2.toString()
@@ -136,7 +137,8 @@ async function seeAll(req, res, products, page, iterator, endingLink, numberOfPa
         endingLink,
         numberOfPages,
         sort,
-        rand
+        rand,
+        categories
     }))
 }
 
@@ -179,8 +181,11 @@ router.get('/', async (req, res) => {
         throw "delete this once finished uploading products"
 
         let savedFeatured = await GET_ASYNC('savedFeatured')
+
         if (!savedFeatured) {
-            let [featured_products, new_arrivals, sale] = await shuffleSpecial();
+            const specials = await Special.find();
+
+            let [featured_products, new_arrivals, sale] = await shuffleSpecial(specials);
 
             savedFeatured = await SET_ASYNC(
                 'savedFeatured', JSON.stringify(featured_products), 'EX', 3600
@@ -194,9 +199,10 @@ router.get('/', async (req, res) => {
                 'savedSale', JSON.stringify(sale), 'EX', 3600
             )
 
+            let [wishlist, cart] = await getModals(req, Wishlist, Cart)
+
             const categories = await Category.find().sort('dateCreated')
 
-            let [wishlist, cart] = await getModals(req, Wishlist, Cart)
 
             res.send(homepageTemplate({
                 req,
@@ -216,10 +222,9 @@ router.get('/', async (req, res) => {
         let savedNew = await GET_ASYNC('savedNew')
         let savedSale = await GET_ASYNC('savedSale')
 
-        const categories = await Category.find().sort('dateCreated')
-
         let [wishlist, cart] = await getModals(req, Wishlist, Cart)
 
+        const categories = await Category.find().sort('dateCreated')
 
         res.send(homepageTemplate({
             req,
@@ -233,24 +238,41 @@ router.get('/', async (req, res) => {
 
     } catch (e) {
 
-        const featured_products = await Product.find().limit(6);
-
-        const new_arrivals = await Product.find().limit(6)
-
-        const sale = await Product.find().limit(6)
-
-        const categories = await Category.find().sort('dateCreated')
+        let specials = await Special.find()
 
         let [wishlist, cart] = await getModals(req, Wishlist, Cart)
 
-        res.send(homepageTemplate({req, categories, featured_products, new_arrivals, sale, wishlist, cart}));
+        const categories = await Category.find().sort('dateCreated')
+
+        if (specials.length > 0){
+            let shuffled = []
+
+            for (let i=0; i< specials.length; i++){
+                let shuffle = await Product.aggregate([
+                    {$match: {specialID: mongoose.Types.ObjectId(specials[i]._id)}},
+                    {$match: {status: true, populateStatus: true}},
+                    {$sample: {size: 6}}
+                ]);
+                shuffled.push(shuffle)
+            }
+
+            let [featured_products, new_arrivals, sale] = shuffled
+
+            res.send(homepageTemplate({req, categories, featured_products, new_arrivals, sale, wishlist, cart}));
+        } else {
+            let [featured_products, new_arrivals, sale] = [null, null, null]
+
+            res.send(homepageTemplate({req, categories, featured_products, new_arrivals, sale, wishlist, cart}));
+        }
+
+
     }
 })
 
 router.get('/categories', async (req, res) => {
-    const categories = await Category.find().select('category_name').sort('dateCreated')
-
     let [wishlist, cart] = await getModals(req, Wishlist, Cart)
+
+    const categories = await Category.find().select('category_name').sort('dateCreated')
 
     res.send(categoriesTemplate({req, categories, wishlist, cart}));
 })

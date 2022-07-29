@@ -19,10 +19,14 @@ router.post('/', async (req, res) => {
     const {error} = validate(req.body);
     if (error) return res.status(400).send(addSpecialTemplate({input: req.body, error: error.details[0]}))
 
-    const special = new Special({
-        special_name: req.body.special_name
-    })
-    await special.save();
+    const specials = await Special.find()
+
+    if (specials.length<=2){
+        const special = new Special({
+            special_name: req.body.special_name
+        })
+        await special.save();
+    }
 
     res.redirect('/admin/special');
 });

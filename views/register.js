@@ -2,7 +2,7 @@ const layout = require('./layout');
 const title = 'Register';
 const {getInput, getError, printWishlistModal, printCartModal}= require('../middlewares/otherFunctions');
 
-module.exports = ({req, wishlist, cart, input, error, exists}) =>{
+module.exports = ({req, wishlist, cart, input, error, exists, categories}) =>{
     function existsCheck(exists) {
         if (exists){
             return`
@@ -16,6 +16,7 @@ module.exports = ({req, wishlist, cart, input, error, exists}) =>{
     return layout({
         title: title,
         req: req,
+        categories,
         content: `
 <section class="register">
     <div class="card">

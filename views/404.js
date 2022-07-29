@@ -2,11 +2,12 @@ const { printWishlistModal, printCartModal} = require('../middlewares/otherFunct
 const layout = require('./layout');
 const title = '404'
 
-module.exports = ({req, wishlist, cart, err}) => {
+module.exports = ({req, wishlist, cart, err, categories}) => {
 
     return layout({
         title: title,
         req: req,
+        categories,
         content: `
 <!--Cases Main-->
 <section id="errorPage">

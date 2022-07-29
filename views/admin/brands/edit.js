@@ -92,6 +92,19 @@ module.exports = ({brand, error, categories}) => {
         }).join('');
     }
 
+    const subBrandCategories = () => {
+        return`
+            <div id="subBrandCategories" class="d-none">
+                <input type="text" class="form-control subBrandItem" name="subBrandItems" required>
+                <select class="form-select subBrandItem " aria-label="Select Category" id="brand-category-input" name="subBrandCategoryID" required>
+                    <option value="">-Select a category-</option>
+                    ${renderedCategories}
+                </select>
+                <i class="fas fa-trash-alt subBrandDelete"></i>
+            </div>
+        `
+    }
+
     return layout({
         title: title,
         content: `
@@ -116,6 +129,7 @@ module.exports = ({brand, error, categories}) => {
                 <a class="btn btn-secondary save" onclick="location.href='/admin/brands'">CANCEL</a>
             </div>
         </form>
+        ${subBrandCategories()}
     </div>
 </div>
         `})

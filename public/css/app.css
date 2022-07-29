@@ -75,6 +75,9 @@ body #paymentError {
   color: #DC3545;
   margin: 1rem 0 0 0;
 }
+body .categories-list-item {
+  text-transform: capitalize;
+}
 
 .index {
   background: white;
@@ -124,6 +127,9 @@ body #paymentError {
 }
 .navbar .dropdown-menu {
   text-transform: none;
+}
+.navbar .dropdown-item {
+  text-transform: capitalize;
 }
 .navbar #nav-icons {
   margin-top: 1rem;
@@ -1755,6 +1761,10 @@ body #paymentError {
   font-size: 1.5rem;
   color: black;
   margin-right: 1.5rem;
+}
+#viewProducts .special-heading {
+  margin: 1.5rem 0 0 1rem;
+  color: red;
 }
 
 .fullHistoryTable {

@@ -6,11 +6,14 @@ const mongoose = require('mongoose');
 const checkoutTemplate = require('../views/checkout');
 const logged = require('../middlewares/logged');
 const express = require('express');
+const {Category} = require("../models/admin/categories");
 const router = express.Router();
 
 async function goToCheckout(req, res) {
 
     let [wishlist, cart] = await getModals(req, Wishlist, Cart)
+
+    const categories = await Category.find().sort('dateCreated')
 
     const customer = await Customer.find({email: req.session.email})
 
@@ -20,7 +23,7 @@ async function goToCheckout(req, res) {
         paymentError = req.session.paymentError
     }
 
-    res.send(checkoutTemplate({req, customer: customer[0], wishlist, cart, paymentError}))
+    res.send(checkoutTemplate({req, customer: customer[0], wishlist, cart, paymentError, categories}))
 }
 
 router.get('/', logged, async (req, res) => {

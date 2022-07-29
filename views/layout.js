@@ -1,6 +1,6 @@
-const {extraNav, footer, wishlistCount, cartCount} = require('../middlewares/otherFunctions');
+const {extraNav, footer, wishlistCount, cartCount, navbarDropdown} = require('../middlewares/otherFunctions');
 
-module.exports = ({title, req, content}) => {
+module.exports = ({title, req, content, categories}) => {
 
     return `
 <!DOCTYPE html>
@@ -136,9 +136,7 @@ src="https://www.facebook.com/tr?id=1557304177945106&ev=PageView&noscript=1"
                         Categories
                     </a>
                     <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                        <li><a class="dropdown-item" href="/6088049365de8726600704af">Cases</a></li>
-                        <li><a class="dropdown-item" href="/608922137c058834a8fa35e8">Protectors</a></li>
-                        <li><a class="dropdown-item" href="/6088049f65de8726600704b0">Audio</a></li>
+                        ${navbarDropdown(categories)}
                     </ul>
                 </li>
                 <li class="nav-item mx-2">

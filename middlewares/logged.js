@@ -6,9 +6,12 @@ const {Cart} = require('../models/cart')
 const jwt = require('jsonwebtoken');
 const config = require('config');
 const loginTemplate = require('../views/login');
+const {Category} = require("../models/admin/categories");
 
 module.exports =async function (req, res, next) {
     let [wishlist, cart] = await getModals(req, Wishlist, Cart)
+
+    const categories = await Category.find().sort('dateCreated')
 
     const pixelUrl = 'https://graph.facebook.com/v12.0/1557304177945106/events?access_token=EAAFsem5CeJEBABvXPEoZB9D1awPyUK8lxxoIOes4dJ3YJMs8creChlVna7pZCTBr6Ar6c05zjHGk74nTvQVVgpKCTNgN5EOl53a9sXWxYhNHqvqkzmZBs5lb0k3FhWNjXoVZA51q0mlcXF9WhMOCwZAyDZCGaNZBNh6NdqGjixLhRv6ZCX6ZCsj9gpNBablzSfw4ZD'
 
@@ -42,7 +45,7 @@ module.exports =async function (req, res, next) {
     if (!token) {
         req.session.checkout = true;
         req.session.notLoggedCart = req.body;
-        return res.status(401).send(loginTemplate({req, wishlist, cart}))
+        return res.status(401).send(loginTemplate({req, wishlist, cart, categories}))
     }
 
     try{

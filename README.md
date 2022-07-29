@@ -18,9 +18,9 @@ npm i
 npm start
 ```
 
-The code will now run successfully on [home page](http://localhost:3000/). However, you will need to upload some products from the admin panel for them to show in the home page.
+The code will now run successfully on [home page](http://localhost:3000/). It will also create a database in your MongoDB instance named ecommerceDB. However, you will need to upload some products from the admin panel for them to show in the database and subsequently show in the home page.
 
-From the admin panel, add at least one [category](http://localhost:3000/admin/categories/new), [brand](http://localhost:3000/admin/brand/new), [special category](http://localhost:3000/admin/specials/new) (featured products, sale and new arrivals) and [product](http://localhost:3000/admin/products/new).
+From the admin panel, add at least one [category](http://localhost:3000/admin/categories/new), [brand](http://localhost:3000/admin/brands/new), [special category](http://localhost:3000/admin/special/new) (i.e. featured products, sale and new arrivals shown at the home page) and [product](http://localhost:3000/admin/products/new).
 
 In order to restrict access to the admin panel to only admins, create an admin user in the [add admin page](http://localhost:3000/admin/admins/new). Open the [start-up route file](/startup/routes.js) in your code editor and uncomment the admin login middleware line named adminLoginMiddleware.
 ```
@@ -28,6 +28,6 @@ In order to restrict access to the admin panel to only admins, create an admin u
     // app.use(adminLoginMiddleware)
 ```
 
-To enable google maps, create a .env file in the root directory and add your google maps api key
+To enable Google Maps, create a .env file in the root directory and add your Google Maps api key
 
 ```KEY=YOUR_API_KEY```

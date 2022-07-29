@@ -9,7 +9,7 @@ module.exports = ({req, categories, featured_products, new_arrivals, sale, wishl
             return categories.map(
                 category => {
                     return `
-                <div class="col-6 col-md-4 col-lg-2 mb-3 mb-lg-0 ">
+                <div class="col-6 col-md-4 col-lg-2 my-3 mb-lg-0 ">
                     <div class="card" onclick="location.href='/${category._id}'">
                         <img src="/img/products/${category.image}" class="card-img-top image-tile" alt="...">
                         <div class="card-footer text-center">
@@ -21,6 +21,21 @@ module.exports = ({req, categories, featured_products, new_arrivals, sale, wishl
                 }
             ).join("")
         } else return ""
+    }
+
+    function renderSpecialRow(specialCategory) {
+        if (specialCategory){
+            return `
+            <section class="container featured">
+                <h4 class="section-title">
+                    ${specialCategory.special_name}
+                </h4>
+                <div class="row special-row">
+                    ${renderSpecial(featured_products, wishlist, cart)}
+                </div>
+            </section>
+            `
+        }
     }
 
     function renderSpecial(products, wishlist, cart) {
@@ -52,12 +67,13 @@ ${printProductModal(product, wishlist, cart)}
     return layout({
         title: title,
         req: req,
+        categories,
         content: `
 <div class="index">
 <!--Tiles-->
 <section id="tiles">
     <div class="container-fluid">
-        <div class="row mt-2 mt-lg-0  my-lg-4">
+        <div class="row mt-2 mt-lg-0  my-lg-4 d-flex justify-content-center">
         ${renderCategories(categories)}
         </div>
     </div>
@@ -106,7 +122,6 @@ ${printProductModal(product, wishlist, cart)}
     <h4 class="section-title">
         Featured Products
     </h4>
-<!--    <button type="button" class="btn btn-sm see-all" onclick="location.href='/special/6088050e65de8726600704b6'">SEE ALL</button>-->
     <div class="row special-row">
         ${renderSpecial(featured_products, wishlist, cart)}
     </div>
@@ -117,7 +132,6 @@ ${printProductModal(product, wishlist, cart)}
     <h4 class="section-title">
         New Arrivals
     </h4>
-<!--    <button type="button" class="btn btn-sm see-all" onclick="location.href='/special/6088051765de8726600704b7'">SEE ALL</button>-->
     <div class="row special-row">
         ${renderSpecial(new_arrivals, wishlist, cart)}
     </div>

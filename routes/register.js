@@ -10,20 +10,25 @@ const checkoutTemplate = require('../views/checkout');
 const {Customer, validate} = require('../models/customers');
 const express = require('express');
 const axios = require("axios");
+const {Category} = require("../models/admin/categories");
 const router = express.Router();
 
 router.get('/', async (req, res) => {
     let [wishlist, cart] = await getModals(req, Wishlist, Cart)
 
+    const categories = await Category.find().sort('dateCreated')
+
     if (req.headers.referer) {
         req.session.signUpIn = req.headers.referer.split(req.headers.host).pop()
     }
 
-    res.send(registerTemplate({req, wishlist, cart}));
+    res.send(registerTemplate({req, wishlist, cart, categories}));
 })
 
 router.post('/', async (req, res) => {
     let [wishlist, cart] = await getModals(req, Wishlist, Cart)
+
+    const categories = await Category.find().sort('dateCreated')
 
     const {error} = validate(req.body);
     if (error) return res.status(400).send(registerTemplate({
@@ -31,11 +36,12 @@ router.post('/', async (req, res) => {
         input: req.body,
         error: error.details[0],
         wishlist,
-        cart
+        cart,
+        categories
     }))
 
     let customer = await Customer.findOne({email: req.body.email});
-    if (customer) return res.status(400).send(registerTemplate({req, exists: true, wishlist, cart}))
+    if (customer) return res.status(400).send(registerTemplate({req, exists: true, wishlist, cart, categories}))
 
     customer = new Customer(
         _.pick(req.body, ['full_name', 'email', 'phone', 'password', 'latitude', 'longitude', 'delivery_fee', 'distance'])
@@ -127,13 +133,17 @@ router.post('/', async (req, res) => {
 router.get('/edit', async (req, res) => {
     let [wishlist, cart] = await getModals(req, Wishlist, Cart)
 
+    const categories = await Category.find().sort('dateCreated')
+
     const customer = await Customer.find({email: req.session.email})
 
-    res.send(editTemplate({req, customer: customer[0], wishlist, cart}));
+    res.send(editTemplate({req, customer: customer[0], wishlist, cart, categories}));
 })
 
 router.post('/edit', async (req, res) => {
     let [wishlist, cart] = await getModals(req, Wishlist, Cart)
+
+    const categories = await Category.find().sort('dateCreated')
 
     const {error} = validate(req.body);
     if (error) return res.status(400).send(editTemplate({
@@ -141,7 +151,8 @@ router.post('/edit', async (req, res) => {
         input: req.body,
         error: error.details[0],
         wishlist,
-        cart
+        cart,
+        categories
     }))
 
     let customer = await Customer.findOneAndUpdate({email: req.session.email}, {
@@ -167,7 +178,7 @@ router.post('/edit', async (req, res) => {
 
     req.session.token = token;
 
-    res.send(checkoutTemplate({req, customer, wishlist, cart}))
+    res.send(checkoutTemplate({req, customer, wishlist, cart, categories}))
 })
 
 module.exports = router;

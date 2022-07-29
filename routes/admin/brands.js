@@ -58,6 +58,7 @@ async function post(req, res) {
 
 router.get('/', async (req, res) => {
     const brands = await Brand.find().collation({locale: "en" }).sort('brand_name');
+
     const categories = await Category.find().select('_id, category_name').collation({locale: "en" }).sort('category_name');
 
     res.send(viewBrandsTemplate({brands, categories}));

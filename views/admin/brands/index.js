@@ -56,29 +56,29 @@ module.exports = ({brands, categories}) => {
     <td>${brand.unitsSold}</td>
     <td>${brand.income}</td>
     <td>
-        <a href="/admin/brands/edit/${brand._id}"><i class="far fa-edit"></i></a>
         <div>
-<!--        <div  class="deleteForm ms-4">-->
-<!--            <button type="button" data-bs-toggle="modal" data-bs-target="#_${brand._id}" class="formBtn">-->
-<!--            <i class="far fa-trash-alt "></i>-->
-<!--            </button>-->
-<!--        </div>-->
-<!--        -->
-<!--        <div class="modal fade" id="_${brand._id}" tabindex="-1" aria-labelledby="brandModal" aria-hidden="true">-->
-<!--            <div class="modal-dialog modal-dialog-centered">-->
-<!--                <div class="modal-content">-->
-<!--                <form method="POST" >-->
-<!--                    <div class="modal-body">-->
-<!--                        <p><b>DELETE</b> ${brand.brand_name}?</p>-->
-<!--                    </div>-->
-<!--                    <div class="modal-footer">-->
-<!--                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>-->
-<!--                        <button class="btn btn-danger" type="submit" formaction="/admin/brands/delete/${brand._id}">Confirm</button>-->
-<!--                    </div>-->
-<!--                </form>-->
-<!--                </div>-->
-<!--            </div>-->
-<!--        </div>-->
+        <a href="/admin/brands/edit/${brand._id}"><i class="far fa-edit"></i></a>
+        <div  class="deleteForm ms-4">
+            <button type="button" data-bs-toggle="modal" data-bs-target="#_${brand._id}" class="formBtn">
+            <i class="far fa-trash-alt "></i>
+            </button>
+        </div>
+        
+        <div class="modal fade" id="_${brand._id}" tabindex="-1" aria-labelledby="brandModal" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered">
+                <div class="modal-content">
+                <form method="POST" >
+                    <div class="modal-body">
+                        <p><b>DELETE</b> ${brand.brand_name}?</p>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+                        <button class="btn btn-danger" type="submit" formaction="/admin/brands/delete/${brand._id}">Confirm</button>
+                    </div>
+                </form>
+                </div>
+            </div>
+        </div>
         </div>
     </td>
     ${subBrandsPrint(brand)}

@@ -23,6 +23,7 @@ module.exports = ({specials}) => {
                 <div class="modal-content">
                 <form method="POST" >
                     <div class="modal-body">
+                        <p><b>WARNING!</b> Deleting a special category will affect all the products in this category</p>
                         <p><b>DELETE</b> ${special.special_name}?</p>
                     </div>
                     <div class="modal-footer">
@@ -38,11 +39,18 @@ module.exports = ({specials}) => {
 </tr>
             `}).join('')
 
+    const printAddButton = (specials) => {
+        if (specials.length<=2){
+            return `<button type="button" class="btn btn-primary mt-4 me-3" style="font-size: 0.8rem" onclick="location.href='/admin/special/new'">Add New Special Category</button>`
+        } else return ""
+    }
+
     return layout({
         title: title,
         content: `<div id="viewProducts" class="card ">
-        <div class="d-flex justify-content-end">
-    <button type="button" class="btn btn-primary mt-4 me-3" style="font-size: 0.8rem" onclick="location.href='/admin/special/new'">Add New Special Category</button>
+        <div class="d-flex justify-content-between">
+        <h4 class="special-heading">Only a maximum of 3 special categories is allowed!</h4>
+        ${printAddButton(specials)}
     </div> 
     <div class="card-body table-responsive">
         <table class="table table-hover table-bordered">

@@ -93,6 +93,11 @@ body {
     color: $red;
     margin: 1rem 0 0 0;
   }
+
+  //others
+  .categories-list-item{
+    text-transform: capitalize;
+  }
 }
 
 
@@ -160,6 +165,10 @@ body {
 
   .dropdown-menu {
     text-transform: none;
+  }
+
+  .dropdown-item{
+    text-transform: capitalize;
   }
 
   #nav-icons {
@@ -1885,6 +1894,10 @@ body {
     }
   }
 
+  .special-heading{
+    margin: 1.5rem 0 0 1rem;
+    color: red;
+  }
 }
 
 

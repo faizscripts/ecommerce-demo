@@ -6,13 +6,14 @@ module.exports = ( {req, categories, wishlist, cart}) => {
     const renderedCategories = categories.map(
         category => {
             return `
-               <li class="list-group-item" onclick="window.location.href='/${category._id}'">${category.category_name}</li> 
+               <li class="list-group-item categories-list-item" onclick="window.location.href='/${category._id}'">${category.category_name}</li> 
             `}
     ).join('')
 
     return layout({
         title: title,
         req: req,
+        categories,
         content: `
 
 <ul class="list-group viewCat">

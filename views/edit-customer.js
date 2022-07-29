@@ -2,7 +2,7 @@ const layout = require('./layout');
 const title = 'Edit My Information';
 const {getInput, getError, printWishlistModal, printCartModal}= require('../middlewares/otherFunctions');
 
-module.exports = ({req, customer, wishlist, cart, input, error}) =>{
+module.exports = ({req, customer, wishlist, cart, input, error, categories}) =>{
 
     function getValue(customer, input, key) {
         if (customer){
@@ -15,6 +15,7 @@ module.exports = ({req, customer, wishlist, cart, input, error}) =>{
     return layout({
         title: title,
         req: req,
+        categories,
         content: `
 <section class="register">
     <div class="card">

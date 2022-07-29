@@ -3,6 +3,7 @@ const {getModals} = require("../middlewares/otherFunctions");
 const {Wishlist} = require("../models/wishlist");
 const {Cart} = require("../models/cart");
 const express = require('express');
+const {Category} = require("../models/admin/categories");
 const router = express.Router();
 
 router.get('/', async (req, res) => {
@@ -11,8 +12,10 @@ router.get('/', async (req, res) => {
     }
 
     let [wishlist, cart] = await getModals(req, Wishlist, Cart)
+
+    const categories = await Category.find().sort('dateCreated')
     
-    res.send(faqTemplate({req, wishlist, cart, header: req.session.faq}))
+    res.send(faqTemplate({req, wishlist, cart, header: req.session.faq, categories}))
 })
 
 router.get('/about', (req, res) => {

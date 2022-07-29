@@ -10,6 +10,7 @@ const express = require('express');
 const ordersTemplate = require("../views/orders");
 const crypto = require("crypto");
 const axios = require("axios");
+const {Category} = require("../models/admin/categories");
 const router = express.Router();
 
 router.get('/:id', async (req, res) => {
@@ -86,7 +87,9 @@ router.post('/:id', async (req, res) => {
 
     let [wishlist, cart] = await getModals(req, Wishlist, Cart)
 
-    res.send(ordersTemplate({req, orders: [order], wishlist, cart}))
+    const categories = await Category.find().sort('dateCreated')
+
+    res.send(ordersTemplate({req, orders: [order], wishlist, cart, categories}))
 })
 
 module.exports = router;

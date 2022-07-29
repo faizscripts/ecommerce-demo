@@ -2,7 +2,7 @@ const {printWishlistModal, printCartModal} = require('../middlewares/otherFuncti
 const layout = require('./layout');
 const title = 'FAQS'
 
-module.exports = ({req, wishlist, cart, header}) => {
+module.exports = ({req, wishlist, cart, header, categories}) => {
 
     function printAccordion(header) {
         switch (header) {
@@ -3549,6 +3549,7 @@ module.exports = ({req, wishlist, cart, header}) => {
     return layout({
         title: title,
         req: req,
+        categories,
         content: `<section class="container" id="faq">
 
     <div class="accordion my-5" id="faqAccordion">

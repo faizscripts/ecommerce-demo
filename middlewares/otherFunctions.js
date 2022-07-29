@@ -987,6 +987,16 @@ exports.printCOD = function (cod) {
     }
 }
 
+exports.navbarDropdown = function (categories) {
+    return categories.map(
+        category => {
+            return `
+                <li><a class="dropdown-item" href="/${category._id}" >${category.category_name}</a></li>
+            `
+        }
+    ).join('')
+}
+
 
 exports.displayDate = displayDate;
 exports.getMonthYear = getMonthYear;

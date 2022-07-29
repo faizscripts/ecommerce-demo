@@ -250,6 +250,7 @@ if (subBrand) {
     const addSubBtn = document.querySelector('.subBrandBtn');
     let subBrandsList = document.querySelector('.subBrandsList');
     let subBrandDeleteBtns = document.querySelectorAll('.subBrandDelete');
+    let subBrandCategories = document.querySelectorAll('#subBrandCategories');
 
 
     subBrand.addEventListener('change', evt => {
@@ -264,22 +265,8 @@ if (subBrand) {
     addSubBtn.addEventListener('click', evt => {
         const li = document.createElement('li');
         li.classList.add('d-flex', 'justify-content-evenly');
-        li.innerHTML = `
-            <input type="text" class="form-control subBrandItem" name="subBrandItems" required>
-            <select class="form-select subBrandItem " aria-label="Select Category" id="brand-category-input" name="subBrandCategoryID" required>
-                <option value="">-Select a category-</option>
-                <option value="6088049f65de8726600704b0">Audio</option>
-                <option value="608922477c058834a8fa35eb">Camera Accessories</option>
-                <option value="6089224d7c058834a8fa35ec">Car Accessories</option>
-                <option value="6088049365de8726600704af">Cases</option>
-                <option value="608922557c058834a8fa35ed">Computer Accessories</option>
-                <option value="608922687c058834a8fa35ef">Other Categories</option>
-                <option value="6089221f7c058834a8fa35e9">Power</option>
-                <option value="608922137c058834a8fa35e8">Protectors</option>
-                <option value="608922917c058834a8fa35f0">Smart Watches and Accessories</option>
-            </select>
-            <i class="fas fa-trash-alt subBrandDelete"></i>
-        `
+        li.innerHTML = subBrandCategories[0].innerHTML;
+        li.classList.remove('d-none')
         subBrandsList.append(li);
 
         subBrandDeleteBtns = document.querySelectorAll('.subBrandDelete');
@@ -298,6 +285,7 @@ if (subBrand) {
         })
     })
 }
+
 
 //product options
 const option = document.querySelector('#pOption');
