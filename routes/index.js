@@ -29,7 +29,7 @@ async function shuffleSpecial(specials) {
         shuffled.push(shuffle)
     }
 
-    // console.log(shuffled);
+    console.log("shuffleSpecial");
 
     let [featured_products, new_arrivals, sale] = shuffled
 
@@ -178,12 +178,14 @@ async function ssPagination2(products, page, numberOfPages) {
 router.get('/', async (req, res) => {
     try {
         // delete the line below once finished setting up all products
-        throw "delete this once finished uploading products"
+        // throw "delete this once finished uploading products"
+
+        const specials = await Special.find();
 
         let savedFeatured = await GET_ASYNC('savedFeatured')
 
         if (!savedFeatured) {
-            const specials = await Special.find();
+            console.log('no savedfeatured')
 
             let [featured_products, new_arrivals, sale] = await shuffleSpecial(specials);
 
@@ -211,7 +213,8 @@ router.get('/', async (req, res) => {
                 new_arrivals: JSON.parse(savedNew),
                 sale: JSON.parse(savedSale),
                 wishlist,
-                cart
+                cart,
+                specials
             }));
 
             return;
@@ -221,6 +224,8 @@ router.get('/', async (req, res) => {
 
         let savedNew = await GET_ASYNC('savedNew')
         let savedSale = await GET_ASYNC('savedSale')
+
+        console.log('found saved specials')
 
         let [wishlist, cart] = await getModals(req, Wishlist, Cart)
 
@@ -233,7 +238,8 @@ router.get('/', async (req, res) => {
             new_arrivals: JSON.parse(savedNew),
             sale: JSON.parse(savedSale),
             wishlist,
-            cart
+            cart,
+            specials
         }));
 
     } catch (e) {
@@ -245,6 +251,7 @@ router.get('/', async (req, res) => {
         const categories = await Category.find().sort('dateCreated')
 
         if (specials.length > 0){
+
             let shuffled = []
 
             for (let i=0; i< specials.length; i++){
@@ -258,11 +265,12 @@ router.get('/', async (req, res) => {
 
             let [featured_products, new_arrivals, sale] = shuffled
 
-            res.send(homepageTemplate({req, categories, featured_products, new_arrivals, sale, wishlist, cart}));
+            res.send(homepageTemplate({req, categories, featured_products, new_arrivals, sale, wishlist, cart, specials}));
         } else {
+
             let [featured_products, new_arrivals, sale] = [null, null, null]
 
-            res.send(homepageTemplate({req, categories, featured_products, new_arrivals, sale, wishlist, cart}));
+            res.send(homepageTemplate({req, categories, featured_products, new_arrivals, sale, wishlist, cart, specials}));
         }
 
 

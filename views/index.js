@@ -2,7 +2,7 @@ const {printProductModal, printMainImage, printWishlistModal, printCartModal, wi
 const layout = require('./layout');
 const title = 'Home';
 
-module.exports = ({req, categories, featured_products, new_arrivals, sale, wishlist, cart}) => {
+module.exports = ({req, categories, featured_products, new_arrivals, sale, wishlist, cart, specials}) => {
 
     function renderCategories(categories) {
         if (categories){
@@ -23,19 +23,21 @@ module.exports = ({req, categories, featured_products, new_arrivals, sale, wishl
         } else return ""
     }
 
-    function renderSpecialRow(specialCategory) {
+    function renderSpecialRow(specialCategory, products) {
         if (specialCategory){
-            return `
+            if (products){
+                return `
             <section class="container featured">
                 <h4 class="section-title">
                     ${specialCategory.special_name}
                 </h4>
                 <div class="row special-row">
-                    ${renderSpecial(featured_products, wishlist, cart)}
+                    ${renderSpecial(products, wishlist, cart)}
                 </div>
             </section>
             `
-        }
+            } else return ""
+        } else return ""
     }
 
     function renderSpecial(products, wishlist, cart) {
@@ -117,36 +119,13 @@ ${printProductModal(product, wishlist, cart)}
     </div>
 </section>
 
-<!--Featured Products-->
-<section class="container featured">
-    <h4 class="section-title">
-        Featured Products
-    </h4>
-    <div class="row special-row">
-        ${renderSpecial(featured_products, wishlist, cart)}
-    </div>
+<!--Special categories-->
+<section class="pb-5">
+    ${renderSpecialRow(specials[0], featured_products)}
+    ${renderSpecialRow(specials[1], new_arrivals)}
+    ${renderSpecialRow(specials[2], sale)}
 </section>
 
-<!--New Arrivals-->
-<section class="container featured">
-    <h4 class="section-title">
-        New Arrivals
-    </h4>
-    <div class="row special-row">
-        ${renderSpecial(new_arrivals, wishlist, cart)}
-    </div>
-</section>
-
-<!--Sale-->
-<section class="container featured pb-5">
-    <h4 class="section-title">
-        Sale
-    </h4>
-<!--    <button type="button" class="btn btn-sm see-all" onclick="location.href='/special/60891d6820824d1308bc6946'">SEE ALL</button>-->
-    <div class="row special-row">
-        ${renderSpecial(sale,wishlist, cart)}
-    </div>
-</section>
 </div> 
 
 ${printWishlistModal(req, wishlist)}
