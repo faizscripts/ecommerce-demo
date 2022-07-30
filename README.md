@@ -50,7 +50,7 @@ Copy and paste your api key in the .env file created above.
 
 ```KEY=YOUR_API_KEY```
 
-#### NOTE! This is an important step for the smooth running of the app and should NOT be skipped.
+**NOTE! This is an important step for the smooth running of the app and should NOT be skipped.**
 
 ## 2. Google Analytics
 
@@ -61,9 +61,9 @@ Choose web platform and set up your data stream.
 In tagging instructions, choose add new on-page tag. Click Global site tag (gtag.js), copy the code shown and paste it in the head tag of [layout page (/views/layout.js)](/views/layout.js)
 
 ```
-    <!-- Google Analytics Code -->
-    <!-- Add your code here -->
-    <!-- End Google Analytics Code -->
+<!-- Google Analytics Code -->
+<!-- Add your code here -->
+<!-- End Google Analytics Code -->
 ```
 
 ## 3. Facebook Pixel
