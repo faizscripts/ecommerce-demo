@@ -52,7 +52,21 @@ Copy and paste your api key in the .env file created above.
 
 #### NOTE! This is an important step for the smooth running of the app and should NOT be skipped.
 
-## 2. Facebook Pixel
+## 2. Google Analytics
+
+Create a Google Analytics account and set up your property.
+
+Choose web platform and set up your data stream.
+
+In tagging instructions, choose add new on-page tag. Click Global site tag (gtag.js), copy the code shown and paste it in the head tag of [layout page (/views/layout.js)](/views/layout.js)
+
+```
+    <!-- Google Analytics Code -->
+    <!-- Add your code here -->
+    <!-- End Google Analytics Code -->
+```
+
+## 3. Facebook Pixel
 
 To enable Facebook Pixel, first verify your domain in business manager. 
 
@@ -60,7 +74,7 @@ Create a Facebook Pixel in your Ad Manager for web. Select set up manually and c
 
 ```
 <!-- Facebook Pixel Code -->
-<!--Add your facebook pixel base code here -->
+<!-- Add your facebook pixel base code here -->
 <!-- End Facebook Pixel Code -->
 </head>
 ```

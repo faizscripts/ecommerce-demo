@@ -6,15 +6,6 @@ module.exports = ({title, req, content, categories}) => {
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<!-- Global site tag (gtag.js) - Google Analytics -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-W552T52XSW"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-
-  gtag('config', 'G-W552T52XSW');
-</script>
 
     <!-- Required meta tags -->
     <title>${title} | Amazon Cellular Kenya</title>
@@ -61,9 +52,13 @@ module.exports = ({title, req, content, categories}) => {
     <link rel="preload" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.3.0/font/bootstrap-icons.css" as="style"
     onload="this.onload=null;this.rel='stylesheet'">
     
-<!-- Facebook Pixel Code -->
-<!--Add your facebook pixel base code here -->
-<!-- End Facebook Pixel Code -->
+    <!-- Google Analytics Code -->
+    <!-- Add your code here -->
+    <!-- End Google Analytics Code -->
+    
+    <!-- Facebook Pixel Code -->
+    <!-- Add your facebook pixel base code here -->
+    <!-- End Facebook Pixel Code -->
 </head>
 <body>
 
