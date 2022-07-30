@@ -29,8 +29,6 @@ async function shuffleSpecial(specials) {
         shuffled.push(shuffle)
     }
 
-    console.log("shuffleSpecial");
-
     let [featured_products, new_arrivals, sale] = shuffled
 
     return [featured_products, new_arrivals, sale]
@@ -177,15 +175,14 @@ async function ssPagination2(products, page, numberOfPages) {
 
 router.get('/', async (req, res) => {
     try {
-        // delete the line below once finished setting up all products
-        // throw "delete this once finished uploading products"
+        // uncomment or delete the line below once finished setting up all products to enable shuffling of special categories products
+        throw "delete this once finished uploading products"
 
         const specials = await Special.find();
 
         let savedFeatured = await GET_ASYNC('savedFeatured')
 
         if (!savedFeatured) {
-            console.log('no savedfeatured')
 
             let [featured_products, new_arrivals, sale] = await shuffleSpecial(specials);
 
@@ -224,8 +221,6 @@ router.get('/', async (req, res) => {
 
         let savedNew = await GET_ASYNC('savedNew')
         let savedSale = await GET_ASYNC('savedSale')
-
-        console.log('found saved specials')
 
         let [wishlist, cart] = await getModals(req, Wishlist, Cart)
 

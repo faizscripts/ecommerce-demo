@@ -110,7 +110,10 @@ router.get('/', async(req, res) => {
 
     const categories = await Category.find().sort('dateCreated')
 
-    const pixelUrl = 'https://graph.facebook.com/v12.0/1557304177945106/events?access_token=EAAFsem5CeJEBABvXPEoZB9D1awPyUK8lxxoIOes4dJ3YJMs8creChlVna7pZCTBr6Ar6c05zjHGk74nTvQVVgpKCTNgN5EOl53a9sXWxYhNHqvqkzmZBs5lb0k3FhWNjXoVZA51q0mlcXF9WhMOCwZAyDZCGaNZBNh6NdqGjixLhRv6ZCX6ZCsj9gpNBablzSfw4ZD'
+    //Start of search pixel code, uncomment the code below to activate the tracking
+
+    /*
+    const pixelUrl = `https://graph.facebook.com/v12.0/${process.env.PIXEL_ID}/${process.env.PIXEL_ACCESS_TOKEN}`
 
     const time = Math.floor(Date.now() / 1000)
     const hashedQuery = crypto.createHmac('sha256', query).digest('hex');
@@ -137,7 +140,10 @@ router.get('/', async(req, res) => {
         ]
     }
 
-    // axios.post(pixelUrl, pixelData).catch(reason => console.log(reason))
+    axios.post(pixelUrl, pixelData).catch(reason => console.log(reason))
+    */
+
+    //End of search pixel code
 
     res.send(searchTemplate({req, products, wishlist, cart, page, iterator, endingLink, numberOfPages, categories}))
 })
