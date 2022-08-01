@@ -59,7 +59,7 @@ module.exports = function ({product}) {
 </script>
 
     <!-- Required meta tags -->
-    <title>Express Checkout | Amazon Cellular Outfitters</title>
+    <title>Express Checkout | ${process.env.BUSINESS_NAME}</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="format-detection" content="telephone=no">
@@ -127,7 +127,7 @@ src="https://www.facebook.com/tr?id=1557304177945106&ev=PageView&noscript=1"
                 <div class="product-name text-center">${product.product_name}</div>
                 <div class="expressImgContainer">${printImages(product)}</div>
                 <div class="why-us">
-                            <h4 class="ytitle">Why Amazon Cellular</h4>
+                            <h4 class="ytitle">Why ${process.env.BUSINESS_NAME}</h4>
                             <ul>
                                 <li>Quality assurance with money back guaranteed in the case the product received isn't as specified</li>
                                 <li>Quick countrywide deliveries to your doorstep within 24 hours of order placement</li>  

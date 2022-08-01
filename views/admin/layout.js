@@ -45,7 +45,7 @@ module.exports = ({title, content}) => {
     <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.5.1/chart.min.js" integrity="sha512-Wt1bJGtlnMtGP0dqNFH1xlkLBNpEodaiQ8ZN5JLA5wpc1sUlk/O5uuOMNgvzddzkpvZ9GLyYNa8w2s7rqiTk5Q==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
  
 
-    <title>${title} | Amazon Cellular Kenya</title>
+    <title>${title} | ${process.env.BUSINESS_NAME}</title>
 </head>
 <body>
 
@@ -160,7 +160,7 @@ module.exports = ({title, content}) => {
 <!--Footer-->
 <section id="footer" class="container-fluid px-0">
     <div class="footer2 text-center p-2">
-        &copy; Amazon Cellular <span id="copyright"> 2021</span>. All Rights Reserved.
+        &copy; ${process.env.BUSINESS_NAME} <span id="copyright"> 2021</span>. All Rights Reserved.
     </div>
 </section>
 

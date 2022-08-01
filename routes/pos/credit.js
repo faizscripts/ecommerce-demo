@@ -333,7 +333,7 @@ router.post('/printPDF/:id', async(req, res) => {
                     {
                     with: 'auto',
                     alignment: 'left',
-                    text: `© Amazon Cellular Outfitters`
+                    text: `© ${process.env.BUSINESS_NAME}`
                 },
                     {
                         with: 'auto',

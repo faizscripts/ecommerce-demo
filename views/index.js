@@ -84,7 +84,7 @@ ${printProductModal(product, wishlist, cart)}
 <!--Why -->
 <section id="why" class="container-fluid text-center p-3">
     <h4 class="why-title">
-        Why Amazon Cellular?
+        Why ${process.env.BUSINESS_NAME}?
     </h4>
     <div class="row ">
         <div class="col-md-6 col-lg-3 mt-2">
@@ -92,15 +92,14 @@ ${printProductModal(product, wishlist, cart)}
                 <h5>Secure Payments </h5>
                 <i class="fas fa-user-shield"></i>
             </div>
-            <p>Payments are only done upon delivery. Receive what you had actually ordered.
-                <span>*Applies for orders within a radius of 7km from Nairobi CBD</span></p>
+            <p>Payments are only done upon delivery. Receive what you had actually ordered.</p>
         </div>
         <div class="col-md-6 col-lg-3 mt-2">
             <div class="why-subtitle">
                 <h5>Quick Deliveries </h5>
                 <i class="fas fa-shipping-fast"></i>
             </div>
-            <p>Get your delivery within 24 hours after placing your order. <span>*Applies for orders within Nairobi metropolitan</span></p>
+            <p>Get your delivery within 24 hours after placing your order.</p>
         </div>
         <div class="col-md-6 col-lg-3 mt-2">
             <div class="why-subtitle">

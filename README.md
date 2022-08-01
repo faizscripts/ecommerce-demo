@@ -11,10 +11,23 @@ At the moment, I have two variants running at real time, [Alpha Supplements](htt
 
 # Project set up 
 
+Run the following commands in your terminal.
+
 ```
 git clone https://github.com/faizscripts/ecommerce-demo.git
 cd ecommerce-demo
 npm i
+```
+
+In the root directory of the project, create a .env file. This file is git ignored therefore it is safe to store our api keys and important private data. For now, in the .env file we've created, we will start with the name of the business we're running.
+
+```
+BUSINESS_NAME=YOUR_BUSINESS_NAME
+```
+
+We will then start the app by running the command below in the terminal.
+
+```
 npm start
 ```
 
@@ -36,8 +49,6 @@ In order to restrict access to the admin panel to only admins, create an admin u
 
 # Enabling APIs
 
-In the root directory of the project, create a .env file. This file is git ignored therefore it is safe to store our api keys and important data.
-
 ## 1. Google Maps
 
 To enable Google Maps, create a Google Maps api key from [Google Developers Console](https://console.developers.google.com/) and enable the apis named below:
@@ -52,7 +63,16 @@ Copy and paste your api key in the .env file created above.
 
 #### NOTE! This is an important step for the smooth running of the app and should NOT be skipped.
 
-## 2. Google Analytics
+## 2. Emails
+
+This will send emails when a new customer registers on the system, placement of a new order and updates on order status, forgot password emails and low product quantity emails. To configure this, add the following data to the .env file we created earlier (this works for gmail. For other emails consult [Nodemailer docs](https://nodemailer.com/about/)). **For the password, open [my Google account security](https://myaccount.google.com/intro/security), enable 2-step verification and create a new app password.** 
+
+```
+EMAIL=YOUR_EMAIL
+APP_PASSWORD=APP_PASSWORD
+```
+
+## 3. Google Analytics
 
 Create a Google Analytics account and set up your property.
 
@@ -66,7 +86,7 @@ In tagging instructions, choose add new on-page tag. Click Global site tag (gtag
     <!-- End Google Analytics Code -->
 ```
 
-## 3. Facebook Pixel
+## 4. Facebook Pixel
 
 To enable Facebook Pixel, first verify your domain in business manager. 
 

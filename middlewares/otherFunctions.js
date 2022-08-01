@@ -639,30 +639,31 @@ exports.emailRegistration = async function (customer) {
             service: 'gmail',
             secure: false,
             auth: {
-                user: 'amazon.cellular.outfitters@gmail.com',
-                pass: config.get('EMAILPASS')
+                user: process.env.EMAIL,
+                pass: process.env.APP_PASSWORD
             }
         })
 
         const mailOptions = {
-            from: '"Amazon Cellular 🛒" <amazon.cellular.outfitters@gmail.com>',
+            from: {
+                name: `${process.env.BUSINESS_NAME} 🛒`,
+                address: process.env.EMAIL
+            },
             to: customer.email,
-            cc: ['fahmyahmed9@gmail.com, 4faizahmed@gmail.com, cellfit.bausi@gmail.com'],
-            subject: `SUCCESSFUL REGISTRATION ON AMAZON CELLULAR OUTFITTERS`,
+            subject: `SUCCESSFUL REGISTRATION ON ${process.env.BUSINESS_NAME}`,
             html: `
 Dear ${customer.full_name},
 <br><br>
-Your registration process at Amazon Cellular Outfitters was successful. You will be receiving communication from us to this email e.g. the status of your orders.<br> We are happy to have you on board and remember "<i>if you can't stop thinking about it, buy it 😉"</i>
+Your registration process at ${process.env.BUSINESS_NAME} was successful. You will be receiving communication from us from this email e.g. the status of your orders.<br> We are happy to have you on board and remember "<i>if you can't stop thinking about it, buy it 😉"</i>
 <br><br>
 Kind regards,<br>
-Amazon Cellular Outfitters
+${process.env.BUSINESS_NAME}
 
  
 `
         }
 
-        const result =await transport.sendMail(mailOptions)
-        return result;
+        return await transport.sendMail(mailOptions);
 
     }
     catch (e) {
@@ -678,15 +679,17 @@ exports.emailOrderStatus = async function (order, email, fullName) {
             service: 'gmail',
             secure: false,
             auth: {
-                user: 'amazon.cellular.outfitters@gmail.com',
-                pass: config.get('EMAILPASS')
+                user: process.env.EMAIL,
+                pass: process.env.APP_PASSWORD
             }
         })
 
         const mailOptions = {
-            from: '"Amazon Cellular 🛒" <amazon.cellular.outfitters@gmail.com>',
+            from: {
+                name: `${process.env.BUSINESS_NAME} 🛒`,
+                address: process.env.EMAIL
+            },
             to: email,
-            cc: ['4faizahmed@gmail.com, fahmyahmed9@gmail.com, cellfit.bausi@gmail.com', 'umusila@gmail.com'],
             subject: `UPDATE ON STATUS FOR ORDER ${order._id}`,
             html: `
 Dear ${fullName},
@@ -695,14 +698,12 @@ The status for your order ${order._id} has been updated to ${emailStatusBtn(orde
 ${orderData(order)}
 <br><br>
 Kind regards,<br>
-Amazon Cellular Outfitters
-
+${process.env.BUSINESS_NAME}
 
 `,
         }
 
-        const result =await transport.sendMail(mailOptions)
-        return result;
+        return await transport.sendMail(mailOptions);
 
     }
     catch (e) {
@@ -718,29 +719,33 @@ exports.emailLowQuantity = async function (product) {
             service: 'gmail',
             secure: false,
             auth: {
-                user: 'amazon.cellular.outfitters@gmail.com',
-                pass: config.get('EMAILPASS')
+                user: process.env.EMAIL,
+                pass: process.env.APP_PASSWORD
             }
         })
 
         const mailOptions = {
-            from: '"Amazon Cellular 🛒" <amazon.cellular.outfitters@gmail.com>',
-            to: ['4faizahmed@gmail.com, fahmyahmed9@gmail.com'],
+            from: {
+                name: `${process.env.BUSINESS_NAME} 🛒`,
+                address: process.env.EMAIL
+            },
+            to: process.env.EMAIL,
             subject: `LOW QUANTITY FOR ${product.product_name}`,
             html: `
 Dear Admin,
 <br><br>
-The quantity for the product above is low and will be switched off unless product quantity is updated. <a href="https://amazon-cellular.com/admin/products/edit/${product._id}">Click here to update the quantity</a>
+The quantity for the product above is low and will be switched off unless product quantity is updated. 
+<!--Replace your_domain.com with your actual domain-->
+<a href="https://your_domain.com/admin/products/edit/${product._id}">Click here to update the quantity</a>
 <br><br>
 Kind regards,<br>
-Amazon Cellular Outfitters
+${process.env.BUSINESS_NAME}
 
 
 `,
         }
 
-        const result =await transport.sendMail(mailOptions)
-        return result;
+        return await transport.sendMail(mailOptions);
 
     }
     catch (e) {
@@ -754,33 +759,34 @@ exports.emailForgotPassword = async function (email, fullName, link) {
             service: 'gmail',
             secure: false,
             auth: {
-                user: 'amazon.cellular.outfitters@gmail.com',
-                pass: config.get('EMAILPASS')
+                user: process.env.EMAIL,
+                pass: process.env.APP_PASSWORD
             }
         })
 
         const mailOptions = {
-            from: '"Amazon Cellular 🛒" <amazon.cellular.outfitters@gmail.com>',
+            from: {
+                name: `${process.env.BUSINESS_NAME} 🛒`,
+                address: process.env.EMAIL
+            },
             to: email,
-            cc: ['4faizahmed@gmail.com'],
-            subject: `RESETTING AMAZON CELLULAR PASSWORD`,
+            subject: `RESETTING YOUR ${process.env.BUSINESS_NAME} PASSWORD`,
             html: `
 Dear ${fullName},
 <br><br>
-Click the link below to reset your password for Amazon Cellular. The link expires after 15 minutes and it's for a one time use. <br>
+Click the link below to reset your password for ${process.env.BUSINESS_NAME}. The link expires after 15 minutes and it's for a one time use. <br>
 <a href="${link}">Reset my password</a>
 <br>
-If you did not initiate a forgot password request kindly report this incident by simply replying to this email or calling us on <a href="tel:+254792200373"> 0792200373 </a>
+If you did not initiate a forgot password request kindly report this incident by simply replying to this email </a>
 <br><br>
 Kind regards,<br>
-Amazon Cellular Outfitters
+${process.env.BUSINESS_NAME}
 
 
 `,
         }
 
-        const result =await transport.sendMail(mailOptions)
-        return result;
+        return await transport.sendMail(mailOptions);
 
     }
     catch (e) {

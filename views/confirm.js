@@ -13,7 +13,7 @@ module.exports = ({confirmationError}) => {
 <html lang="en">
 <head>
     <!-- Required meta tags -->
-    <title>Confirmation | Amazon Cellular Outfitters</title>
+    <title>Confirmation | ${process.env.BUSINESS_NAME}</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="format-detection" content="telephone=no">

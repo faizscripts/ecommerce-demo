@@ -53,7 +53,7 @@ module.exports = ({existing, newD}) => {
     <!--    Chart JS-->
     <script src="https://cdn.jsdelivr.net/npm/chart.js@2.9.4/dist/Chart.min.js"></script>
 
-    <title>Existing Duplicate | Amazon Cellular</title>
+    <title>Existing Duplicate | ${process.env.BUSINESS_NAME}</title>
 </head>
 <body>
 

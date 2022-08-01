@@ -8,7 +8,7 @@ module.exports = ({title, req, content, categories}) => {
 <head>
 
     <!-- Required meta tags -->
-    <title>${title} | Amazon Cellular Kenya</title>
+    <title>${title} | ${process.env.BUSINESS_NAME}</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="format-detection" content="telephone=no">
@@ -177,7 +177,7 @@ ${content}
     </div>
 
     <div class="footer2 text-center p-2">
-        &copy; Amazon Cellular <span id="copyright"> 2022</span>. All Rights Reserved.
+        &copy; ${process.env.BUSINESS_NAME} <span id="copyright"> 2022</span>. All Rights Reserved.
     </div>
 </section>
 

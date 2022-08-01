@@ -45,7 +45,7 @@ module.exports = ({ input, error, incorrect}) => {
     <!--    Chart JS-->
     <script src="https://cdn.jsdelivr.net/npm/chart.js@2.9.4/dist/Chart.min.js"></script>
 
-    <title>Admin Login | Amazon Cellular</title>
+    <title>Admin Login | ${process.env.BUSINESS_NAME}</title>
 </head>
 <body>
 
