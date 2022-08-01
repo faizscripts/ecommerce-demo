@@ -45,9 +45,9 @@ module.exports = function (app) {
     app.use('/faqs', faqs);
     app.use('/quick', quick);
     app.use('/', homepage);
+    app.use('/pos/login', posLogin);
     // uncomment the line below to restrict access to the admin panel to admins only
     // app.use(adminLoginMiddleware)
-    app.use('/pos/login', posLogin);
     app.use('/pos/detailed', detailedPricelist);
     app.use('/pos/pricelist', posPricelist);
     app.use('/pos/credit', credit);
