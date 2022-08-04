@@ -228,6 +228,8 @@ ${content}
 
 <!--Custom JS -->
 <script src="/js/app.js"></script>
+<script src="https://maps.googleapis.com/maps/api/js?key=${process.env.KEY}&callback=initMap&libraries=places&v=weekly" async defer>
+</script>
 
 <!--Modals-->
 <script>

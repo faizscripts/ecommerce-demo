@@ -65,8 +65,5 @@ ${printWishlistModal(req, wishlist)}
 
 ${printCartModal(req, cart)}
 
-<script src="https://maps.googleapis.com/maps/api/js?key=${process.env.KEY}&callback=initMap&libraries=places&v=weekly" async defer>
-</script>
-
         `})
 }

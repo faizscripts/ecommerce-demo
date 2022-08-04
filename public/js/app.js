@@ -332,6 +332,8 @@ if (latitude) {
 
         calcRoute()
     }
+} else {
+    window.initMap = function initMap(){}
 }
 
 
