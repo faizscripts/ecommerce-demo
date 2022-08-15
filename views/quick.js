@@ -65,7 +65,7 @@ module.exports = function ({product}) {
     <meta name="format-detection" content="telephone=no">
     <meta name="description" content="Quality accessories for phones and tablets (cases, screen protectors, audio, power), smart watches, cameras, cars and computers">
     <meta name="keywords" content="kenya, e-commerce, online, cases, screen protectors, audio, earphones, earbuds, apple, iphone, power bank, smart watch, camera, accessories, car, computer, premium, quality">
-    <meta property="og:image" content="/img/logosq.webp">
+    <meta property="og:image" content="/img/logo.webp">
     <meta name="author" content="Faiz Ahmed">
     
         <!-- Maps   -->
