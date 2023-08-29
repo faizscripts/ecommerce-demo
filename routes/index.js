@@ -180,22 +180,22 @@ router.get('/', async (req, res) => {
 
         const specials = await Special.find();
 
-        let savedFeatured = await GET_ASYNC('savedFeatured')
+        let savedFeatured = await GET_ASYNC(`${process.env.BUSINESS_NAME}savedFeatured`)
 
         if (!savedFeatured) {
 
             let [featured_products, new_arrivals, sale] = await shuffleSpecial(specials);
 
             savedFeatured = await SET_ASYNC(
-                'savedFeatured', JSON.stringify(featured_products), 'EX', 3600
+                `${process.env.BUSINESS_NAME}savedFeatured`, JSON.stringify(featured_products), 'EX', 3600
             )
 
             let savedNew = await SET_ASYNC(
-                'savedNew', JSON.stringify(new_arrivals), 'EX', 3600
+                `${process.env.BUSINESS_NAME}savedNew`, JSON.stringify(new_arrivals), 'EX', 3600
             )
 
             let savedSale = await SET_ASYNC(
-                'savedSale', JSON.stringify(sale), 'EX', 3600
+                `${process.env.BUSINESS_NAME}savedSale`, JSON.stringify(sale), 'EX', 3600
             )
 
             let [wishlist, cart] = await getModals(req, Wishlist, Cart)
@@ -206,9 +206,9 @@ router.get('/', async (req, res) => {
             res.send(homepageTemplate({
                 req,
                 categories,
-                featured_products: JSON.parse(savedFeatured),
-                new_arrivals: JSON.parse(savedNew),
-                sale: JSON.parse(savedSale),
+                featured_products: savedFeatured,
+                new_arrivals: savedNew,
+                sale: savedSale,
                 wishlist,
                 cart,
                 specials
@@ -219,8 +219,8 @@ router.get('/', async (req, res) => {
         }
 
 
-        let savedNew = await GET_ASYNC('savedNew')
-        let savedSale = await GET_ASYNC('savedSale')
+        let savedNew = await GET_ASYNC(`${process.env.BUSINESS_NAME}savedNew`)
+        let savedSale = await GET_ASYNC(`${process.env.BUSINESS_NAME}savedSale`)
 
         let [wishlist, cart] = await getModals(req, Wishlist, Cart)
 
@@ -229,9 +229,9 @@ router.get('/', async (req, res) => {
         res.send(homepageTemplate({
             req,
             categories,
-            featured_products: JSON.parse(savedFeatured),
-            new_arrivals: JSON.parse(savedNew),
-            sale: JSON.parse(savedSale),
+            featured_products: savedFeatured,
+            new_arrivals: savedNew,
+            sale: savedSale,
             wishlist,
             cart,
             specials
