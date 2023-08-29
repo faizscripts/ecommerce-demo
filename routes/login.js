@@ -127,7 +127,7 @@ router.post('/forgot', async (req, res) => {
 
     const token = jwt.sign({customer: customer.email}, config.get('JWTKEY')+customer.password, { expiresIn: '15m' });
 
-    const link = `https://amazon-cellular.com/login/reset/${customer._id}/${token}`;
+    const link = `${process.env.DOMAIN}/login/reset/${customer._id}/${token}`;
     
     await emailForgotPassword(customer.email, customer.full_name, link)
 

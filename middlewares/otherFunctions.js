@@ -78,9 +78,9 @@ function printProductModal(product, wishlist, cart) {
                             </form>
                             <div id="share" class="text-center">
                                 <i class="bi bi-share-fill px-2"></i>
-                                <a href="https://www.facebook.com/sharer/sharer.php?u=https://amazon-cellular.com/search/ext/${product._id}" target="_blank"><i class="fab fa-facebook-f"></i></a>
-                                <a href="whatsapp://send?text=https://amazon-cellular.com/search/ext/${product._id}"><i class="fab fa-whatsapp"></i></a>
-                                <input type="hidden" value="https://amazon-cellular.com/search/ext/${product._id}">
+                                <a href="https://www.facebook.com/sharer/sharer.php?u=${process.env.DOMAIN}/search/ext/${product._id}" target="_blank"><i class="fab fa-facebook-f"></i></a>
+                                <a href="whatsapp://send?text=${process.env.DOMAIN}/search/ext/${product._id}"><i class="fab fa-whatsapp"></i></a>
+                                <input type="hidden" value="${process.env.DOMAIN}/search/ext/${product._id}">
                                 <div class="d-inline"><button class="c2cLink btn btn-outline-secondary"> copy product link <i class="far fa-clipboard c2c" ></i></button></div>
                                 
                             </div>
@@ -200,9 +200,9 @@ function printPricelistModal(product) {
                             </div>
                             <div id="share" class="text-center mt-5">
                                 <i class="bi bi-share-fill px-2"></i>
-                                <a href="https://www.facebook.com/sharer/sharer.php?u=https://amazon-cellular.com/search/ext/${product._id}" target="_blank"><i class="fab fa-facebook-f"></i></a>
-                                <a href="whatsapp://send?text=https://amazon-cellular.com/search/ext/${product._id}"><i class="fab fa-whatsapp"></i></a>
-                                <input type="hidden" value="https://amazon-cellular.com/search/ext/${product._id}">
+                                <a href="https://www.facebook.com/sharer/sharer.php?u=${process.env.DOMAIN}/search/ext/${product._id}" target="_blank"><i class="fab fa-facebook-f"></i></a>
+                                <a href="whatsapp://send?text=${process.env.DOMAIN}/search/ext/${product._id}"><i class="fab fa-whatsapp"></i></a>
+                                <input type="hidden" value="${process.env.DOMAIN}/search/ext/${product._id}">
                                 <div class="d-inline"><button class="c2cLink btn btn-outline-secondary"> copy product link <i class="far fa-clipboard c2c" ></i></button></div>
                                 
                             </div>

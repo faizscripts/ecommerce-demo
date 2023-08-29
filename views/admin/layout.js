@@ -63,6 +63,18 @@ module.exports = ({title, content}) => {
         <h4>ADMIN</h4>
         <div class="sidebarItem ">
             <ul class="list-group list-group-flush">
+                <li class="list-group-item list-group-item-action" onclick="location.href='/admin/admins/'">
+                     Admins
+                </li>
+                <li class="list-group-item list-group-item-action" onclick="location.href='/admin/brands/'">
+                     Brands
+                </li>
+                <li class="list-group-item list-group-item-action" onclick="location.href='/admin/categories/'">
+                     Categories
+                </li>
+                <li class="list-group-item list-group-item-action" onclick="location.href='/admin/customers/'" >
+                     Customers
+                </li>
                 <li class="list-group-item list-group-item-action" onclick="location.href='/admin/dashboard/'">
                      Dashboard
                 </li>
@@ -78,10 +90,7 @@ module.exports = ({title, content}) => {
                             <li class="list-group-item list-group-item-action" onclick="location.href='/admin/products/unpopulated'">Unpopulated  </li>
                         </ul>
                     </div>
-                </div>                    
-                <li class="list-group-item list-group-item-action" onclick="location.href='/admin/brands/'">
-                     Brands
-                </li>
+                </div>
                 <li class="list-group-item list-group-item-action" data-bs-toggle="collapse" data-bs-target="#reportsMenu">
                      Reports <i class="fas fa-caret-down ms-1"></i>
                 </li>
@@ -96,18 +105,6 @@ module.exports = ({title, content}) => {
                         </ul>
                     </div>
                 </div>
-                <li class="list-group-item list-group-item-action" onclick="location.href='/admin/customers/'" >
-                     Customers
-                </li>
-                <li class="list-group-item list-group-item-action" onclick="location.href='/admin/categories/'">
-                     Categories
-                </li>
-                <li class="list-group-item list-group-item-action" onclick="location.href='/admin/special/'">
-                     Special Categories
-                </li>
-                <li class="list-group-item list-group-item-action" onclick="location.href='/admin/admins/'">
-                     Admins
-                </li>
                 <li class="list-group-item list-group-item-action" data-bs-toggle="collapse" data-bs-target="#socialsMenu">
                      Socials<i class="fas fa-caret-down ms-1"></i>
                 </li>
@@ -120,6 +117,9 @@ module.exports = ({title, content}) => {
                         </ul>
                     </div>
                 </div>
+                <li class="list-group-item list-group-item-action" onclick="location.href='/admin/special/'">
+                     Special Categories
+                </li>
             </ul>
             <div class="change">
                 <button class="btn btn-primary" onclick="location.href='/pos/pricelist/'">POS</button>

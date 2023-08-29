@@ -2,7 +2,14 @@
 This is a fully functional e-commerce website created using HTML, Sass, JS, Node and MongoDB. It is fast, has good SEO and is fully responsive across all screens. It uses Google Maps api to
 calculate delivery fee and give accurate directions for efficient deliveries. The payment system is powered by daraja api which enables m-pesa, Kenya's most popular payment system. Lastly, It's integrated with Google Analytics and Facebook Pixel to boost sales.
 
-At the moment, I have two variants running at real time, [Alpha Supplements](https://alpha-supplement.com/) which sells gym accessories and [Amazon Cellular](https://amazon-cellular.co.ke/) which sells electronics. My clients are pleased with the website and have reported a smooth operation of their online businesses.
+At the moment, the following variants running at real time:
+1. [Alpha Supplements](https://alpha-supplement.com/)  - gym accessories 
+2. [Black dot digital](https://blackdotdigital.co.ke/) - electronics 
+3. [Monza](https://monza.co.ke/) - perfumes
+4. [Marikiti](https://marikiti-mombasa.com/) - groceries
+5. [Tijara](https://tijara.co.ke/) - general marketplace
+
+My clients are pleased with the website and have reported a smooth operation of their online businesses.
 
 # Important Links
 - [User side live demo](https://ecommerce.faizscripts.com/)
@@ -13,6 +20,8 @@ At the moment, I have two variants running at real time, [Alpha Supplements](htt
 1. Node JS
 2. MongoDB
 3. Redis
+
+NB: These are a MUST and the project won't be able to run without them. Please make sure that they are all correctly installed.
 
 # Project set up 
 
@@ -136,5 +145,22 @@ Based on the events you have chosen, activate the tracking by uncommenting the f
 /* pixel code is between these two tags */
 
 //End of add to cart pixel code
+```
+
+# Footnote
+For a complete set-up, please make sure you have filled the following correctly in your .env file
+
+```
+BUSINESS_NAME='My Business'
+KEY='Google API key'
+EMAIL=someone@gmail.com
+APP_PASSWORD='gmail app password'
+PHONE=+254712345678
+FACEBOOK=https://facebook.com/
+INSTAGRAM=https://instagram.com/
+DOMAIN=https://domain.com
+ABOUT="About the business"
+TERMS="Terms and conditions"
+DELIVERIES="Delivery instructions"
 ```
 

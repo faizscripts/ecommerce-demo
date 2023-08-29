@@ -60,7 +60,7 @@ module.exports = ({confirmationError}) => {
             <p class="card-text d-flex justify-content-evenly">
                         <button class="btn btn-primary btn-sm"><a href="tel:+254792200373" style="text-decoration: none; color: inherit;"><i
                                 class="bi bi-telephone-fill"></i> Call </a></button>
-                        <button class="btn btn-primary btn-sm "><a href="mailto:amazon.cellular.outfitters@gmail.com" style="text-decoration: none; color: inherit;"><i
+                        <button class="btn btn-primary btn-sm "><a href="mailto:${process.env.EMAIL}" style="text-decoration: none; color: inherit;"><i
                                 class="bi bi-envelope-fill"></i> Mail</a></button>
                         <button class="btn btn-primary btn-sm"><a href="sms:+254792200373" style="text-decoration: none; color: inherit;"><i
                                 class="bi bi-chat-dots-fill"></i> SMS</a></button>

@@ -144,9 +144,6 @@ ${content}
                 <ul class="info-list">
                     <li><a href="/faqs/about">About us</a></li>
                     <li><a href="/faqs/terms">Terms and Conditions</a></li>
-                    <li><a href="/faqs/demo">Video Guide</a></li>
-                    <li><a href="/faqs/search">Find Products</a></li>
-                    <li><a href="/faqs/checkout">Checkout</a></li>
                     <li><a href="/faqs/deliveries">Deliveries and Payment</a></li>
                 </ul>
             </div>
@@ -154,17 +151,17 @@ ${content}
                 <div class="text-center">
                     <p id="reach">Contact us</p>
                     <p>
-                        <button class="btn btn-primary phone contactPixel"><a href="tel:+254792200373"><i
+                        <button class="btn btn-primary phone contactPixel"><a href="tel:${process.env.PHONE}"><i
                                 class="bi bi-telephone-fill"></i> Call </a></button>
-                        <button class="btn btn-primary phone contactPixel"><a href="mailto:amazon.cellular.outfitters@gmail.com"><i
+                        <button class="btn btn-primary phone contactPixel"><a href="mailto:${process.env.EMAIL}"><i
                                 class="bi bi-envelope-fill"></i> Mail</a></button>
-                        <button class="btn btn-primary phone contactPixel"><a href="sms:+254792200373"><i
+                        <button class="btn btn-primary phone contactPixel"><a href="sms:${process.env.PHONE}"><i
                                 class="bi bi-chat-dots-fill"></i> SMS</a></button>
                     </p>
                     <p>
-                        <a href="https://www.facebook.com/Amazon-Cellular-Outfitters-100448395706615/" target="_blank" class="contactPixel"><i class="fab fa-facebook-f"></i></a>
-                        <a href="https://www.instagram.com/amazon_cellular/" target="_blank" class="contactPixel"><i class="fab fa-instagram"></i></a>
-                        <a href="https://wa.me/254792200373" target="_blank" class="contactPixel"><i class="fab fa-whatsapp"></i></a>
+                        <a href="${process.env.FACEBOOK}" target="_blank" class="contactPixel"><i class="fab fa-facebook-f"></i></a>
+                        <a href="${process.env.INSTAGRAM}" target="_blank" class="contactPixel"><i class="fab fa-instagram"></i></a>
+                        <a href="https://wa.me/${process.env.PHONE}" target="_blank" class="contactPixel"><i class="fab fa-whatsapp"></i></a>
                     </p>
                 </div>
             </div>
