@@ -164,5 +164,6 @@ TERMS="Terms and conditions"
 DELIVERIES="Delivery instructions"
 SHOP_LATITUDE='1.2345'
 SHOP_LONGITUDE='1.2345'
+MPESA_INSTRUCTIONS='Buy goods till number 12345678, forward mpesa message to 0712345678'
 ```
 
