@@ -67,21 +67,21 @@ router.post('/', logged, async (req, res) => {
 
     let cartUpdate = await Cart.findById(req.session.cartID)
 
-    if (Object.keys(req.session.loggedInCart).length>0){
-        for (let prop in req.session.loggedInCart) {
+    if (Object.keys(req.session.notLoggedCart).length > 0) {
+        for (let prop in req.session.notLoggedCart) {
             if (mongoose.isValidObjectId(prop)) {
                 let product = cartUpdate.products.id(prop);
-                product.quantity = req.session.loggedInCart[prop]
+                product.quantity = req.session.notLoggedCart[prop]
             }
         }
 
-        cartUpdate.total = req.session.loggedInCart.total;
-        cartUpdate.shopTotal = req.session.loggedInCart.shopTotal;
+        cartUpdate.total = req.session.notLoggedCart.total;
+        cartUpdate.shopTotal = req.session.notLoggedCart.shopTotal;
     }
 
     await cartUpdate.save();
 
-    req.session.loggedInCart = {}
+    req.session.notLoggedCart = {}
 
     await goToCheckout(req, res);
 })

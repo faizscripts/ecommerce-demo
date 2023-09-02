@@ -40,9 +40,9 @@ router.post('/', async (req, res) => {
 
     customer.full_name = admin.admin_name
 
-    customer.latitude = -1.283733332480186
+    customer.latitude = process.env.SHOP_LATITUDE
 
-    customer.longitude = 36.827665514486654
+    customer.longitude = process.env.SHOP_LONGITUDE
 
     customer.delivery_fee = 0
 

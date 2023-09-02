@@ -162,5 +162,7 @@ DOMAIN=https://domain.com
 ABOUT="About the business"
 TERMS="Terms and conditions"
 DELIVERIES="Delivery instructions"
+SHOP_LATITUDE='1.2345'
+SHOP_LONGITUDE='1.2345'
 ```
 

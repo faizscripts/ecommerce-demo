@@ -20,7 +20,6 @@ module.exports = function ({req, customer, wishlist, cart, paymentError, categor
                     <div class="mb-2 col-lg-6 form-group">
                         <label for="phone" class="form-label" required>Phone Number</label>
                         <input name="phone" type="number" class="form-control" id="phone" aria-describedby="phone number" value="0${customer.phone}" disabled>
-                        <div class="form-text">For M-Pesa payments, please enter a safaricom number in the format 0712345678/ 0123456789.</div>
                     </div>    
                 </div>
                 <div class="mb-2 form-group">
@@ -70,13 +69,13 @@ module.exports = function ({req, customer, wishlist, cart, paymentError, categor
                     <div class="form-check">
                         <input class="form-check-input" type="radio" name="mpesa" value="false" id="cash" checked>
                         <label class="form-check-label" for="cash">
-                            Payment on delivery <span class="paymentSpan text-muted">(only available for deliveries in a radius of 7km from Nairobi CBD)</span>
+                            Payment on delivery <span class="paymentSpan text-muted">(only available for deliveries in a radius of 7km from the shop)</span>
                         </label>
                     </div>
                     <div class="form-check mb-5">
                         <input class="form-check-input" type="radio" name="mpesa" value="true" id="mpesaBtn">
                         <label class="form-check-label" for="mpesaBtn">
-                            Lipa na M-PESA <span class="paymentSpan text-muted">(Have the phone with the registered safaricom number with you as after clicking the place order button a pop up will show on your phone asking you to pay to Yassin Faiz the specific amount of your order)</span>
+                            Lipa na M-PESA <span class="paymentSpan text-muted">(${process.env.MPESA_INSTRUCTIONS})</span>
                         </label>
                     </div>
             `} else {
@@ -84,13 +83,13 @@ module.exports = function ({req, customer, wishlist, cart, paymentError, categor
                     <div class="form-check">
                         <input class="form-check-input" type="radio" name="mpesa" value="false" id="cash" disabled>
                         <label class="form-check-label" for="cash">
-                            Payment on delivery <span class="paymentSpan text-muted">(only available for deliveries in a radius of 7km from Nairobi CBD)</span>
+                            Payment on delivery <span class="paymentSpan text-muted">(only available for deliveries in a radius of 7km from the shop)</span>
                         </label>
                     </div>
                     <div class="form-check mb-5">
                         <input class="form-check-input" type="radio" name="mpesa" value="true" id="mpesaBtn" checked>
                         <label class="form-check-label" for="mpesaBtn">
-                            Lipa na M-PESA <span class="paymentSpan text-muted">(Have the phone with the registered safaricom number with you as after clicking the place order button a pop up will show on your phone asking you to pay to Yassin Faiz the specific amount of your order)</span>
+                            Lipa na M-PESA <span class="paymentSpan text-muted">(${process.env.MPESA_INSTRUCTIONS})</span>
                         </label>
                     </div>
             `}
@@ -108,32 +107,60 @@ ${printPaymentError(paymentError)}
         <!--        Contact-->
         <div class="card">
             <div class="card-header">
-                Contact Information
-            </div>
-            <div class="card-body">
-                ${renderCustomer(customer)}
-            </div>
-        </div>
-
-        <!--        Payment -->
-        <div class="card">
-            <div class="card-header">
-                Payment Method
+                ORDER INFORMATION
             </div>
             <div class="card-body">
                 <form method="post">
-                    ${printPaymentMethod(customer)}
-                    <div class=" d-flex justify-content-between">
+                    <div class="mb-2 form-group">
+                        <label for="fullname" class="form-label" required>Name</label>
+                        <input name="fullname" type="text" class="form-control" id="fullname" aria-describedby="name" required>
+                    </div>
+                    <div class="row mt-3">
+                        <div class="mb-2 col-md-6 form-group">
+                            <label for="phone" class="form-label" required>Phone Number</label>
+                            <input name="phone" type="number" class="form-control" id="phone" aria-describedby="phone number" required>
+                        </div> 
+                        <div class="mb-2 col-md-6 form-group">
+                            <label for="email" class="form-label">Email <span class="paymentSpan text-muted">(optional)</span></label>
+                            <input name="email" type="email" class="form-control" id="email" aria-describedby="name">
+                            <div class="paymentSpan text-muted">Order updates will be sent via email</div>
+                        </div> 
+                    </div>
+                    <div class="mb-2 form-group">
+                        <label for="address" class="form-label" required>Shipping Address</label>
+                    </div>
+                    <input id="pac-input" class="controls border border-dark border-3" type="text" aria-describedby="address" placeholder="Search">
+                    <div id="map" class="form-control"></div>
+                    <input type="hidden" name="latitude" id="latitude">
+                    <input type="hidden" name="longitude" id="longitude">
+                    <input name="delivery_fee" type="hidden" class="form-control" id="delivery_fee" aria-describedby="name"  readonly>
+                    <input type="hidden" id="distance" name="distance">
+                    <div id="payment-options" class="mt-4">
+                        <div class="form-check">
+                            <input class="form-check-input" type="radio" name="mpesa" value="false" id="cash" required>
+                            <label class="form-check-label" for="cash">
+                                Payment on delivery
+                            </label>
+                        </div>
+                        <div class="form-check">
+                            <input class="form-check-input" type="radio" name="mpesa" value="true" id="mpesaBtn" required>
+                            <label class="form-check-label" for="mpesaBtn">
+                                Lipa na M-PESA <span class="paymentSpan text-muted">(${process.env.MPESA_INSTRUCTIONS})</span>
+                            </label>
+                        </div>
+                    </div>
+
+                    <div class=" d-flex justify-content-between mt-4">
                         <div class="final-text">Subtotal <span>(ksh.)</span></div>
                         <div class="final-price" id="cartTotal">${cart.total}</div>
                     </div>
                     <div class=" d-flex justify-content-between">
                         <div class="final-text">Delivery Fee<span>(ksh.)</span></div>
-                        <div class="final-price" id="deliveryFee">${customer.delivery_fee}</div>
+                        <div class="final-price" id="deliveryFee">0</div>
                     </div>
                     <div class=" d-flex justify-content-between">
                         <div class="final-text">Total <span>(ksh.)</span></div>
-                        <div class="final-price" id="checkoutTotal">4500</div>
+                        <div class="final-price" id="checkoutTotal">${cart.total}</div>
                     </div>
                     <span class="mt-2" style="text-transform: initial;">*By placing an order, you're agreeing to our <a href="/faqs/terms">terms and conditions</a></span>
 

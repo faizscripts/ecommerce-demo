@@ -72,9 +72,6 @@ module.exports = ({title, content}) => {
                 <li class="list-group-item list-group-item-action" onclick="location.href='/admin/categories/'">
                      Categories
                 </li>
-                <li class="list-group-item list-group-item-action" onclick="location.href='/admin/customers/'" >
-                     Customers
-                </li>
                 <li class="list-group-item list-group-item-action" onclick="location.href='/admin/dashboard/'">
                      Dashboard
                 </li>

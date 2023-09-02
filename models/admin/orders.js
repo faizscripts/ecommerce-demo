@@ -59,7 +59,10 @@ const ordersSchema = new mongoose.Schema({
     orderNotes: {
         type: String,
         default: ''
-    }
+    },
+    customerName: String,
+    customerPhone: Number,
+    customerEmail: String,
 });
 
 const Order = mongoose.model('Order', ordersSchema);

@@ -1,9 +1,10 @@
 const axios = require('axios');
 const crypto = require('crypto');
 const sessionstorage = require('sessionstorage');
-const {emailOrderStatus} = require('../middlewares/otherFunctions')
+const { ObjectId } = require('mongodb');
 const _ = require('lodash');
 const {accessToken, stkPush} = require('../middlewares/mpesa')
+const {emailOrderStatus} = require('../middlewares/otherFunctions')
 const {getModals} = require('../middlewares/otherFunctions');
 const {Wishlist} = require('../models/wishlist')
 const {Cart} = require('../models/cart')
@@ -46,18 +47,22 @@ async function placeOrder(req, res) {
                 total: 0
             }, {new: true})
 
-            const customer = await Customer.find({email: req.session.email})
+            order.customerID = new ObjectId();
 
-            order.customerID = customer[0]._id;
+            order.customerName = req.body.fullname;
+
+            order.customerEmail = req.body.email;
+
+            order.customerPhone = req.body.phone;
 
             order.orderStatus = 'Order placed';
 
-            order.delivery_fee = customer[0].delivery_fee
+            order.delivery_fee = req.body.delivery_fee
 
-            order.address = {latitude: customer[0].latitude, longitude: customer[0].longitude}
+            order.address = {latitude: req.body.latitude, longitude: req.body.longitude}
 
             if (sessionstorage.getItem('mpesaDetails')){
-                order.mpesaDetails = sessionstorage.getItem('mpesaDetails');
+                // order.mpesaDetails = sessionstorage.getItem('mpesaDetails');
                 order.mpesa = req.session.mpesa;
             } else {
                 order.mpesa = req.session.mpesa;
@@ -65,13 +70,14 @@ async function placeOrder(req, res) {
 
             order = await order.save()
 
-            await emailOrderStatus(order, customer[0].email, customer[0].full_name).catch(console.error);
-
-            const pixelUrl = 'https://graph.facebook.com/v12.0/1557304177945106/events?access_token=EAAFsem5CeJEBABvXPEoZB9D1awPyUK8lxxoIOes4dJ3YJMs8creChlVna7pZCTBr6Ar6c05zjHGk74nTvQVVgpKCTNgN5EOl53a9sXWxYhNHqvqkzmZBs5lb0k3FhWNjXoVZA51q0mlcXF9WhMOCwZAyDZCGaNZBNh6NdqGjixLhRv6ZCX6ZCsj9gpNBablzSfw4ZD'
+            if (req.body.email) {
+                await emailOrderStatus(order, req.body.email, req.body.fullname).catch(console.error);
+            }
 
             const time = Math.floor(Date.now() / 1000)
-            const hashedEmail = crypto.createHmac('sha256', customer[0].email).digest('hex');
-            const hashedPhone = crypto.createHmac('sha256', `254${customer[0].phone}`).digest('hex');
+            const hashedEmail = crypto.createHmac('sha256', req.body.email).digest('hex');
+            const hashedPhone = crypto.createHmac('sha256', `254${req.body.phone}`).digest('hex');
+
             const hashedCountry = crypto.createHmac('sha256', "ke").digest('hex');
             const eventUrl = req.headers.referer
             const pixelTotal = order.total + order.delivery_fee
@@ -151,19 +157,15 @@ router.post('/', async (req, res) => {
 
     sessionstorage.setItem('mpesaDetails', null)
 
-    if (req.session.mpesa === 'false') {
-        const orders = await placeOrder(req, res);
+    const orders = await placeOrder(req, res);
 
-        req.session.newOrder = false;
+    req.session.newOrder = false;
 
-        let [wishlist, cart] = await getModals(req, Wishlist, Cart)
+    let [wishlist, cart] = await getModals(req, Wishlist, Cart)
 
-        const categories = await Category.find().sort('dateCreated')
+    const categories = await Category.find().sort('dateCreated')
 
-        res.send(ordersTemplate({req, orders, wishlist, cart, categories}))
-    } else if (req.session.mpesa === 'true') {
-        res.redirect('/orders/mpesa')
-    }
+    res.send(ordersTemplate({req, orders, wishlist, cart, categories}))
 })
 
 router.get('/mpesa', accessToken, async(req, res) => {

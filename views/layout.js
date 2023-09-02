@@ -67,15 +67,6 @@ module.exports = ({title, req, content, categories}) => {
     <img src="/img/loader.gif" alt="Loading...">
 </div>
 
-<!--extra navbar-->
-<div class="container-fluid" id="extraNav">
-    
-    <div class="d-flex" id="cred">
-        ${extraNav(req)}
-    </div>
-    
-</div>
-
 <!--Navbar -->
 <nav class=" navbar navbar-expand-lg navbar-light bg-white py-0 border-bottom">
     <div class="container-fluid">

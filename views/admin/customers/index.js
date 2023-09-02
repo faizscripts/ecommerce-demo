@@ -11,7 +11,7 @@ module.exports = ({customers}) => {
     <td>${customer.full_name}</td>
     <td><a href="mailto:${customer.email}"> ${customer.email}</a></td>
     <td><a href="tel:0${customer.phone}">0${customer.phone}</a></td>
-    <td><a href="https://www.google.com/maps/dir/?api=1&origin=-1.283733332480186%2C36.827665514486654&destination=${customer.latitude}%2C${customer.longitude}&travelmode=driving" target="_blank">My address</a></td>
+    <td><a href="https://www.google.com/maps/dir/?api=1&origin=${process.env.SHOP_LATITUDE}%2C${process.env.SHOP_LONGITUDE}&destination=${customer.latitude}%2C${customer.longitude}&travelmode=driving" target="_blank">My address</a></td>
     <td>${customer.income_gen}</td>
     <td>${customer.order_count}</td>
 </tr>

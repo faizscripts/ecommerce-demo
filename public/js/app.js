@@ -286,15 +286,13 @@ if (latitude) {
 
             directionsService.route(request, function (result, status) {
                 if (status == google.maps.DirectionsStatus.OK) {
-                    const dist = parseFloat(result.routes[0].legs[0].distance.text)
+                    const dist = (result.routes[0].legs[0].distance.value)/1000
                     let df;
                     distance.value = dist
                     if (dist <= 1) {
                         delivery_fee.value = 0
-                        // deliveryExplaination.innerHTML = `FREE quick delivery within hours with an option of payment on delivery.`
                     } else if (dist <= 7) {
                         df = Math.round((dist * 62) / 50) * 50
-                        // deliveryExplaination.innerHTML = `Quick delivery within hours with an option of payment on delivery.`
                         if (df < 200) {
                             delivery_fee.value = 200
                         } else {
@@ -302,10 +300,8 @@ if (latitude) {
                         }
                     } else if (dist<=17){
                         delivery_fee.value = 400
-                        // deliveryExplaination.innerHTML = `Delivery within 24 hours, payment before delivery through MPESA`
                     } else{
                         delivery_fee.value = 500
-                        // deliveryExplaination.innerHTML = `Delivery may take more that 24 hours, payment before delivery through MPESA`
                     }
 
                     let DF = document.querySelector('#DF')
@@ -317,33 +313,46 @@ if (latitude) {
                         CT.innerHTML = parseInt(ST.innerHTML) + parseInt(DF.innerHTML);
                     }
 
+                    let paymentOptions = document.querySelector('#payment-options');
+                    if (paymentOptions) {
+                        const onDeliveryContainer = paymentOptions.children[0]
+                        const onDeliveryInput = paymentOptions.children[0].children[0]
+                        const mpesaInput = paymentOptions.children[1].children[0]
+                        if (dist > 7.5) {
+                            onDeliveryInput.disabled = true;
+                            onDeliveryInput.checked = false;
+                            onDeliveryContainer.style.display = "none";
+                            mpesaInput.checked = true;
+                        } else {
+                            onDeliveryInput.disabled = false;
+                            onDeliveryInput.checked = true;
+                            onDeliveryContainer.style.display = "block";
+                            mpesaInput.checked = false;
+                        }
+                    }
+
+                    let checkoutTotal = document.querySelector('#checkoutTotal');
+                    if (checkoutTotal) {
+                        let cartTotal = document.querySelector('#cartTotal')
+                        let deliveryFee = document.querySelector('#deliveryFee')
+                        deliveryFee.innerHTML = delivery_fee.value;
+
+                        checkoutTotal.innerHTML = parseInt(cartTotal.innerHTML) + parseInt(deliveryFee.innerHTML);
+                    }
+
                 } else {
 
                     map.setCenter(shopLocation);
 
                     delivery_fee.value = "Unable to calculate delivery fee";
-                    // deliveryExplaination.innerHTML = `An error occurred in calculating the delivery fee`
                 }
             });
-
-
-
         }
 
         calcRoute()
     }
 } else {
     window.initMap = function initMap(){}
-}
-
-
-//checkout total
-let checkoutTotal = document.querySelector('#checkoutTotal');
-if (checkoutTotal) {
-    let cartTotal = document.querySelector('#cartTotal')
-    let deliveryFee = document.querySelector('#deliveryFee')
-
-    checkoutTotal.innerHTML = parseInt(cartTotal.innerHTML) + parseInt(deliveryFee.innerHTML);
 }
 
 //express df

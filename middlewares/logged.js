@@ -49,18 +49,9 @@ module.exports =async function (req, res, next) {
 
     let token = req.session.token
     if (!token) {
-        req.session.checkout = true;
-        req.session.notLoggedCart = req.body;
-        return res.status(401).send(loginTemplate({req, wishlist, cart, categories}))
-    }
-
-    try{
-        req.customer = jwt.verify(token, config.get('JWTKEY'));
         req.session.checkout = false;
-        req.session.loggedInCart = req.body;
+        req.session.notLoggedCart = req.body;
         next()
-    } catch (e) {
-        res.status(400).send('invalid token')
     }
 
 }

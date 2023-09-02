@@ -559,26 +559,6 @@ function cartBtnPV(productID, cart) {
     }
 }
 
-function extraNav(req) {
-
-    if (req.session.token) {
-        return `
-            <div class="me-1" >${req.session.full_name.split(" ")[0]} : </div>
-            <div class="clickable" data-bs-toggle="modal" data-bs-target="#cart">Checkout</div>
-            <div class="separator mx-2">|</div>
-            <div class="clickable" onclick="location.href='/orders'">Orders</div>
-            <div class="separator mx-2">|</div>
-            <div class="clickable" onclick="location.href='/login/logout'">Log Out</div>
-        `
-    } else {
-        return `
-        <div class="clickable" onclick="location.href='/register'">Register</div>
-        <div class="separator mx-2">|</div>
-        <div class="clickable" onclick="location.href='/login'">Log In</div>
-        `
-    }
-}
-
 function footer(req) {
     let token = req.session.token
 
@@ -614,7 +594,7 @@ function printProducts(products) {
 
 function printPaymentMethod(order) {
     if (order.mpesa === 'true') {
-        return `${order.mpesaDetails.mpesaCode}`
+        return 'Mpesa'
     } else if (order.mpesa === 'false') {
         return 'On delivery'
     }
@@ -695,6 +675,7 @@ exports.emailOrderStatus = async function (order, email, fullName) {
                 address: process.env.EMAIL
             },
             to: email,
+            // cc: 'a@email.com, b@email.com, c@email.com',
             subject: `UPDATE ON STATUS FOR ORDER ${order._id}`,
             html: `
 Dear ${fullName},
@@ -804,7 +785,7 @@ function orderData(order) {
         return order.products.map(
             product => {
                 return `
-            <li>${product.product_name} &nbsp;<span>- Qty ${product.quantity}</span></li>
+            <li>${product.product_name} &nbsp;<span>${product.price} x ${product.quantity}</span> = ${product.price * product.quantity}</li>
         `
             }).join('');
     }
@@ -819,10 +800,12 @@ function orderData(order) {
 
     return `
 <ul>
+        <p>Payment Type:&nbsp;${printPaymentType(order)}</p>
         ${printProducts(order)}
         ${printOption(order)}
-        <p>Payment Type:&nbsp;${printPaymentType(order)}</p>
-        <p>Amount: (ksh.)&nbsp;${order.total + order.delivery_fee}</p>
+        <p>Products total: ${order.total}</p>
+        <p>Delivery fee: ${order.delivery_fee}</p>
+        <p>Total: (ksh.)&nbsp;${order.total + order.delivery_fee}</p>
 </ul>
     `
 }
@@ -856,10 +839,10 @@ function printBadge(order) {
 }
 
 function printPhone(order) {
-    if (order.customerID){
-        return order.customerID.phone
-    } else{
+    if (order.ePhone){
         return order.ePhone
+    } else{
+        return order.customerPhone
     }
 }
 
@@ -901,21 +884,20 @@ exports.orderDeleteModals= function (orders) {
     }).join('');
 }
 
+function printName(order) {
+    if (order.eName){
+        return `${order.eName}`
+    } else return order.customerName;
+}
+
 exports.printOrdersRecent = function (orders) {
-
-    function printName(order) {
-        if (order.eName){
-            return `${order.eName}`
-        } else return ``
-    }
-
     return orders.map(
         order => {
             return `
 <tr>
     <td class="orderRows"><span class="dateSorta">${order.orderDate.toISOString()}</span><br>${displayDate(order.orderDate)}<br> ${order.orderDate.toLocaleTimeString([], {hour: '2-digit', minute:'2-digit'})}</td>
     <td class="orderRows">${printBadge(order)} <br> ${order._id}</td>
-    <td class="orderRows"><a href="tel:0${printPhone(order)}">0${printPhone(order)}</a><br><br><a href="https://www.google.com/maps/dir/?api=1&origin=-1.283733332480186%2C36.827665514486654&destination=${order.address.latitude}%2C${order.address.longitude}&travelmode=driving" target="_blank">Address</a></td>
+    <td class="orderRows"><a href="tel:0${printPhone(order)}">0${printPhone(order)}</a><br><br><a href="https://www.google.com/maps/dir/?api=1&origin=${process.env.SHOP_LATITUDE}%2C${process.env.SHOP_LONGITUDE}&destination=${order.address.latitude}%2C${order.address.longitude}&travelmode=driving" target="_blank">Address</a></td>
     <td>
         <ul class="orderItems">
             ${printName(order)}
@@ -945,19 +927,13 @@ exports.printOrdersRecent = function (orders) {
 
 exports.printOrdersNew = function (orders) {
 
-    function printName(order) {
-        if (order.eName){
-            return `${order.eName}`
-        } else return ``
-    }
-
     const newOrders = orders.map(
         order => {
             if (order.new) return `
 <tr>
     <td class="orderRows">${displayDate(order.orderDate)}<br> ${order.orderDate.toLocaleTimeString([], {hour: '2-digit', minute:'2-digit'})}</td>
     <td class="orderRows">${printBadge(order)} <br> ${order._id} </td>
-    <td class="orderRows"><a href="tel:0${printPhone(order)}">0${printPhone(order)}</a><br><br><a href="https://www.google.com/maps/dir/?api=1&origin=-1.283733332480186%2C36.827665514486654&destination=${order.address.latitude}%2C${order.address.longitude}&travelmode=driving" target="_blank">Address</a></td>
+    <td class="orderRows"><a href="tel:0${printPhone(order)}">0${printPhone(order)}</a><br><br><a href="https://www.google.com/maps/dir/?api=1&origin=${process.env.SHOP_LATITUDE}%2C${process.env.SHOP_LONGITUDE}&destination=${order.address.latitude}%2C${order.address.longitude}&travelmode=driving" target="_blank">Address</a></td>
     <td>
         <ul class="orderItems">
             ${printName(order)}   
@@ -1023,7 +999,6 @@ exports.printCartModal = printCartModal;
 exports.getModals = getModals;
 exports.wishlistButton = wishlistButton;
 exports.cartButton = cartButton;
-exports.extraNav = extraNav;
 exports.footer = footer;
 exports.printProducts = printProducts
 exports.printPaymentMethod = printPaymentMethod

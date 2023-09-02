@@ -314,14 +314,6 @@ module.exports = ({orders, income, unitsSold, totalProducts, totalCustomers, bes
                 </div>
                 <div class="card col">
                     <div class="card-body">
-                        <h5 class="card-title">Total Customers</h5>
-                        <div class="card-text">
-                            ${printStatCard(totalCustomers, customersPercentage(customers))}
-                        </div>
-                    </div>
-                </div>
-                <div class="card col">
-                    <div class="card-body">
                         <h5 class="card-title">Total Units Sold</h5>
                         <div class="card-text">
                             <div class="d-flex justify-content-end">

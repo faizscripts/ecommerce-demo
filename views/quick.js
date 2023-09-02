@@ -153,7 +153,7 @@ src="https://www.facebook.com/tr?id=1557304177945106&ev=PageView&noscript=1"
                     </div>
                     <div class="mb-2 col-md-6 form-group">
                         <label for="phone" class="form-label" required>Phone Number</label>
-                        <input name="phone" type="number" class="form-control" id="phone" aria-describedby="phone number" required>
+                        <input name="fullname" type="text" class="form-control" id="fullname" aria-describedby="name" required>
                     </div>  
                 </div>
                 <div class="mb-2 form-group">

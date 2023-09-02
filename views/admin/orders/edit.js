@@ -42,7 +42,7 @@ module.exports = ({order}) => {
                 <li class="d-lg-flex justify-content-evenly">
                     <input type="hidden" name="productID" value="${product.productID}" >
                     <input type="text" class="form-control mb-2 orderProductEdit " name="product_name" value="${product.product_name}" readonly>
-                    <input type="number" class="form-control mb-2 orderQuantityEdit orderPriceEdit" name="price" value="${order.total}" ><span class="mt-2">X</span>
+                    <input type="number" class="form-control mb-2 orderQuantityEdit orderPriceEdit" name="price" value="${order.total}" readonly><span class="mt-2">X</span>
                     <input type="number" class="form-control mb-2 orderQuantityEdit orderQtyInputs" min="1" name="quantity" value="1" readonly> <span class="mt-2">=</span>  
                     <input type="number" class="form-control mb-2 orderQuantityEdit orderSubtotalEdit"  readonly>    
                     <i class="fas fa-trash-alt orderProductDelete"></i>
@@ -71,9 +71,8 @@ module.exports = ({order}) => {
                     <input type="hidden" name="productID" value="${product.productID}" >
                     <input type="text" class="form-control mb-2 orderProductEdit " name="product_name" value="${product.product_name}" readonly>
                     <input type="number" class="form-control mb-2 orderQuantityEdit orderPriceEdit" name="price" value="${product.price}" readonly><span class="mt-2">X</span>
-                    <input type="number" class="form-control mb-2 orderQuantityEdit orderQtyInputs" min="1" name="quantity" value="${product.quantity}" > <span class="mt-2">=</span>  
+                    <input type="number" class="form-control mb-2 orderQuantityEdit orderQtyInputs" min="1" name="quantity" value="${product.quantity}" readonly> <span class="mt-2">=</span>
                     <input type="number" class="form-control mb-2 orderQuantityEdit orderSubtotalEdit"  readonly>    
-                    <i class="fas fa-trash-alt orderProductDelete"></i>
                 </li>                
         `
                     }
@@ -95,19 +94,19 @@ module.exports = ({order}) => {
     function printName(order) {
         if (order.eName) {
             return order.eName
-        } else return order.customerID.full_name
+        } else return order.customerName
     }
 
     function printEmail(order) {
         if (order.ePhone) {
             return order.eEmail
-        } else return order.customerID.email
+        } else return order.customerEmail
     }
 
     function printPhone(order) {
         if (order.ePhone) {
             return order.ePhone
-        } else return order.customerID.phone
+        } else return order.customerPhone
     }
 
     return layout({
@@ -152,8 +151,8 @@ module.exports = ({order}) => {
             
             <div class="row">
                 <div class="mb-2 col-md-6 form-group">
-                    <label for="shopTotal" class="form-label" >Shop Price</label>
-                    <input type="number" class="form-control" name="shopTotal" id="shopTotal" value="${order.shopTotal}" required>
+                    <label for="shopTotal" class="form-label" >Buying Price</label>
+                    <input type="number" class="form-control" name="shopTotal" id="shopTotal" value="${order.shopTotal}" required readonly>
                 </div>
             <div class="mb-2 col-md-6 form-group">
                     <label for="delivery_fee" class="form-label" >Delivery Fee</label>
@@ -169,7 +168,7 @@ module.exports = ({order}) => {
             <div class="d-flex justify-content-evenly">
                 <p class="otEdit"> order total: <span class="tdf"> ${order.total+ order.delivery_fee}</span></p>
                 <input type="hidden" class="outputtdf" name="outputtdf" value="${order.total+ order.delivery_fee}">
-                <p class="otEdit"> income: <span class="income"> ${order.total - order.shopTotal}</span></p>
+                <p class="otEdit"> profit: <span class="income"> ${order.total - order.shopTotal}</span></p>
             </div> 
          
             <div class="my-3 form-group ">

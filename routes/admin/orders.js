@@ -5,7 +5,6 @@ const {emailOrderStatus, emailLowQuantity} = require('../../middlewares/otherFun
 const viewOrdersTemplate = require('../../views/admin/orders/index');
 const newOrderTemplate = require('../../views/admin/orders/new');
 const editOrderTemplate = require('../../views/admin/orders/edit');
-const {Customer} = require('../../models/customers');
 const {Order} = require('../../models/admin/orders');
 const {Product} = require('../../models/admin/products');
 const {Category} = require('../../models/admin/categories');
@@ -26,7 +25,7 @@ router.get('/new', async (req, res) => {
 });
 
 router.get('/edit/:id', async (req, res) => {
-    const order = await Order.findById(req.params.id).populate('customerID', 'email phone full_name');
+    const order = await Order.findById(req.params.id);
 
     res.send(editOrderTemplate({order}))
 })
@@ -35,20 +34,11 @@ router.post('/edit/:id', async (req, res) => {
 
     let order = await Order.findById(req.params.id)
 
-    if (order.eEmail){
-        order.eEmail = req.body.email;
-        order.ePhone = req.body.phone;
-        order.eName = req.body.name;
-        order.orderNotes = req.body.orderNotes;
-        order.delivery_fee = req.body.delivery_fee;
-        order.shopTotal = req.body.shopTotal;
-
-        await order.save()
-    }
-
     if (!order.processed) {
+
+        let sendEmail = order.orderStatus !== req.body.orderStatus;
+
         let products = []
-        let sendEmail = false
 
         switch ((typeof req.body.productID).toString()) {
             case 'string':
@@ -72,27 +62,43 @@ router.post('/edit/:id', async (req, res) => {
                 break;
         }
 
-        if (order.orderStatus !== req.body.orderStatus){
-            sendEmail = true
+        if (order.eEmail) {
+            order = await Order.findByIdAndUpdate(req.params.id, {
+                eEmail: req.body.email,
+                ePhone: req.body.phone,
+                eName: req.body.name,
+                products: products,
+                orderNotes: req.body.orderNotes,
+                delivery_fee: req.body.delivery_fee,
+                shopTotal: req.body.shopTotal,
+                total: req.body.orderOutput,
+                orderStatus: req.body.orderStatus,
+                new: false,
+            }, {new: true});
+        } else {
+            order = await Order.findByIdAndUpdate(req.params.id, {
+                customerEmail: req.body.email,
+                customerName: req.body.name,
+                customerPhone: req.body.phone,
+                products: products,
+                orderNotes: req.body.orderNotes,
+                delivery_fee: req.body.delivery_fee,
+                shopTotal: req.body.shopTotal,
+                total: req.body.orderOutput,
+                orderStatus: req.body.orderStatus,
+                new: false,
+            }, {new: true});
         }
-
-        order = await Order.findByIdAndUpdate(req.params.id, {
-            orderStatus: req.body.orderStatus,
-            products: products,
-            total: req.body.orderOutput,
-            new: false
-        }, {new: true}).populate('customerID', 'email phone full_name');
 
         if (sendEmail){
             if (order.eEmail){
                 await emailOrderStatus(order, order.eEmail, order.eName).catch(console.error);
-            } else{
-                await emailOrderStatus(order, order.customerID.email, order.customerID.full_name).catch(console.error);
+            } else if (order.customerEmail) {
+                await emailOrderStatus(order, order.customerEmail, order.customerName).catch(console.error);
             }
         }
 
     }
-
 
     if (order.orderStatus.toLowerCase() === 'delivered') {
 
