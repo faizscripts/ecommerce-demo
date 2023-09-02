@@ -42,6 +42,19 @@ function getError(error, key) {
 
 function printProductModal(product, wishlist, cart) {
 
+    function renderDescription() {
+        if (!product.description) {
+            return  ``
+        }
+
+        return `
+                <div class="description-container">
+                    <div class="description mt-3"> Description</div>
+                    <div class="iPV">${product.description}</div>
+                </div>
+            `
+    }
+
     return `
 <div class="modal fade product-view" id="_${product._id}" tabindex="-1" aria-labelledby="Product view" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered modal-xl">
@@ -76,21 +89,13 @@ function printProductModal(product, wishlist, cart) {
                                     <button type="submit" class="btn btn-outline-success prod-start checkoutPixel" formaction="/cart/checkout/${product._id}"> Checkout </button>
                                 </div>
                             </form>
-                            <div id="share" class="text-center">
-                                <i class="bi bi-share-fill px-2"></i>
-                                <a href="https://www.facebook.com/sharer/sharer.php?u=${process.env.DOMAIN}/search/ext/${product._id}" target="_blank"><i class="fab fa-facebook-f"></i></a>
-                                <a href="whatsapp://send?text=${process.env.DOMAIN}/search/ext/${product._id}"><i class="fab fa-whatsapp"></i></a>
-                                <input type="hidden" value="${process.env.DOMAIN}/search/ext/${product._id}">
-                                <div class="d-inline"><button class="c2cLink btn btn-outline-secondary"> copy product link <i class="far fa-clipboard c2c" ></i></button></div>
-                                
+                            <div id="share">
+                                <button class="whatsapp-order btn">
+                                    <a href="https://wa.me/${process.env.PHONE}">Order via WhatsApp <i class="fab fa-whatsapp whatsapp-icon" ></i></a>
+                                </button>
                             </div>
                         </div>
-                        <div>
-                            <div class="description mt-3"> Description</div>
-                            <div class="iPV">${product.description}</div>
-                            <div class="description">What's in the box</div>
-                            <div class="iPV">${product.inBox}</div>
-                        </div>
+                        ${renderDescription()}
                     </div>
                 </div>
             </div>

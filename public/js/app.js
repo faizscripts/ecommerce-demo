@@ -466,7 +466,6 @@ if (confirmPassIcon){
 // const placeOrder = document.querySelector('#placeOrder')
 // if (placeOrder){
 //     placeOrder.addEventListener('click', (evt) => {
-//         console.log(evt);
 //         fbq('trackCustom', 'CompeletedOrder');
 //     })
 // }

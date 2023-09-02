@@ -116,6 +116,11 @@ ${printProductModal(product, wishlist, cart)}
             <p>A true value for your money as we provide quality products at the most affordable rates.</p>
         </div>
     </div>
+    <div class="d-flex justify-content-center my-3">
+        <button class="whatsapp-order btn">
+            <a href="https://wa.me/${process.env.PHONE}">Order via WhatsApp <i class="fab fa-whatsapp whatsapp-icon" ></i></a>
+        </button>
+    </div>
 </section>
 
 <!--Special categories-->

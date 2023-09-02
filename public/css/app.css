@@ -78,6 +78,23 @@ body #paymentError {
 body .categories-list-item {
   text-transform: capitalize;
 }
+body .whatsapp-order {
+  background-color: #25D366;
+}
+body .whatsapp-order:hover {
+  opacity: 0.7;
+}
+body .whatsapp-order a {
+  display: flex;
+  align-items: center;
+  color: white;
+  text-decoration: none;
+}
+body .whatsapp-order .whatsapp-icon {
+  font-size: 1.5rem !important;
+  width: 2.5rem !important;
+  text-align: center !important;
+}
 
 .index {
   background: white;
@@ -427,20 +444,9 @@ body .categories-list-item {
 .product-view .prod-start {
   width: 10rem;
 }
-.product-view #share .fab {
-  padding: 0.5rem;
-  font-size: 1.5rem;
-  width: 2.5rem;
-  text-align: center;
-  text-decoration: none;
-  border-radius: 50%;
-}
-.product-view #share .fab:hover {
-  opacity: 0.7;
-  cursor: pointer;
-}
-.product-view #share .c2cLink {
-  margin-bottom: 0.5rem;
+.product-view #share {
+  display: flex;
+  justify-content: center;
 }
 .product-view #share .fa-facebook-f {
   background: #3B5998;
@@ -964,7 +970,7 @@ body .categories-list-item {
   z-index: 1000;
   top: 0;
   left: 0;
-  background-color: black;
+  background-color: rgb(0, 0, 0);
   background-color: rgba(0, 0, 0, 0.9);
 }
 .overlay .overlay-content {
@@ -1942,14 +1948,12 @@ body .categories-list-item {
   .navbar #search-nav {
     font-size: 0.75rem;
   }
-
   #wishlist .prod-title, #cart .prod-title {
     font-size: 1rem;
   }
   #wishlist .remove, #cart .remove {
     font-size: 0.8rem;
   }
-
   #why .why-title {
     font-size: 1.2rem;
   }
@@ -1967,14 +1971,12 @@ body .categories-list-item {
   #why span {
     font-size: 0.58rem;
   }
-
   #tiles .card-footer {
     font-size: 0.85rem;
   }
   #tiles .image-tile {
     height: 8.5rem;
   }
-
   .featured .section-title {
     font-size: 1.3rem;
     margin-bottom: 1.5rem;
@@ -1999,7 +2001,6 @@ body .categories-list-item {
   .featured .action {
     font-size: 1.2rem;
   }
-
   #footer .footer1 .info-heading, #footer .footer1 #reach {
     font-size: 1rem;
   }
@@ -2007,7 +2008,6 @@ body .categories-list-item {
     width: 8rem;
     font-size: 0.9rem;
   }
-
   .product-view .modal-title {
     font-size: 1.15rem;
   }
@@ -2039,11 +2039,6 @@ body .categories-list-item {
   .product-view .checkout {
     font-size: 0.8rem;
   }
-  .product-view #share .fab {
-    padding: 0.4rem;
-    font-size: 1.2rem;
-    width: 2rem;
-  }
   .product-view .scroll {
     font-size: 0.7rem;
   }
@@ -2053,7 +2048,10 @@ body .categories-list-item {
   .product-view li {
     font-size: 0.9rem;
   }
-
+  .product-view .whatsapp-icon {
+    font-size: 1.2rem !important;
+    width: 2rem !important;
+  }
   #checkout-body #checkout-main {
     flex-basis: 70vw;
     margin-top: 2rem;
@@ -2099,7 +2097,6 @@ body .categories-list-item {
   #checkout-body #checkout-sidebar .btn-sm {
     font-size: 0.65rem;
   }
-
   .tp .row .card-img-top {
     height: 9rem;
   }
@@ -2115,7 +2112,6 @@ body .categories-list-item {
   .tp .row .action {
     font-size: 1.15rem;
   }
-
   .category-main #category-filters {
     flex-basis: 25vw;
   }
@@ -2154,7 +2150,6 @@ body .categories-list-item {
   .category-main #category-display .mainContent .card-body {
     height: 96px;
   }
-
   #order {
     width: 95%;
   }
@@ -2167,11 +2162,9 @@ body .categories-list-item {
   #order .statusBtn {
     width: 6rem;
   }
-
   .register .card {
     width: 85%;
   }
-
   #admin .mainPanel .navbar .addBtn {
     font-size: 0.7rem;
   }
@@ -2203,7 +2196,6 @@ body .categories-list-item {
   #admin .mainPanel #stats span {
     font-size: 0.6rem;
   }
-
   #viewProducts .detailedName {
     font-size: 0.75rem;
   }
@@ -2227,7 +2219,6 @@ body .categories-list-item {
   #extraNav #cred {
     margin-right: 12rem;
   }
-
   .navbar {
     font-size: 1rem;
     top: -5px;
@@ -2263,7 +2254,6 @@ body .categories-list-item {
   .navbar #search-nav {
     font-size: 0.8rem;
   }
-
   #wishlist .modal-title {
     font-size: 1.2rem;
   }
@@ -2287,7 +2277,6 @@ body .categories-list-item {
   #wishlist .favs-footer {
     font-size: 0.9rem;
   }
-
   #cart .modal-title {
     font-size: 1.2rem;
   }
@@ -2318,14 +2307,12 @@ body .categories-list-item {
   #cart #checkout {
     font-size: 0.9rem;
   }
-
   #tiles .image-tile {
     height: 10rem;
   }
   #tiles .card-footer {
     font-size: 0.9rem;
   }
-
   #why p {
     margin-top: 0.5rem;
     font-size: 0.9rem;
@@ -2333,7 +2320,6 @@ body .categories-list-item {
   #why span {
     font-size: 0.6rem;
   }
-
   .featured .special-row {
     width: 88%;
   }
@@ -2352,7 +2338,6 @@ body .categories-list-item {
   .featured span {
     font-size: 0.6rem;
   }
-
   .product-view #prod-main-img {
     height: 23rem;
   }
@@ -2372,12 +2357,10 @@ body .categories-list-item {
   .product-view li {
     font-size: 0.9rem;
   }
-
   #footer .footer2 {
     font-size: 0.65rem;
     position: static;
   }
-
   #checkout-body #checkout-main {
     flex-basis: 65vw;
     margin-top: 2rem;
@@ -2431,7 +2414,6 @@ body .categories-list-item {
   #checkout-body #checkout-sidebar .btn-sm {
     font-size: 0.7rem;
   }
-
   .tp .card-header {
     font-size: 1rem;
   }
@@ -2444,7 +2426,6 @@ body .categories-list-item {
   .tp .row .card-img-top {
     height: 11rem;
   }
-
   .category-main #category-filters {
     flex-basis: 30vw;
   }
@@ -2498,18 +2479,15 @@ body .categories-list-item {
   .category-main #category-display .mainContent .action {
     font-size: 1.15rem;
   }
-
   .findByFilter .input-group {
     margin: 1rem 0;
   }
   .findByFilter .input-group input {
     font-size: 0.5rem;
   }
-
   .register #login_card {
     width: 70%;
   }
-
   #order {
     width: 99%;
   }
@@ -2530,7 +2508,6 @@ body .categories-list-item {
     width: 7rem;
     font-size: 0.7rem;
   }
-
   #admin .sidebar li {
     font-size: 1rem;
   }
@@ -2629,7 +2606,6 @@ body .categories-list-item {
   #admin .mainPanel .order .performer .performerName {
     min-width: 25rem;
   }
-
   #viewProducts {
     margin: 1rem 0.5rem 1rem 0.3rem;
   }
@@ -2667,7 +2643,6 @@ body .categories-list-item {
   #viewProducts #inventoryIndexT .invOthers {
     min-width: 7rem !important;
   }
-
   #add-product li {
     margin: 2rem 0;
   }
@@ -2679,11 +2654,9 @@ body .categories-list-item {
     width: 100%;
     font-size: 0.8rem;
   }
-
   .adminLogin {
     width: 90%;
   }
-
   .pricelistModal {
     min-width: 98%;
   }
@@ -2692,7 +2665,6 @@ body .categories-list-item {
   html {
     overflow-x: hidden;
   }
-
   body {
     overflow-x: hidden;
     position: relative;
@@ -2700,19 +2672,16 @@ body .categories-list-item {
   body .to-top.active {
     bottom: 95px;
   }
-
   #extraNav #cred {
     margin-right: 1rem;
     font-weight: 500;
   }
-
   .navbar .navbar-toggler {
     display: none;
   }
   .navbar #search-nav {
     font-size: 0.7rem;
   }
-
   #wishlist .modal-title {
     font-size: 1.2rem;
   }
@@ -2736,7 +2705,6 @@ body .categories-list-item {
   #wishlist .favs-footer {
     font-size: 1rem;
   }
-
   #cart .modal-title {
     font-size: 1.2rem;
   }
@@ -2766,7 +2734,6 @@ body .categories-list-item {
   #cart #checkout {
     font-size: 1rem;
   }
-
   #tiles {
     margin-top: 1rem;
     padding-top: 1rem;
@@ -2779,10 +2746,6 @@ body .categories-list-item {
   }
   #tiles .card-footer {
     font-size: 0.88rem;
-  }
-
-  #why {
-    margin-top: 1rem;
   }
   #why .why-title {
     font-size: 1.2rem;
@@ -2800,7 +2763,6 @@ body .categories-list-item {
   #why span {
     font-size: 0.7rem;
   }
-
   .featured .special-row {
     width: 107%;
   }
@@ -2842,7 +2804,6 @@ body .categories-list-item {
   .featured .col-lg-2 {
     width: 49%;
   }
-
   .product-view .modal-title {
     font-size: 1rem;
   }
@@ -2878,11 +2839,6 @@ body .categories-list-item {
   .product-view #share {
     margin-top: 1rem;
   }
-  .product-view #share .fab {
-    padding: 0.8rem;
-    font-size: 1.7rem;
-    width: 3.3rem;
-  }
   .product-view .description {
     font-size: 1.1rem;
   }
@@ -2892,7 +2848,10 @@ body .categories-list-item {
   .product-view li {
     font-size: 0.85rem;
   }
-
+  .whatsapp-icon {
+    font-size: 1.7rem !important;
+    width: 3.3rem !important;
+  }
   #footer .footer1 .info-heading {
     font-size: 1.2rem;
     margin-left: 0;
@@ -2933,7 +2892,6 @@ body .categories-list-item {
     font-size: 0.6rem;
     margin-bottom: 4rem;
   }
-
   #checkout-body {
     display: flex;
     flex-wrap: wrap-reverse;
@@ -3010,7 +2968,6 @@ body .categories-list-item {
   #checkout-body #checkout-sidebar .btn-sm {
     font-size: 0.9rem;
   }
-
   .tp .row {
     margin-top: 1rem;
     padding: 0;
@@ -3038,7 +2995,6 @@ body .categories-list-item {
     margin-top: 0.2rem;
     font-size: 1.3rem;
   }
-
   .category-main {
     display: flex;
     overflow-x: hidden;
@@ -3124,14 +3080,12 @@ body .categories-list-item {
     margin: 0;
     padding: 0 0.4rem;
   }
-
   .category-main.toggled #category-filters {
     margin-left: 0;
   }
   .category-main.toggled .fa-plus {
     transform: rotate(405deg);
   }
-
   .findByFilter .input-group {
     margin: 1rem 0;
   }
@@ -3141,18 +3095,15 @@ body .categories-list-item {
   .findByFilter .input-group i {
     font-size: 0.8rem;
   }
-
   .register .card {
     width: 95%;
   }
   .register #login_card {
     width: 95%;
   }
-
   #order .orderItemSpan {
     font-size: 0.8rem;
   }
-
   #bottom-panel {
     display: block;
     position: fixed;
@@ -3194,11 +3145,9 @@ body .categories-list-item {
     border-radius: 50%;
     font-family: "Montserrat", sans-serif;
   }
-
   .viewCat {
     margin: 1.2rem 0;
   }
-
   #admin .mainPanel .navbar .navbar-brand {
     font-size: 1.3rem;
   }
@@ -3214,7 +3163,6 @@ body .categories-list-item {
   #admin .mainPanel .order {
     width: 95%;
   }
-
   #faq {
     font-size: 0.9rem;
   }
@@ -3235,7 +3183,6 @@ body .categories-list-item {
   #faq .faqLgImage {
     height: 100%;
   }
-
   #add-product .card-header {
     font-size: 1.25rem;
   }
@@ -3243,11 +3190,9 @@ body .categories-list-item {
     font-size: 0.85rem;
     margin-top: 1rem;
   }
-
   .adminLogin {
     width: 99%;
   }
-
   #viewProducts .detailedName {
     min-width: 180px !important;
     max-width: 180px !important;
@@ -3256,7 +3201,6 @@ body .categories-list-item {
     min-width: 43px !important;
     max-width: 43px !important;
   }
-
   .quick .quick-product-view {
     padding: 0.5rem;
     background: white;

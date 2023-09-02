@@ -24,10 +24,7 @@ function getMonthlyStats(orders) {
     orders.forEach(order => {
 
         if (getMonthYear(order.orderDate) === getMonthYear(today) && order.orderStatus.toLowerCase() === 'delivered'){
-            console.log(order.eName)
-            console.log(`${income} + ${order.total - order.shopTotal}`)
             income += (order.total - order.shopTotal)
-            console.log(`equals ${income}`)
             totalOrders++
         }
     })
