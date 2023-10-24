@@ -246,6 +246,10 @@ function printProductViewSmallImages(product) {
 }
 
 function printWishlistModal(req, wishlist) {
+    if (!wishlist) {
+        return ''
+    }
+
     if (Object.keys(wishlist).length > 0) {
         req.session.wishlistCount = wishlist.products.length
 
@@ -321,6 +325,10 @@ function printWishlistModal(req, wishlist) {
 }
 
 function printCartModal(req, cart) {
+    if (!cart) {
+        return ''
+    }
+
     if (Object.keys(cart).length > 0) {
         req.session.cartCount = cart.products.length
 

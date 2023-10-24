@@ -129,6 +129,8 @@ body .whatsapp-order .whatsapp-icon {
   width: 155px;
   height: auto;
   margin-left: 2rem;
+  object-fit: cover;
+  object-position: center center;
 }
 .navbar .navbar-collapse {
   text-transform: uppercase;

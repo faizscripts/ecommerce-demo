@@ -63,8 +63,7 @@ module.exports = function ({product}) {
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="format-detection" content="telephone=no">
-    <meta name="description" content="Quality accessories for phones and tablets (cases, screen protectors, audio, power), smart watches, cameras, cars and computers">
-    <meta name="keywords" content="kenya, e-commerce, online, cases, screen protectors, audio, earphones, earbuds, apple, iphone, power bank, smart watch, camera, accessories, car, computer, premium, quality">
+    <meta name="description" content="${process.env.META_DESCRIPTION}">
     <meta property="og:image" content="/img/logo.webp">
     <meta name="author" content="Faiz Ahmed">
     
@@ -72,7 +71,13 @@ module.exports = function ({product}) {
     <script src="https://polyfill.io/v3/polyfill.min.js?features=default"></script>
 
     <!--    Favicon -->
-    <link rel="icon" href="/img/favicon.ico">
+    <link rel="apple-touch-icon" sizes="180x180" href="/img/favicons/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/img/favicons/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/img/favicons/favicon-16x16.png">
+    <link rel="manifest" href="/img/favicons/site.webmanifest">
+    <link rel="mask-icon" href="/img/favicons/safari-pinned-tab.svg" color="#5bbad5">
+    <meta name="msapplication-TileColor" content="#da532c">
+    <meta name="theme-color" content="#ffffff">
 
     <!--    Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">

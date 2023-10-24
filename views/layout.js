@@ -12,8 +12,7 @@ module.exports = ({title, req, content, categories}) => {
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="format-detection" content="telephone=no">
-    <meta name="description" content="Quality accessories for phones and tablets (cases, screen protectors, audio, power), smart watches, cameras, cars and computers">
-    <meta name="keywords" content="kenya, e-commerce, online, cases, screen protectors, audio, earphones, earbuds, apple, iphone, power bank, smart watch, camera, accessories, car, computer, premium, quality">
+    <meta name="description" content="${process.env.META_DESCRIPTION}">
     <meta property="og:image" content="/img/logo.webp">
     <meta name="author" content="Faiz Ahmed">
     

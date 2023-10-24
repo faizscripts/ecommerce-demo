@@ -161,6 +161,7 @@ body {
     width: 155px;
     height: auto;
     margin-left: 2rem;
+    @include resizeImage;
   }
 
   .navbar-nav {
